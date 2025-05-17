@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edulink.Windows", "Edulink.Windows\Edulink.Windows.csproj", "{2F2EA555-85DB-47BB-BA2B-DCD1B148DA78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduLink.Entidades", "EduLink.Entidades\EduLink.Entidades.csproj", "{94BAE787-8D60-491E-8047-402FEB0AA7F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduLink.Servicios", "EduLink.Servicios\EduLink.Servicios.csproj", "{E4786897-92EF-4612-9A3F-56729D23744E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduLink.Datos", "EduLink.Datos\EduLink.Datos.csproj", "{6193E135-AEAA-4F09-97D7-BBDA2A6F2300}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F2EA555-85DB-47BB-BA2B-DCD1B148DA78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F2EA555-85DB-47BB-BA2B-DCD1B148DA78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F2EA555-85DB-47BB-BA2B-DCD1B148DA78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F2EA555-85DB-47BB-BA2B-DCD1B148DA78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94BAE787-8D60-491E-8047-402FEB0AA7F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94BAE787-8D60-491E-8047-402FEB0AA7F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94BAE787-8D60-491E-8047-402FEB0AA7F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94BAE787-8D60-491E-8047-402FEB0AA7F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4786897-92EF-4612-9A3F-56729D23744E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4786897-92EF-4612-9A3F-56729D23744E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4786897-92EF-4612-9A3F-56729D23744E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4786897-92EF-4612-9A3F-56729D23744E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6193E135-AEAA-4F09-97D7-BBDA2A6F2300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6193E135-AEAA-4F09-97D7-BBDA2A6F2300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6193E135-AEAA-4F09-97D7-BBDA2A6F2300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6193E135-AEAA-4F09-97D7-BBDA2A6F2300}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
