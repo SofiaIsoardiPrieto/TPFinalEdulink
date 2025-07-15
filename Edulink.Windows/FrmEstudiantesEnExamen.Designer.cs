@@ -38,7 +38,7 @@
             this.tsActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsVolver = new System.Windows.Forms.ToolStripButton();
-            this.lvlPaginaActual = new System.Windows.Forms.Label();
+            this.lblPaginaActual = new System.Windows.Forms.Label();
             this.lblPaginasTotales = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -74,7 +74,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.lvlPaginaActual);
+            this.splitContainer1.Panel2.Controls.Add(this.lblPaginaActual);
             this.splitContainer1.Panel2.Controls.Add(this.lblPaginasTotales);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
@@ -183,15 +183,15 @@
             this.tsVolver.Text = "Volver";
             this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // lvlPaginaActual
+            // lblPaginaActual
             // 
-            this.lvlPaginaActual.AutoSize = true;
-            this.lvlPaginaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvlPaginaActual.Location = new System.Drawing.Point(66, 283);
-            this.lvlPaginaActual.Name = "lvlPaginaActual";
-            this.lvlPaginaActual.Size = new System.Drawing.Size(14, 13);
-            this.lvlPaginaActual.TabIndex = 11;
-            this.lvlPaginaActual.Text = "0";
+            this.lblPaginaActual.AutoSize = true;
+            this.lblPaginaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaActual.Location = new System.Drawing.Point(66, 283);
+            this.lblPaginaActual.Name = "lblPaginaActual";
+            this.lblPaginaActual.Size = new System.Drawing.Size(14, 13);
+            this.lblPaginaActual.TabIndex = 11;
+            this.lblPaginaActual.Text = "0";
             // 
             // lblPaginasTotales
             // 
@@ -336,7 +336,7 @@
             this.ColEstado.Name = "ColEstado";
             this.ColEstado.ReadOnly = true;
             // 
-            // FrmEstudiantesEnMateria
+            // FrmEstudiantesEnExamen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -344,7 +344,7 @@
             this.ClientSize = new System.Drawing.Size(530, 375);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmEstudiantesEnMateria";
+            this.Name = "FrmEstudiantesEnExamen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEstudiantes";
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -383,7 +383,7 @@
         private System.Windows.Forms.Button btnAnterior;
         private System.Windows.Forms.Label lblRegistros;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lvlPaginaActual;
+        private System.Windows.Forms.Label lblPaginaActual;
         private System.Windows.Forms.Label lblPaginasTotales;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

@@ -16,5 +16,23 @@ namespace Edulink.Windows
         {
             InitializeComponent();
         }
+
+        private void btnEstudiantes_Click(object sender, EventArgs e)
+        {
+            FrmEstudiantes frm = new FrmEstudiantes();
+            frm.ShowDialog();
+        }
+
+        private void btnMaterias_Click(object sender, EventArgs e)
+        {
+            FrmMaterias frm = new FrmMaterias();
+            frm.ShowDialog();
+        }
+
+        private void btnExamenes_Click(object sender, EventArgs e)
+        {
+            FrmExamenes frm = new FrmExamenes();
+            frm.ShowDialog();
+        }
     }
 }

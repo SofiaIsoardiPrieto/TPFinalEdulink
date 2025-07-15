@@ -118,6 +118,9 @@
     <Compile Include="FrmInicioSesion.Designer.cs">
       <DependentUpon>FrmInicioSesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ComboHelper.cs" />
+    <Compile Include="Helpers\FormHelper.cs" />
+    <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmExamenAE.resx">
@@ -259,6 +262,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\examen1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EduLink.Entidades\EduLink.Entidades.csproj">
+      <Project>{94bae787-8d60-491e-8047-402feb0aa7f0}</Project>
+      <Name>EduLink.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EduLink.Servicios\EduLink.Servicios.csproj">
+      <Project>{e4786897-92ef-4612-9a3f-56729d23744e}</Project>
+      <Name>EduLink.Servicios</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

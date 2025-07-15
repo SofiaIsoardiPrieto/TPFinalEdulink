@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EduLink.Datos.Interfaces
+namespace EduLink.Entidades.Enums
 {
-    public interface IRepositorioEstudiante
+    public enum Estado
     {
+        Regular,
+        Libre,
+        Recibido
     }
 }

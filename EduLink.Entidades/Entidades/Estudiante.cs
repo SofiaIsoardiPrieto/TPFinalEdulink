@@ -9,13 +9,16 @@ namespace EduLink.Entidades.Entidades
     public class Estudiante:ICloneable
     {
         public int EstudianteId { get; set; }
+        public int Legajo { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string DNI { get; set; }
         public string Email { get; set; }
-        public string Contraseña { get; set; }
+        public string Contrasenia { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public Enum Estado { get; set; }
 
         public int CiudadId { get; set; }
         public Ciudad Ciudad { get; set; }

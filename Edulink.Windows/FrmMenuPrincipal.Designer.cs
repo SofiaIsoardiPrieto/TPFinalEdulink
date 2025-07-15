@@ -59,6 +59,7 @@
             this.btnExamenes.Text = "Examenes";
             this.btnExamenes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExamenes.UseVisualStyleBackColor = false;
+            this.btnExamenes.Click += new System.EventHandler(this.btnExamenes_Click);
             // 
             // btnMaterias
             // 
@@ -74,6 +75,7 @@
             this.btnMaterias.Text = "Materias";
             this.btnMaterias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMaterias.UseVisualStyleBackColor = false;
+            this.btnMaterias.Click += new System.EventHandler(this.btnMaterias_Click);
             // 
             // btnEstudiantes
             // 
@@ -89,6 +91,7 @@
             this.btnEstudiantes.Text = "Estudiantes";
             this.btnEstudiantes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEstudiantes.UseVisualStyleBackColor = false;
+            this.btnEstudiantes.Click += new System.EventHandler(this.btnEstudiantes_Click);
             // 
             // btnCerrarSesion
             // 
