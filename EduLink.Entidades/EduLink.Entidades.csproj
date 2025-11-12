@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Combos\EstudianteCombo.cs" />
+    <Compile Include="Dtos\EstudianteDto.cs" />
     <Compile Include="Entidades\Ciudad.cs" />
     <Compile Include="Entidades\Estudiante.cs" />
     <Compile Include="Entidades\EstudianteExamen.cs" />
@@ -49,11 +50,11 @@
     <Compile Include="Entidades\Examen.cs" />
     <Compile Include="Entidades\Materia.cs" />
     <Compile Include="Entidades\Modulo.cs" />
-    <Compile Include="Enums\Estado.cs" />
+    <Compile Include="Enums\EstadoExamen.cs" />
+    <Compile Include="Enums\EstadoMateria.cs" />
+    <Compile Include="Enums\EstadoEstudiante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

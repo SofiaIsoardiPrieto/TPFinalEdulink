@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EduLink.Entidades.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace EduLink.Entidades.Entidades
         public string Email { get; set; }
         public string Contrasenia { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public Enum Estado { get; set; }
+        public EstadoEstudiante EstadoEstudiante { get; set; }
 
         public int CiudadId { get; set; }
         public Ciudad Ciudad { get; set; }

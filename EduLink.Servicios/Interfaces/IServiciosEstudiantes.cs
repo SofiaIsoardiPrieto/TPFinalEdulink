@@ -1,18 +1,19 @@
 ﻿using EduLink.Entidades.Combos;
+using EduLink.Entidades.Dtos;
 using EduLink.Entidades.Entidades;
 using System.Collections.Generic;
 
 namespace EduLink.Servicios.Interfaces
 {
-    internal interface IServiciosEstudiantes
+    public interface IServiciosEstudiantes
     {
-        void Borrar(int estudianteId);
+       
         bool Existe(Estudiante estudiante);
+        void Guardar(Estudiante estudiante); // en guardar está el agregar y editar
+        bool EstaRelacionado(int estudianteId);
+        void Borrar(int estudianteId);
         int GetCantidad(string textoFiltro = null);
-        List<Estudiante> GetEstudiantesPorPagina(int registrosPorPagina, int paginaActual, string textoFiltro = null);
+        List<EstudianteDto> GetEstudiantesPorPagina(int cantidadPorPagina, int paginaActual, string textoFiltro = null);
         List<EstudianteCombo> GetEstudiantesCombo();
-        void Guardar(Estudiante estudiante);
-
-
     }
 }

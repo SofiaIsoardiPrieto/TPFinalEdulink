@@ -1,4 +1,5 @@
 ﻿using EduLink.Entidades.Combos;
+using EduLink.Entidades.Dtos;
 using EduLink.Entidades.Entidades;
 using System.Collections.Generic;
 
@@ -7,14 +8,15 @@ namespace EduLink.Datos.Interfaces
     public interface IRepositorioEstudiantes
     {
 
+        void Agregar(Estudiante estudiante);     
         bool Existe(Estudiante estudiante);
-        void Agregar(Estudiante estudiante);
         void Editar(Estudiante estudiante);
-        int GetCantidad(string textoFiltro = null);
-        List<Estudiante> GetEstudiantesPorPagina(int cantidadPorPagina, int paginaActual, string textoFiltro = null);
+        bool EstaRelacionado(int estudianteId);
         void Borrar(int estudianteId);
+        int GetCantidad(string textoFiltro = null);
+        List<EstudianteDto> GetEstudiantesPorPagina(int cantidadPorPagina, int paginaActual, string textoFiltro = null);
         List<EstudianteCombo> GetEstudiantesCombo();
-
+        
     }
 }
 

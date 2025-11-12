@@ -205,6 +205,7 @@
             this.button1.Text = "Cancelar";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cbEstado
             // 
@@ -239,6 +240,7 @@
             this.button2.Text = "Aceptar";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label14
             // 
@@ -300,7 +302,6 @@
             this.Name = "FrmEstudianteAE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de sesión";
-            this.Load += new System.EventHandler(this.FrmEstudianteAE_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EduLink.Entidades.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,8 @@ namespace EduLink.Entidades.Entidades
         public int EstudianteMateriaId { get; set; }
         public int EstudianteId { get; set; }
         public int MateriaId { get; set; }
-        public string AnioCursado { get; set; }
-        public string EstadoMateria { get; set; }
+        public int AnioCursado { get; set; }
+        public EstadoMateria EstadoMateria { get; set; }
         public Estudiante Estudiante { get; set; } 
         public Materia Materia { get; set; }
 

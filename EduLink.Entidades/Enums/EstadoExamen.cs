@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EduLink.Entidades.Enums
 {
-    public enum Estado
+    public enum EstadoExamen
     {
-        Regular,
-        Libre,
-        Recibido
+        Aprobado,
+        Desaprobado,
+        Ausente
     }
 }
