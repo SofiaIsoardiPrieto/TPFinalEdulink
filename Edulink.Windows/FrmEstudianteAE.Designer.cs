@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbDireccion = new System.Windows.Forms.TextBox();
-            this.tbContrasenia = new System.Windows.Forms.TextBox();
-            this.tbEmail = new System.Windows.Forms.TextBox();
-            this.tbDNI = new System.Windows.Forms.TextBox();
-            this.tbTelefono = new System.Windows.Forms.TextBox();
-            this.tbApellidos = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.txtContrasenia = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtDNI = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.txtApellidos = new System.Windows.Forms.TextBox();
             this.cbCiudad = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -43,57 +43,58 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.tbNombres = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtNombres = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.cbEstado = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.lblLegajo = new System.Windows.Forms.Label();
-            this.tbLegajo = new System.Windows.Forms.TextBox();
+            this.txtLegajo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // tbDireccion
+            // txtDireccion
             // 
-            this.tbDireccion.Location = new System.Drawing.Point(117, 153);
-            this.tbDireccion.Name = "tbDireccion";
-            this.tbDireccion.Size = new System.Drawing.Size(250, 20);
-            this.tbDireccion.TabIndex = 50;
+            this.txtDireccion.Location = new System.Drawing.Point(117, 153);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(250, 20);
+            this.txtDireccion.TabIndex = 3;
             // 
-            // tbContrasenia
+            // txtContrasenia
             // 
-            this.tbContrasenia.Location = new System.Drawing.Point(117, 281);
-            this.tbContrasenia.Name = "tbContrasenia";
-            this.tbContrasenia.Size = new System.Drawing.Size(231, 20);
-            this.tbContrasenia.TabIndex = 49;
+            this.txtContrasenia.Enabled = false;
+            this.txtContrasenia.Location = new System.Drawing.Point(117, 281);
+            this.txtContrasenia.Name = "txtContrasenia";
+            this.txtContrasenia.Size = new System.Drawing.Size(231, 20);
+            this.txtContrasenia.TabIndex = 7;
             // 
-            // tbEmail
+            // txtEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(117, 251);
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(250, 20);
-            this.tbEmail.TabIndex = 48;
+            this.txtEmail.Location = new System.Drawing.Point(117, 251);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(250, 20);
+            this.txtEmail.TabIndex = 6;
             // 
-            // tbDNI
+            // txtDNI
             // 
-            this.tbDNI.Location = new System.Drawing.Point(117, 218);
-            this.tbDNI.Name = "tbDNI";
-            this.tbDNI.Size = new System.Drawing.Size(124, 20);
-            this.tbDNI.TabIndex = 47;
+            this.txtDNI.Location = new System.Drawing.Point(117, 218);
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Size = new System.Drawing.Size(124, 20);
+            this.txtDNI.TabIndex = 5;
             // 
-            // tbTelefono
+            // txtTelefono
             // 
-            this.tbTelefono.Location = new System.Drawing.Point(117, 185);
-            this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(169, 20);
-            this.tbTelefono.TabIndex = 46;
+            this.txtTelefono.Location = new System.Drawing.Point(117, 185);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(169, 20);
+            this.txtTelefono.TabIndex = 4;
             // 
-            // tbApellidos
+            // txtApellidos
             // 
-            this.tbApellidos.Location = new System.Drawing.Point(117, 119);
-            this.tbApellidos.Name = "tbApellidos";
-            this.tbApellidos.Size = new System.Drawing.Size(250, 20);
-            this.tbApellidos.TabIndex = 45;
+            this.txtApellidos.Location = new System.Drawing.Point(117, 119);
+            this.txtApellidos.Name = "txtApellidos";
+            this.txtApellidos.Size = new System.Drawing.Size(250, 20);
+            this.txtApellidos.TabIndex = 2;
             // 
             // cbCiudad
             // 
@@ -102,7 +103,7 @@
             this.cbCiudad.Location = new System.Drawing.Point(117, 311);
             this.cbCiudad.Name = "cbCiudad";
             this.cbCiudad.Size = new System.Drawing.Size(219, 29);
-            this.cbCiudad.TabIndex = 44;
+            this.cbCiudad.TabIndex = 8;
             // 
             // label10
             // 
@@ -184,28 +185,28 @@
             this.label12.TabIndex = 36;
             this.label12.Text = "Nombres:";
             // 
-            // tbNombres
+            // txtNombres
             // 
-            this.tbNombres.Location = new System.Drawing.Point(117, 85);
-            this.tbNombres.Name = "tbNombres";
-            this.tbNombres.Size = new System.Drawing.Size(250, 20);
-            this.tbNombres.TabIndex = 35;
+            this.txtNombres.Location = new System.Drawing.Point(117, 85);
+            this.txtNombres.Name = "txtNombres";
+            this.txtNombres.Size = new System.Drawing.Size(250, 20);
+            this.txtNombres.TabIndex = 1;
             // 
-            // button1
+            // btnCancelar
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(12)))), ((int)(((byte)(166)))));
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Myanmar Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(244, 410);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 33);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "Cancelar";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(12)))), ((int)(((byte)(166)))));
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Myanmar Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancelar.Location = new System.Drawing.Point(244, 410);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(83, 33);
+            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // cbEstado
             // 
@@ -214,7 +215,7 @@
             this.cbEstado.Location = new System.Drawing.Point(117, 350);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(185, 29);
-            this.cbEstado.TabIndex = 33;
+            this.cbEstado.TabIndex = 9;
             // 
             // label13
             // 
@@ -226,21 +227,21 @@
             this.label13.TabIndex = 32;
             this.label13.Text = "Estudiante";
             // 
-            // button2
+            // btnAceptar
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(12)))), ((int)(((byte)(166)))));
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Myanmar Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(117, 410);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 33);
-            this.button2.TabIndex = 31;
-            this.button2.Text = "Aceptar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(12)))), ((int)(((byte)(166)))));
+            this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptar.Font = new System.Drawing.Font("Myanmar Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAceptar.Location = new System.Drawing.Point(117, 410);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(83, 33);
+            this.btnAceptar.TabIndex = 10;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // label14
             // 
@@ -262,12 +263,12 @@
             this.lblLegajo.TabIndex = 51;
             this.lblLegajo.Text = "Legajo:";
             // 
-            // tbLegajo
+            // txtLegajo
             // 
-            this.tbLegajo.Location = new System.Drawing.Point(117, 55);
-            this.tbLegajo.Name = "tbLegajo";
-            this.tbLegajo.Size = new System.Drawing.Size(250, 20);
-            this.tbLegajo.TabIndex = 52;
+            this.txtLegajo.Location = new System.Drawing.Point(117, 55);
+            this.txtLegajo.Name = "txtLegajo";
+            this.txtLegajo.Size = new System.Drawing.Size(250, 20);
+            this.txtLegajo.TabIndex = 0;
             // 
             // FrmEstudianteAE
             // 
@@ -275,14 +276,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(433, 467);
-            this.Controls.Add(this.tbLegajo);
+            this.Controls.Add(this.txtLegajo);
             this.Controls.Add(this.lblLegajo);
-            this.Controls.Add(this.tbDireccion);
-            this.Controls.Add(this.tbContrasenia);
-            this.Controls.Add(this.tbEmail);
-            this.Controls.Add(this.tbDNI);
-            this.Controls.Add(this.tbTelefono);
-            this.Controls.Add(this.tbApellidos);
+            this.Controls.Add(this.txtDireccion);
+            this.Controls.Add(this.txtContrasenia);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtDNI);
+            this.Controls.Add(this.txtTelefono);
+            this.Controls.Add(this.txtApellidos);
             this.Controls.Add(this.cbCiudad);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -292,12 +293,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.tbNombres);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtNombres);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.label14);
+            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmEstudianteAE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -309,12 +311,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox tbDireccion;
-        private System.Windows.Forms.TextBox tbContrasenia;
-        private System.Windows.Forms.TextBox tbEmail;
-        private System.Windows.Forms.TextBox tbDNI;
-        private System.Windows.Forms.TextBox tbTelefono;
-        private System.Windows.Forms.TextBox tbApellidos;
+        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.TextBox txtContrasenia;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtDNI;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.TextBox txtApellidos;
         private System.Windows.Forms.ComboBox cbCiudad;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -324,14 +326,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox tbNombres;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtNombres;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblLegajo;
-        private System.Windows.Forms.TextBox tbLegajo;
+        private System.Windows.Forms.TextBox txtLegajo;
     }
 }
 

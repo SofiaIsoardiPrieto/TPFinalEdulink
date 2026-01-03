@@ -15,5 +15,6 @@ namespace EduLink.Servicios.Interfaces
         int GetCantidad(string textoFiltro = null);
         List<EstudianteDto> GetEstudiantesPorPagina(int cantidadPorPagina, int paginaActual, string textoFiltro = null);
         List<EstudianteCombo> GetEstudiantesCombo();
+        Estudiante GetEstudiantePorId(int estudianteId);
     }
 }

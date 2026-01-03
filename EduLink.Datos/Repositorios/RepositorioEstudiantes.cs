@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using EduLink.Datos.Helper;
 using EduLink.Datos.Interfaces;
 using EduLink.Entidades.Combos;
 using EduLink.Entidades.Dtos;
@@ -13,10 +14,10 @@ namespace EduLink.Datos.Repositorios
 {
     public class RepositorioEstudiantes : IRepositorioEstudiantes
     {
-        private readonly string cadenaConexion;
+        
         public RepositorioEstudiantes()
         {
-            cadenaConexion = ConfigurationManager.ConnectionStrings["MiConexion"].ToString();
+            
         }
 
         /// <summary>
@@ -25,7 +26,7 @@ namespace EduLink.Datos.Repositorios
         /// <param name="estudiante"></param>
         public void Agregar(Estudiante estudiante)
         {
-            using (var conn = new SqlConnection(cadenaConexion))
+            using (var conn = ConexionBD.GetConexion())
             {
                 int id = conn.QuerySingle<int>(
                     "sp_InsertEstudiante",
@@ -44,7 +45,7 @@ namespace EduLink.Datos.Repositorios
         /// <returns></returns>
         public bool Existe(Estudiante estudiante)
         {
-            using (var conn = new SqlConnection(cadenaConexion))
+            using (var conn = ConexionBD.GetConexion())
             {
                 int cantidad = conn.ExecuteScalar<int>(
                     "sp_ExisteEstudiante",
@@ -62,7 +63,7 @@ namespace EduLink.Datos.Repositorios
         /// <param name="estudiante"></param>
         public void Editar(Estudiante estudiante)
         {
-            using (var conn = new SqlConnection(cadenaConexion))
+            using (var conn = ConexionBD.GetConexion())
             {
                 conn.Execute(
                     "sp_UpdateEstudiante",
@@ -79,7 +80,7 @@ namespace EduLink.Datos.Repositorios
         /// <returns></returns>
         public bool EstaRelacionado(int estudianteId)
         {
-            using (var conn = new SqlConnection(cadenaConexion))
+            using (var conn = ConexionBD.GetConexion())
             {
                 int cantidad = conn.ExecuteScalar<int>(
                     "sp_EstudianteRelacionado",
@@ -97,7 +98,7 @@ namespace EduLink.Datos.Repositorios
         /// <param name="estudianteId"></param>
         public void Borrar(int estudianteId)
         {
-            using (var conn = new SqlConnection(cadenaConexion))
+            using (var conn = ConexionBD.GetConexion())
             {
                 conn.Execute(
                     "sp_DeleteEstudiante",
@@ -115,7 +116,7 @@ namespace EduLink.Datos.Repositorios
         /// <returns></returns>
         public int GetCantidad(string textoFiltro = null)
         {
-            using (var conn = new SqlConnection(cadenaConexion))
+            using (var conn = ConexionBD.GetConexion())
             {
                 int cantidad = conn.ExecuteScalar<int>(
                     "sp_GetCantidadEstudiantes",
@@ -137,7 +138,7 @@ namespace EduLink.Datos.Repositorios
         /// <returns></returns>
         public List<EstudianteDto> GetEstudiantesPorPagina(int cantidadPorPagina, int paginaActual, string textoFiltro = null)
         {
-            using (var conn = new SqlConnection(cadenaConexion))
+            using (var conn = ConexionBD.GetConexion())
             {
                 var lista = conn.Query<EstudianteDto>(
                     "sp_GetEstudiantesPorPagina",
@@ -155,7 +156,7 @@ namespace EduLink.Datos.Repositorios
         /// <returns></returns>
         public List<EstudianteCombo> GetEstudiantesCombo()
         {
-            using (var conn = new SqlConnection(cadenaConexion))
+            using (var conn = ConexionBD.GetConexion())
             {
                 var lista = conn.Query<EstudianteCombo>(
                     "sp_GetEstudiantesCombo",
@@ -163,6 +164,18 @@ namespace EduLink.Datos.Repositorios
                 ).ToList();
 
                 return lista;
+            }
+        }
+
+        public Estudiante GetEstudiantePorId(int id)
+        {
+            using (var conn = ConexionBD.GetConexion())
+            {
+                return conn.QuerySingleOrDefault<Estudiante>(
+                    "sp_GetEstudiantePorId",
+                    new { EstudianteId = id },
+                    commandType: CommandType.StoredProcedure
+                );
             }
         }
 

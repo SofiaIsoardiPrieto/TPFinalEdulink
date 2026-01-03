@@ -28,7 +28,7 @@ namespace Edulink.Windows.Helpers
                     r.Cells[5].Value = estudianteDto.Telefono;
                     r.Cells[6].Value = estudianteDto.Email;
                     r.Cells[7].Value = estudianteDto.DNI;
-                    r.Cells[8].Value = $"{estudianteDto.FechaNacimiento.Day}/{estudianteDto.FechaNacimiento.Month}/{estudianteDto.FechaNacimiento.Year}";
+                    r.Cells[8].Value = estudianteDto.FechaNacimiento.ToString("dd/MM/yyyy");
                     break;
                     //case ResultadoDto resultadoDto:
                     //    r.Cells[0].Value = resultadoDto.NombrePrueba;

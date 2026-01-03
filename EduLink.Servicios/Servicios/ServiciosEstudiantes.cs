@@ -134,7 +134,22 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
+        /// <summary>
+        /// Trae un estudiante por su Id
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
+        public Estudiante GetEstudiantePorId(int estudianteId)
+        {
+            try
+            {
+                return _repositorio.GetEstudiantePorId(estudianteId);
+            }
+            catch (Exception)
+            {
 
- 
+                throw;
+            }
+        }
     }
 }

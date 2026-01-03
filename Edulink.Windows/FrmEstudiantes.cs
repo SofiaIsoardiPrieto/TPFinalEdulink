@@ -5,6 +5,7 @@ using EduLink.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using EduLink.Entidades.Entidades;
 
 namespace Edulink.Windows
 {
@@ -13,11 +14,11 @@ namespace Edulink.Windows
         // Interfaz que define los métodos disponibles para trabajar con estudiantes.
         // Se usa readonly para asegurar que no se reasigne fuera del constructor.
         private readonly IServiciosEstudiantes _servicio;
-        private List<EstudianteDto> lista;     
-        int paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
-        int registrosTotales;
-        int paginasTotales;// Cantidad total de páginas calculadas en base a los registros disponibles.
-        int registrosPorPagina = 5;   // Cantidad de registros que se mostrarán por página.
+        private List<EstudianteDto> _lista;     
+        int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
+        int _registrosTotales;
+        int _paginasTotales; // Cantidad total de páginas calculadas en base a los registros disponibles.
+        int _registrosPorPagina = 5; // Cantidad de registros que se mostrarán por página.
 
         public FrmEstudiantes()
         {
@@ -25,7 +26,6 @@ namespace Edulink.Windows
             _servicio = new ServiciosEstudiantes(); // Se instancia el servicio concreto.
             // ¿Sería útil usar inyección de dependencias para mayor flexibilidad?
         }
-
 
         private void FrmEstudiantes_Load(object sender, EventArgs e)
         {
@@ -45,8 +45,8 @@ namespace Edulink.Windows
         {
             try
             {
-                registrosTotales = _servicio.GetCantidad();// obtiene la cantidad total de registros.
-                paginasTotales = FormHelper.CalcularPaginas(registrosTotales, registrosPorPagina);// calcula el total de páginas.
+                _registrosTotales = _servicio.GetCantidad();// obtiene la cantidad total de registros.
+                _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);// calcula el total de páginas.
                 MostrarPaginado();
             }
             catch (Exception) { throw; }
@@ -56,7 +56,7 @@ namespace Edulink.Windows
         /// </summary>
         private void MostrarPaginado()
         {
-            lista = _servicio.GetEstudiantesPorPagina(registrosPorPagina, paginaActual);
+            _lista = _servicio.GetEstudiantesPorPagina(_registrosPorPagina, _paginaActual);
             MostrarDatosEnGrilla();
         }
         /// <summary>
@@ -64,18 +64,17 @@ namespace Edulink.Windows
         /// </summary>
         private void MostrarDatosEnGrilla()
         {
-
             GridHelper.LimpiarGrilla(dgvDatosEstudiantes);
-            foreach (var estudiante in lista)
+            foreach (var estudiante in _lista)
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvDatosEstudiantes);
                 GridHelper.SetearFila(r, estudiante);
                 GridHelper.AgregarFila(dgvDatosEstudiantes, r);
             }
 
-            lblPaginaActual.Text = paginaActual.ToString();
-            lblPaginasTotales.Text = paginasTotales.ToString();
-            lblRegistros.Text = registrosTotales.ToString();
+            lblPaginaActual.Text = _paginaActual.ToString();
+            lblPaginasTotales.Text = _paginasTotales.ToString();
+            lblRegistros.Text = _registrosTotales.ToString();
             ActualizarBotonesPaginado();
 
         }
@@ -84,7 +83,7 @@ namespace Edulink.Windows
         /// </summary>
         private void ActualizarBotonesPaginado()
         {
-            if (registrosTotales <= registrosPorPagina)
+            if (_registrosTotales <= _registrosPorPagina)
             {
                 btnPrimero.Enabled = false;
                 btnAnterior.Enabled = false;
@@ -92,28 +91,28 @@ namespace Edulink.Windows
                 btnUltimo.Enabled = false;
                 return;
             }
-            if (paginaActual == paginasTotales)
+            if (_paginaActual == _paginasTotales)
             {
                 btnPrimero.Enabled = true;
                 btnAnterior.Enabled = true;
                 btnSiguiente.Enabled = false;
                 btnUltimo.Enabled = false;
             }
-            if (paginaActual < paginasTotales)
+            if (_paginaActual < _paginasTotales)
             {
                 btnPrimero.Enabled = true;
                 btnAnterior.Enabled = true;
                 btnSiguiente.Enabled = true;
                 btnUltimo.Enabled = true;
             }
-            if (paginaActual > paginasTotales)
+            if (_paginaActual > _paginasTotales)
             {
                 btnPrimero.Enabled = true;
                 btnAnterior.Enabled = true;
                 btnSiguiente.Enabled = true;
                 btnUltimo.Enabled = true;
             }
-            if (paginaActual == 1)
+            if (_paginaActual == 1)
             {
                 btnPrimero.Enabled = false;
                 btnAnterior.Enabled = false;
@@ -140,40 +139,40 @@ namespace Edulink.Windows
         }
         private void btnPrimero_Click(object sender, EventArgs e)
         {
-            paginaActual = 1;
-            lblPaginaActual.Text = (paginaActual).ToString();
+            _paginaActual = 1;
+            lblPaginaActual.Text = (_paginaActual).ToString();
             MostrarPaginado();
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            paginaActual--;
-            if (paginaActual == 1)
+            _paginaActual--;
+            if (_paginaActual == 1)
             {
                 btnAnterior.Enabled = false;
                 btnPrimero.Enabled = false;
             }
-            lblPaginaActual.Text = (paginaActual).ToString();
+            lblPaginaActual.Text = (_paginaActual).ToString();
             MostrarPaginado();
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            paginaActual++;
-            if (paginaActual == paginasTotales)
+            _paginaActual++;
+            if (_paginaActual == _paginasTotales)
             {
                 btnSiguiente.Enabled = false;
                 btnUltimo.Enabled = false;
 
             }
-            lblPaginaActual.Text = (paginaActual).ToString();
+            lblPaginaActual.Text = (_paginaActual).ToString();
             MostrarPaginado();
         }
 
         private void btnUltimo_Click(object sender, EventArgs e)
         {
-            paginaActual = paginasTotales;
-            lblPaginaActual.Text = (paginaActual).ToString();
+            _paginaActual = _paginasTotales;
+            lblPaginaActual.Text = (_paginaActual).ToString();
             MostrarPaginado();
         }
 
@@ -194,17 +193,18 @@ namespace Edulink.Windows
             var r = dgvDatosEstudiantes.SelectedRows[0];
             EstudianteDto estudianteDto = (EstudianteDto)r.Tag;
             EstudianteDto estudianteDtoCopia = (EstudianteDto)estudianteDto.Clone();
+            Estudiante estudiante = _servicio.GetEstudiantePorId(estudianteDto.EstudianteId);
             try
             {
                 FrmEstudianteAE frm = new FrmEstudianteAE() { Text = "Editar Estudiante" };
-                frm.SetExamen(estudianteDto);
+                frm.SetExamen(estudiante);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.Cancel)
                 {
                     GridHelper.SetearFila(r, estudianteDtoCopia);
                     return;
                 }
-                estudianteDto = frm.GetExamen();
+                estudiante = frm.GetExamen();
                 if (estudianteDto != null)
                 {
                     GridHelper.SetearFila(r, estudianteDto);
@@ -240,10 +240,10 @@ namespace Edulink.Windows
                 {
                     _servicio.Borrar(estudianteDto.EstudianteId);
                     GridHelper.QuitarFila(dgvDatosEstudiantes, r);
-                    registrosTotales = _servicio.GetCantidad();
-                    paginasTotales = FormHelper.CalcularPaginas(registrosTotales, registrosPorPagina);
-                    lblRegistros.Text = registrosTotales.ToString();
-                    lblPaginasTotales.Text = paginasTotales.ToString();
+                    _registrosTotales = _servicio.GetCantidad();
+                    _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);
+                    lblRegistros.Text = _registrosTotales.ToString();
+                    lblPaginasTotales.Text = _paginasTotales.ToString();
                     MessageBox.Show("Prueba borrada exitosamente", "Mensaje",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RecargarGrilla();
