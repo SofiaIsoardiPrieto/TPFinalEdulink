@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtContrasenia = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -45,12 +46,16 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtNombres = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.cbEstado = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.lblLegajo = new System.Windows.Forms.Label();
             this.txtLegajo = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.rbRegular = new System.Windows.Forms.RadioButton();
+            this.rbLibre = new System.Windows.Forms.RadioButton();
+            this.rbRecibido = new System.Windows.Forms.RadioButton();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDireccion
@@ -208,15 +213,6 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // cbEstado
-            // 
-            this.cbEstado.Font = new System.Drawing.Font("Myanmar Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEstado.FormattingEnabled = true;
-            this.cbEstado.Location = new System.Drawing.Point(117, 350);
-            this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(185, 29);
-            this.cbEstado.TabIndex = 9;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -267,8 +263,49 @@
             // 
             this.txtLegajo.Location = new System.Drawing.Point(117, 55);
             this.txtLegajo.Name = "txtLegajo";
+            this.txtLegajo.ReadOnly = true;
             this.txtLegajo.Size = new System.Drawing.Size(250, 20);
             this.txtLegajo.TabIndex = 0;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // rbRegular
+            // 
+            this.rbRegular.AutoSize = true;
+            this.rbRegular.Enabled = false;
+            this.rbRegular.Location = new System.Drawing.Point(92, 358);
+            this.rbRegular.Name = "rbRegular";
+            this.rbRegular.Size = new System.Drawing.Size(62, 17);
+            this.rbRegular.TabIndex = 52;
+            this.rbRegular.TabStop = true;
+            this.rbRegular.Text = "Regular";
+            this.rbRegular.UseVisualStyleBackColor = true;
+            // 
+            // rbLibre
+            // 
+            this.rbLibre.AutoSize = true;
+            this.rbLibre.Enabled = false;
+            this.rbLibre.Location = new System.Drawing.Point(179, 358);
+            this.rbLibre.Name = "rbLibre";
+            this.rbLibre.Size = new System.Drawing.Size(48, 17);
+            this.rbLibre.TabIndex = 53;
+            this.rbLibre.TabStop = true;
+            this.rbLibre.Text = "Libre";
+            this.rbLibre.UseVisualStyleBackColor = true;
+            // 
+            // rbRecibido
+            // 
+            this.rbRecibido.AutoSize = true;
+            this.rbRecibido.Enabled = false;
+            this.rbRecibido.Location = new System.Drawing.Point(265, 358);
+            this.rbRecibido.Name = "rbRecibido";
+            this.rbRecibido.Size = new System.Drawing.Size(78, 17);
+            this.rbRecibido.TabIndex = 54;
+            this.rbRecibido.TabStop = true;
+            this.rbRecibido.Text = "Recibido/a";
+            this.rbRecibido.UseVisualStyleBackColor = true;
             // 
             // FrmEstudianteAE
             // 
@@ -276,6 +313,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(433, 467);
+            this.Controls.Add(this.rbRecibido);
+            this.Controls.Add(this.rbLibre);
+            this.Controls.Add(this.rbRegular);
             this.Controls.Add(this.txtLegajo);
             this.Controls.Add(this.lblLegajo);
             this.Controls.Add(this.txtDireccion);
@@ -295,7 +335,6 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtNombres);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.label14);
@@ -304,6 +343,7 @@
             this.Name = "FrmEstudianteAE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de sesión";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,12 +368,15 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtNombres;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblLegajo;
         private System.Windows.Forms.TextBox txtLegajo;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.RadioButton rbRecibido;
+        private System.Windows.Forms.RadioButton rbLibre;
+        private System.Windows.Forms.RadioButton rbRegular;
     }
 }
 

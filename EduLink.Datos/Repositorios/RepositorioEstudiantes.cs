@@ -5,19 +5,17 @@ using EduLink.Entidades.Combos;
 using EduLink.Entidades.Dtos;
 using EduLink.Entidades.Entidades;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace EduLink.Datos.Repositorios
 {
     public class RepositorioEstudiantes : IRepositorioEstudiantes
     {
-        
+
         public RepositorioEstudiantes()
         {
-            
+
         }
 
         /// <summary>
@@ -178,7 +176,6 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
-
     }
 }
 
