@@ -11,20 +11,21 @@ namespace Edulink.Windows
 {
     public partial class FrmEstudiantes : Form
     {
-        // Interfaz que define los métodos disponibles para trabajar con estudiantes.
         // Se usa readonly para asegurar que no se reasigne fuera del constructor.
         private readonly IServiciosEstudiantes _servicio;
-        private List<EstudianteDto> _lista;     
+        private List<EstudianteDto> _lista;
+        private int _carreraId;
         int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
         int _registrosTotales;
         int _paginasTotales; // Cantidad total de páginas calculadas en base a los registros disponibles.
         int _registrosPorPagina = 5; // Cantidad de registros que se mostrarán por página.
 
-        public FrmEstudiantes()
+        public FrmEstudiantes(int carreraId)
         {
             InitializeComponent(); // Inicializa los controles del formulario.
             _servicio = new ServiciosEstudiantes(); // Se instancia el servicio concreto.
             // ¿Sería útil usar inyección de dependencias para mayor flexibilidad?
+            _carreraId= carreraId;
         }
 
         private void FrmEstudiantes_Load(object sender, EventArgs e)
@@ -45,22 +46,22 @@ namespace Edulink.Windows
         {
             try
             {
-                _registrosTotales = _servicio.GetCantidad();// obtiene la cantidad total de registros.
-                _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);// calcula el total de páginas.
+                _registrosTotales = _servicio.GetCantidad(_carreraId);// obtiene la cantidad total de registros.
+                _paginasTotales = FormHelper.CalcularPaginas( _registrosTotales, _registrosPorPagina);// calcula el total de páginas.
                 MostrarPaginado();
             }
             catch (Exception) { throw; }
         }
         /// <summary>
-        /// carga y muestra los datos de estudiantes correspondientes a la página actual.
+        /// Carga y muestra los datos de estudiantes correspondientes a la página actual.
         /// </summary>
         private void MostrarPaginado()
         {
-            _lista = _servicio.GetEstudiantesPorPagina(_registrosPorPagina, _paginaActual);
+            _lista = _servicio.GetEstudiantesPorPagina(_carreraId, _registrosPorPagina, _paginaActual);
             MostrarDatosEnGrilla();
         }
         /// <summary>
-        /// popula la grilla con los datos de estudiantes.
+        /// Popula la grilla con los datos de estudiantes.
         /// </summary>
         private void MostrarDatosEnGrilla()
         {
@@ -79,7 +80,7 @@ namespace Edulink.Windows
 
         }
         /// <summary>
-        /// actualiza el estado (habilitado/deshabilitado) de los botones de paginación
+        /// Actualiza el estado (habilitado/deshabilitado) de los botones de paginación
         /// </summary>
         private void ActualizarBotonesPaginado()
         {
@@ -231,7 +232,7 @@ namespace Edulink.Windows
             EstudianteDto estudianteDto = (EstudianteDto)r.Tag;
             try
             {
-                DialogResult dr = MessageBox.Show("¿Desea borrar el registro seleccionado?",
+                DialogResult dr = MessageBox.Show("¿Desea dar de baja el registro seleccionado?", // Se le pone como alumno libre
                     "Confirmar",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -240,11 +241,11 @@ namespace Edulink.Windows
                 {
                     _servicio.Borrar(estudianteDto.EstudianteId);
                     GridHelper.QuitarFila(dgvDatosEstudiantes, r);
-                    _registrosTotales = _servicio.GetCantidad();
+                    _registrosTotales = _servicio.GetCantidad(_carreraId);
                     _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);
                     lblRegistros.Text = _registrosTotales.ToString();
                     lblPaginasTotales.Text = _paginasTotales.ToString();
-                    MessageBox.Show("Prueba borrada exitosamente", "Mensaje",
+                    MessageBox.Show("Estudiante en condición de libre", "Mensaje", // Esto como afecta finales o cursadas?
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RecargarGrilla();
                     MostrarDatosEnGrilla();

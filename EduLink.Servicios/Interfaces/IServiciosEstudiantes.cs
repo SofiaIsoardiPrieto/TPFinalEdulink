@@ -12,9 +12,9 @@ namespace EduLink.Servicios.Interfaces
         void Guardar(Estudiante estudiante); // en guardar está el agregar y editar
         bool EstaRelacionado(int estudianteId);
         void Borrar(int estudianteId);
-        int GetCantidad(string textoFiltro = null);
-        List<EstudianteDto> GetEstudiantesPorPagina(int cantidadPorPagina, int paginaActual, string textoFiltro = null);
+        int GetCantidad(int carreraId, string textoFiltro = null);
+        List<EstudianteDto> GetEstudiantesPorPagina(int carreraId, int cantidadPorPagina, int paginaActual, string textoFiltro = null);
         List<EstudianteCombo> GetEstudiantesCombo();
-        Estudiante GetEstudiantePorId(int estudianteId);
+        Estudiante GetEstudiantePorId(int estudianteId1);
     }
 }

@@ -1,0 +1,37 @@
+﻿using EduLink.Datos.Interfaces;
+using EduLink.Datos.Repositorios;
+using EduLink.Entidades.Combos;
+using EduLink.Entidades.Dtos;
+using EduLink.Entidades.Entidades;
+using EduLink.Servicios.Interfaces;
+using System;
+using System.Collections.Generic;
+
+namespace EduLink.Servicios.Servicios
+{
+    public class ServiciosCarreras : IServiciosCarreras
+    {
+        private readonly IRepositorioCarreras _repositorio;
+        public ServiciosCarreras()
+        {
+            _repositorio = new RepositorioCarreras();
+        }
+        /// <summary>
+        /// Trae las carreras para el combo segun el administrador logueado
+        /// </summary>
+        /// <param name="adminId"></param>
+        /// <returns></returns>
+        public List<Carrera> GetCarreraCombo(int? adminId)
+        {
+            try
+            {
+                return _repositorio.GetCarreraCombo(adminId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+    }
+}

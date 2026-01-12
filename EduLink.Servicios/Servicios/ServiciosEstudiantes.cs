@@ -87,11 +87,11 @@ namespace EduLink.Servicios.Servicios
         /// </summary>
         /// <param name="textoFiltro"></param>
         /// <returns></returns>
-        public int GetCantidad(string textoFiltro = null)
+        public int GetCantidad(int carreraId, string textoFiltro = null)
         {
             try
             {
-                return _repositorio.GetCantidad(textoFiltro);
+                return _repositorio.GetCantidad(carreraId,textoFiltro);
             }
             catch (Exception)
             {
@@ -106,11 +106,11 @@ namespace EduLink.Servicios.Servicios
         /// <param name="paginaActual"></param>
         /// <param name="textoFiltro"></param>
         /// <returns></returns>
-        public List<EstudianteDto> GetEstudiantesPorPagina(int registrosPorPagina, int paginaActual, string textoFiltro = null)
+        public List<EstudianteDto> GetEstudiantesPorPagina(int carreraId, int registrosPorPagina, int paginaActual, string textoFiltro = null)
         {
             try
             {
-                return _repositorio.GetEstudiantesPorPagina(registrosPorPagina, paginaActual, textoFiltro);
+                return _repositorio.GetEstudiantesPorPagina(carreraId, registrosPorPagina, paginaActual, textoFiltro);
             }
             catch (Exception)
             {

@@ -13,10 +13,10 @@ namespace EduLink.Datos.Interfaces
         void Editar(Estudiante estudiante);
         bool EstaRelacionado(int estudianteId);
         void Borrar(int estudianteId);
-        int GetCantidad(string textoFiltro = null);
-        List<EstudianteDto> GetEstudiantesPorPagina(int cantidadPorPagina, int paginaActual, string textoFiltro = null);
+        int GetCantidad(int carreraId, string textoFiltro = null);
+        List<EstudianteDto> GetEstudiantesPorPagina(int cantidadPorPagina, int paginaActual, int paginaActual1, string textoFiltro = null);
         List<EstudianteCombo> GetEstudiantesCombo();
-        Estudiante GetEstudiantePorId(int estudianteId);
+        Estudiante GetEstudiantePorId(int estudianteId1);
     }
 }
 

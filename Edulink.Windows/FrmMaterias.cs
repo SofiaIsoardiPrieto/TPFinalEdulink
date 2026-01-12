@@ -12,9 +12,11 @@ namespace Edulink.Windows
 {
     public partial class FrmMaterias : Form
     {
-        public FrmMaterias()
+        private int _carreraId;
+        public FrmMaterias(int carreraId)
         {
             InitializeComponent();
+            _carreraId = carreraId;
         }
     }
 }

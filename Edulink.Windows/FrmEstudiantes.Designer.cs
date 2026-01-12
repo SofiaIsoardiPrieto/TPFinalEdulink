@@ -150,8 +150,8 @@
             this.tsBorrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsBorrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBorrar.Name = "tsBorrar";
-            this.tsBorrar.Size = new System.Drawing.Size(51, 63);
-            this.tsBorrar.Text = "Borrar";
+            this.tsBorrar.Size = new System.Drawing.Size(40, 63);
+            this.tsBorrar.Text = "Baja";
             this.tsBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsBorrar.Click += new System.EventHandler(this.tsBorrar_Click);
             // 

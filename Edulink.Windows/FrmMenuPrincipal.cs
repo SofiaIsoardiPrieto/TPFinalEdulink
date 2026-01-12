@@ -12,26 +12,28 @@ namespace Edulink.Windows
 {
     public partial class FrmMenuPrincipal : Form
     {
-        public FrmMenuPrincipal()
+        private int _carreraId;
+        public FrmMenuPrincipal(int carreraId)
         {
             InitializeComponent();
+            _carreraId = carreraId;
         }
 
         private void btnEstudiantes_Click(object sender, EventArgs e)
         {
-            FrmEstudiantes frm = new FrmEstudiantes();
+            FrmEstudiantes frm = new FrmEstudiantes(_carreraId);
             frm.ShowDialog();
         }
 
         private void btnMaterias_Click(object sender, EventArgs e)
         {
-            FrmMaterias frm = new FrmMaterias();
+            FrmMaterias frm = new FrmMaterias(_carreraId);
             frm.ShowDialog();
         }
 
         private void btnExamenes_Click(object sender, EventArgs e)
         {
-            FrmExamenes frm = new FrmExamenes();
+            FrmExamenes frm = new FrmExamenes(_carreraId);
             frm.ShowDialog();
         }
     }

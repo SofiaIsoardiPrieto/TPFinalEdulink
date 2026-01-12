@@ -112,7 +112,7 @@ namespace EduLink.Datos.Repositorios
         /// </summary>
         /// <param name="textoFiltro"></param>
         /// <returns></returns>
-        public int GetCantidad(string textoFiltro = null)
+        public int GetCantidad(int carreraId, string textoFiltro = null)
         {
             using (var conn = ConexionBD.GetConexion())
             {
@@ -134,7 +134,7 @@ namespace EduLink.Datos.Repositorios
         /// <param name="paginaActual"></param>
         /// <param name="textoFiltro"></param>
         /// <returns></returns>
-        public List<EstudianteDto> GetEstudiantesPorPagina(int cantidadPorPagina, int paginaActual, string textoFiltro = null)
+        public List<EstudianteDto> GetEstudiantesPorPagina(int carreraId, int cantidadPorPagina, int paginaActual, string textoFiltro = null)
         {
             using (var conn = ConexionBD.GetConexion())
             {

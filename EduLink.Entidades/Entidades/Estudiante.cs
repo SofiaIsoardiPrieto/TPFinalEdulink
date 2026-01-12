@@ -21,6 +21,10 @@ namespace EduLink.Entidades.Entidades
         public DateTime FechaNacimiento { get; set; }
         public EstadoEstudiante EstadoEstudiante { get; set; }
 
+        //agregar carreraid
+        public int CarreraId { get; set; }
+        public Carrera Carrera { get; set; }
+
         public int CiudadId { get; set; }
         public Ciudad Ciudad { get; set; }
 
