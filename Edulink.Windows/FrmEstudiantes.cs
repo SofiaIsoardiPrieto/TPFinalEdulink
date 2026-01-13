@@ -179,7 +179,7 @@ namespace Edulink.Windows
 
         private void tsNuevo_Click(object sender, EventArgs e)
         {
-            FrmEstudianteAE frm = new FrmEstudianteAE();
+            FrmEstudianteAE frm = new FrmEstudianteAE(_carreraId);
             DialogResult dr = frm.ShowDialog(this);
             RecargarGrilla();
             MostrarDatosEnGrilla();
@@ -197,7 +197,7 @@ namespace Edulink.Windows
             Estudiante estudiante = _servicio.GetEstudiantePorId(estudianteDto.EstudianteId);
             try
             {
-                FrmEstudianteAE frm = new FrmEstudianteAE() { Text = "Editar Estudiante" };
+                FrmEstudianteAE frm = new FrmEstudianteAE(_carreraId) { Text = "Editar Estudiante" };
                 frm.SetExamen(estudiante);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.Cancel)

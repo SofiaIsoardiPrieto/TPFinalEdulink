@@ -3,11 +3,10 @@ using EduLink.Entidades.Dtos;
 using EduLink.Entidades.Entidades;
 using System.Collections.Generic;
 
-namespace EduLink.Datos.Interfaces
+namespace EduLink.Servicios.Interfaces
 {
-    public interface IRepositorioCiudades
+    public interface IServiciosCiudades
     {
         List<Ciudad> GetCiudadesCombo();
     }
 }
-

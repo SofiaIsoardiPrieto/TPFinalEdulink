@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IServiciosCiudades.cs" />
     <Compile Include="Interfaces\IServiciosCarreras.cs" />
     <Compile Include="Interfaces\IServiciosEstudiantes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios\ServiciosCiudades.cs" />
     <Compile Include="Servicios\ServiciosCarreras.cs" />
     <Compile Include="Servicios\ServiciosEstudiantes.cs" />
   </ItemGroup>

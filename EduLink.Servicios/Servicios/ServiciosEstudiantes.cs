@@ -59,7 +59,8 @@ namespace EduLink.Servicios.Servicios
         }
         /// <summary>
         /// Determina si un estudiante esta relacionado con alguna otra entidad
-        /// </summary>
+        /// </summary>NuevoId;
+END;
         /// <param name="estudianteId"></param>
         /// <returns></returns>
         public bool EstaRelacionado(int estudianteId)

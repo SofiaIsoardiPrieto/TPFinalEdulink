@@ -23,7 +23,7 @@ namespace Edulink.Windows.Helpers
                     r.Cells[0].Value = estudianteDto.Legajo;
                     r.Cells[1].Value = $"{estudianteDto.Apellidos}, {estudianteDto.Nombres}";
                     r.Cells[2].Value = estudianteDto.EstadoEstudiante;
-                    r.Cells[3].Value = estudianteDto.Ciudad;
+                    r.Cells[3].Value = estudianteDto.NombreCiudad;
                     r.Cells[4].Value = estudianteDto.Direccion;
                     r.Cells[5].Value = estudianteDto.Telefono;
                     r.Cells[6].Value = estudianteDto.Email;

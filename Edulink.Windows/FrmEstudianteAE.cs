@@ -1,4 +1,5 @@
-﻿using EduLink.Entidades.Entidades;
+﻿using Edulink.Windows.Helpers;
+using EduLink.Entidades.Entidades;
 using EduLink.Entidades.Enums;
 using EduLink.Servicios.Servicios;
 using System;
@@ -11,12 +12,20 @@ namespace Edulink.Windows
         private Estudiante _estudiante;
         private readonly ServiciosEstudiantes _servicio;
         private bool _esEdicion = false;
-        public FrmEstudianteAE()
+        private int _carreraId;
+        public FrmEstudianteAE(int carreraId)
         {
             InitializeComponent();
+            dtpFechaNacimiento.MinDate = new DateTime(1753, 1, 1);
             _servicio = new ServiciosEstudiantes();
-            txtLegajo.Text = "El legajo se generará automáticamente cuando se cree el alumno";
+            txtLegajo.Text = "El legajo se generará automáticamente";
+            txtLegajo.Enabled = false;
             rbRegular.Checked = true;
+            _carreraId = carreraId;
+            cbCarrera.Enabled = false;
+            ComboHelper.CargarComboCiudades(ref cbCiudad);
+            ComboHelper.CargarComboCarreras(ref cbCarrera, null);
+            cbCarrera.SelectedValue = carreraId;
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -24,20 +33,22 @@ namespace Edulink.Windows
 
             if (_estudiante != null)
             {
+                
+                _estudiante.CarreraId = _carreraId;
+                cbCarrera.Enabled = true;
+              
                 // ExamentextBox.Text = examen.Nombreexamen;
                 _esEdicion = true;
                 txtContrasenia.Enabled = _esEdicion;
-                rbRegular.Enabled = true;
-                rbLibre.Enabled = true;
-                rbRegular.Enabled = true;
                 txtLegajo.Text = _estudiante.Legajo.ToString();
                 txtNombres.Text = _estudiante.Nombres;
-                txtApellidos.Text = _estudiante.Nombres;
-                txtDireccion.Text = _estudiante.Nombres;
-                txtTelefono.Text = _estudiante.Nombres;
-                txtDNI.Text = _estudiante.Nombres;
-                txtEmail.Text = _estudiante.Nombres;
-                txtContrasenia.Text = _estudiante.Nombres;
+                txtApellidos.Text = _estudiante.Apellidos;
+                txtDireccion.Text = _estudiante.Direccion;
+                txtTelefono.Text = _estudiante.Telefono;
+                txtDNI.Text = _estudiante.DNI;
+                txtEmail.Text = _estudiante.Email;
+                dtpFechaNacimiento.Value=_estudiante.FechaNacimiento;
+                txtContrasenia.Text = _estudiante.Contrasenia;
                 cbCiudad.SelectedValue = _estudiante.CiudadId;
                 if (_estudiante.EstadoEstudiante == EstadoEstudiante.Regular)
                 {
@@ -51,9 +62,8 @@ namespace Edulink.Windows
                 {
                     rbRecibido.Checked = true;
                 }
+               
             }
-
-
         }
         public Estudiante GetExamen()
         {
@@ -67,8 +77,16 @@ namespace Edulink.Windows
 
         private void InicializarControles()
         {
-            //CategoriatextBox.Clear();
-            //CategoriatextBox.Focus();
+            txtNombres.Clear();
+            txtNombres.Focus();
+            txtApellidos.Clear();
+            txtDireccion.Clear();
+            txtTelefono.Clear();
+            txtDNI.Clear();
+            txtEmail.Clear();
+            txtContrasenia.Clear();
+            cbCiudad.SelectedIndex = -1;
+            cbCarrera.SelectedIndex = _carreraId; // ver que onda
         }
 
         //TODO: validar datos
@@ -104,7 +122,21 @@ namespace Edulink.Windows
                     "Debe ingresar el teléfono del estudiante");
 
             }
-            if (string.IsNullOrEmpty(txtDNI.Text))
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                validez = false;
+                errorProvider1.SetError(txtEmail,
+                    "Debe ingresar el email del estudiante");
+
+            }
+            if (string.IsNullOrEmpty(txtDireccion.Text))
+            {
+                validez = false;
+                errorProvider1.SetError(txtDireccion,
+                    "Debe ingresar el dirección del estudiante");
+
+            }
+            if (string.IsNullOrEmpty(txtDNI.Text) || txtDNI.TextLength != 8)
             {
                 validez = false;
                 errorProvider1.SetError(txtDNI,
@@ -118,9 +150,9 @@ namespace Edulink.Windows
                     "Debe ingresar la contraseña del estudiante");
 
             }
-            if (cbCiudad.SelectedIndex == -1)
+            if (cbCiudad.SelectedIndex == 0)
             {
-                validez = false; 
+                validez = false;
                 errorProvider1.SetError(cbCiudad, "Debe seleccionar una cuidad");
             }
             else
@@ -134,8 +166,17 @@ namespace Edulink.Windows
                 validez = false;
                 errorProvider1.SetError(rbRegular,
                     "Debe seleccionar el estado del estudiante");
-            } // no es necesario
-
+            } // no es necesario?
+            if (cbCarrera.SelectedIndex == -1)
+            {
+                validez = false;
+                errorProvider1.SetError(cbCarrera,
+                    "Debe seleccionar la carrera del estudiante");
+            }
+            else
+            {
+                errorProvider1.SetError(cbCarrera, string.Empty);
+            }// no es necesario
             return validez;
         }
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -156,7 +197,9 @@ namespace Edulink.Windows
                 _estudiante.DNI = txtDNI.Text;
                 _estudiante.Email = txtEmail.Text;
                 _estudiante.Contrasenia = txtDNI.Text; // se settea la contraseña como el DNI por defecto
+                _estudiante.FechaNacimiento = dtpFechaNacimiento.Value.Date;
                 _estudiante.CiudadId = (int)cbCiudad.SelectedValue;
+                _estudiante.CarreraId = _carreraId;
 
                 // Estado con RadioButtons
                 if (rbRegular.Checked)
@@ -170,7 +213,7 @@ namespace Edulink.Windows
                 {
                     if (!_servicio.Existe(_estudiante))
                     {
-                        _servicio.Guardar(_estudiante);
+                            _servicio.Guardar(_estudiante);
 
                         if (!_esEdicion)
                         {
@@ -216,6 +259,19 @@ namespace Edulink.Windows
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+            string texto = txtDNI.Text;
+            if (texto.Length == 8)
+            {
+                txtContrasenia.Text = texto; // cheakear
+            }
+            else
+            {
+                txtContrasenia.Clear();
+            }
         }
     }
 }

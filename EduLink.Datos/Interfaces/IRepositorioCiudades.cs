@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace EduLink.Datos.Interfaces
 {
-    public interface IRepositorioCiudades
+    public interface IRepositorioCarreras
     {
-        List<Ciudad> GetCiudadesCombo();
+        List<Carrera> GetCarreraCombo(int? adminId);
     }
 }
 

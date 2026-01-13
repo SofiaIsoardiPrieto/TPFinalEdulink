@@ -68,9 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\ConexionDB.cs" />
+    <Compile Include="Interfaces\IRepositorioCiudades.cs" />
     <Compile Include="Interfaces\IRepositorioCarreras.cs" />
     <Compile Include="Interfaces\IRepositorioEstudiantes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\RepositorioCiudades.cs" />
     <Compile Include="Repositorios\RepositorioCarreras.cs" />
     <Compile Include="Repositorios\RepositorioEstudiantes.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />

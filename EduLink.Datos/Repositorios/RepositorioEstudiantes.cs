@@ -28,13 +28,28 @@ namespace EduLink.Datos.Repositorios
             {
                 int id = conn.QuerySingle<int>(
                     "sp_InsertEstudiante",
-                    estudiante,
+                    new // se tuvo que  especificar los campos porque sino Dapper no mapea bien la CarreraId
+                    {
+                        Legajo = estudiante.Legajo,
+                        Nombres = estudiante.Nombres,
+                        Apellidos = estudiante.Apellidos,
+                        Direccion = estudiante.Direccion,
+                        Telefono = estudiante.Telefono,
+                        DNI = estudiante.DNI,
+                        Email = estudiante.Email,
+                        Contrasenia = estudiante.Contrasenia,
+                        FechaNacimiento = estudiante.FechaNacimiento.Date, // Se fija date para que coincida con la bdd
+                        CiudadId = estudiante.CiudadId,
+                        EstadoEstudiante = estudiante.EstadoEstudiante.ToString(),// La bdd no entiende de enums, poreso hay que pasarle un string
+                        CarreraId = estudiante.CarreraId
+                    },
                     commandType: CommandType.StoredProcedure
                 );
 
-                estudiante.EstudianteId = id;
+                estudiante.EstudianteId = id; // Para obtener el ID generado y guardarlo en el objeto, por la dudas que se lo necesite
             }
         }
+
 
         /// <summary>
         /// Determina si ya existe un estudiante en la base de datos
@@ -47,14 +62,13 @@ namespace EduLink.Datos.Repositorios
             {
                 int cantidad = conn.ExecuteScalar<int>(
                     "sp_ExisteEstudiante",
-                    estudiante,
+                    new { EstudianteId = estudiante.EstudianteId, DNI = estudiante.DNI },
                     commandType: CommandType.StoredProcedure
                 );
 
                 return cantidad > 0;
             }
         }
-
         /// <summary>
         /// Edita un estudiante en la base de datos
         /// </summary>
@@ -118,7 +132,7 @@ namespace EduLink.Datos.Repositorios
             {
                 int cantidad = conn.ExecuteScalar<int>(
                     "sp_GetCantidadEstudiantes",
-                    new { TextoFiltro = textoFiltro },
+                    new { CarreraId = carreraId, TextoFiltro = textoFiltro },
                     commandType: CommandType.StoredProcedure
                 );
 

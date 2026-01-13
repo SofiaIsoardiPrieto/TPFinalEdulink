@@ -24,22 +24,22 @@ namespace Edulink.Windows.Helpers
             combo.SelectedIndex = 0;
         }
 
-        //public static void CargarComboPacientes(ref ComboBox combo)
-        //{
-        //    IServiciosPacientes serviciosPacientes = new ServiciosPacientes();
-        //    var lista = serviciosPacientes.GetPacientesCombo();
-        //    var defaultPaciente = new PacienteCombo()
-        //    {
-        //        PacienteId = 0,
-        //        NombreCompleto = "Seleccione Paciente"
+        public static void CargarComboCiudades(ref ComboBox combo)
+        {
+            IServiciosCiudades serviciosCuidadess = new ServiciosCiudades();
+            var lista = serviciosCuidadess.GetCiudadesCombo();
+            var defaultPaciente = new Ciudad()
+            {
+                CiudadId = 0,
+                NombreCiudad = "Seleccione Ciudad"
 
-        //    };
-        //    lista.Insert(0, defaultPaciente);
-        //    combo.DataSource = lista;
-        //    combo.DisplayMember = "NombreCompleto";
-        //    combo.ValueMember = "PacienteId";
-        //    combo.SelectedIndex = 0;
-        //}
+            };
+            lista.Insert(0, defaultPaciente);
+            combo.DataSource = lista;
+            combo.DisplayMember = "NombreCiudad";
+            combo.ValueMember = "CiudadId";
+            combo.SelectedIndex = 0;
+        }
 
         //internal static void CargarComboMedicos(ref ComboBox combo)
         //{
