@@ -17,7 +17,6 @@ namespace EduLink.Datos.Repositorios
         {
 
         }
-
         /// <summary>
         /// Agrega un estudiante a la base de datos
         /// </summary>
@@ -38,9 +37,9 @@ namespace EduLink.Datos.Repositorios
                         DNI = estudiante.DNI,
                         Email = estudiante.Email,
                         Contrasenia = estudiante.Contrasenia,
-                        FechaNacimiento = estudiante.FechaNacimiento.Date, // Se fija date para que coincida con la bdd
+                        FechaNacimiento = estudiante.FechaNacimiento, // Error aqui?
                         CiudadId = estudiante.CiudadId,
-                        EstadoEstudiante = estudiante.EstadoEstudiante.ToString(),// La bdd no entiende de enums, poreso hay que pasarle un string
+                        EstadoEstudiante = estudiante.EstadoEstudiante.ToString(),// La bdd no entiende de enums, por eso hay que pasarle un string
                         CarreraId = estudiante.CarreraId
                     },
                     commandType: CommandType.StoredProcedure
@@ -49,8 +48,6 @@ namespace EduLink.Datos.Repositorios
                 estudiante.EstudianteId = id; // Para obtener el ID generado y guardarlo en el objeto, por la dudas que se lo necesite
             }
         }
-
-
         /// <summary>
         /// Determina si ya existe un estudiante en la base de datos
         /// </summary>
@@ -78,13 +75,26 @@ namespace EduLink.Datos.Repositorios
             using (var conn = ConexionBD.GetConexion())
             {
                 conn.Execute(
-                    "sp_UpdateEstudiante",
-                    estudiante,
-                    commandType: CommandType.StoredProcedure
-                );
+                "sp_UpdateEstudiante",
+                new
+                {
+                    EstudianteId = estudiante.EstudianteId,
+                    Legajo = estudiante.Legajo,
+                    Nombres = estudiante.Nombres,
+                    Apellidos = estudiante.Apellidos,
+                    Direccion = estudiante.Direccion,
+                    Telefono = estudiante.Telefono,
+                    DNI = estudiante.DNI,
+                    Email = estudiante.Email,
+                    Contrasenia = estudiante.Contrasenia,
+                    FechaNacimiento = estudiante.FechaNacimiento,
+                    CiudadId = estudiante.CiudadId,   
+                    CarreraId = estudiante.CarreraId // nuevamente problema de mapeo con dapper y carreraId
+                },
+                commandType: CommandType.StoredProcedure
+                  );
             }
         }
-
         /// <summary>
         /// Determina si hay un estudiante relacionado con alguna otra tabla
         /// </summary>

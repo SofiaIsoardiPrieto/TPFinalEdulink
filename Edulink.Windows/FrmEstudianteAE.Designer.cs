@@ -75,21 +75,21 @@
             this.txtContrasenia.Location = new System.Drawing.Point(102, 314);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(231, 20);
-            this.txtContrasenia.TabIndex = 7;
+            this.txtContrasenia.TabIndex = 8;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(102, 251);
+            this.txtEmail.Location = new System.Drawing.Point(102, 216);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(250, 20);
-            this.txtEmail.TabIndex = 6;
+            this.txtEmail.TabIndex = 5;
             // 
             // txtDNI
             // 
-            this.txtDNI.Location = new System.Drawing.Point(102, 218);
+            this.txtDNI.Location = new System.Drawing.Point(102, 249);
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(124, 20);
-            this.txtDNI.TabIndex = 5;
+            this.txtDNI.TabIndex = 6;
             this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
             // 
             // txtTelefono
@@ -114,7 +114,7 @@
             this.cbCiudad.Location = new System.Drawing.Point(102, 347);
             this.cbCiudad.Name = "cbCiudad";
             this.cbCiudad.Size = new System.Drawing.Size(169, 28);
-            this.cbCiudad.TabIndex = 8;
+            this.cbCiudad.TabIndex = 9;
             // 
             // label10
             // 
@@ -150,7 +150,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(20, 254);
+            this.label7.Location = new System.Drawing.Point(20, 219);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 23);
             this.label7.TabIndex = 40;
@@ -160,7 +160,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(20, 219);
+            this.label6.Location = new System.Drawing.Point(20, 250);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 23);
             this.label6.TabIndex = 39;
@@ -213,7 +213,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(253, 469);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(83, 33);
-            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.TabIndex = 15;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -238,7 +238,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(114, 469);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(83, 33);
-            this.btnAceptar.TabIndex = 10;
+            this.btnAceptar.TabIndex = 14;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAceptar.UseVisualStyleBackColor = false;
@@ -282,7 +282,7 @@
             this.rbRegular.Location = new System.Drawing.Point(104, 427);
             this.rbRegular.Name = "rbRegular";
             this.rbRegular.Size = new System.Drawing.Size(62, 17);
-            this.rbRegular.TabIndex = 52;
+            this.rbRegular.TabIndex = 11;
             this.rbRegular.TabStop = true;
             this.rbRegular.Text = "Regular";
             this.rbRegular.UseVisualStyleBackColor = true;
@@ -293,7 +293,7 @@
             this.rbLibre.Location = new System.Drawing.Point(191, 427);
             this.rbLibre.Name = "rbLibre";
             this.rbLibre.Size = new System.Drawing.Size(48, 17);
-            this.rbLibre.TabIndex = 53;
+            this.rbLibre.TabIndex = 12;
             this.rbLibre.TabStop = true;
             this.rbLibre.Text = "Libre";
             this.rbLibre.UseVisualStyleBackColor = true;
@@ -304,7 +304,7 @@
             this.rbRecibido.Location = new System.Drawing.Point(277, 427);
             this.rbRecibido.Name = "rbRecibido";
             this.rbRecibido.Size = new System.Drawing.Size(78, 17);
-            this.rbRecibido.TabIndex = 54;
+            this.rbRecibido.TabIndex = 13;
             this.rbRecibido.TabStop = true;
             this.rbRecibido.Text = "Recibido/a";
             this.rbRecibido.UseVisualStyleBackColor = true;
@@ -327,7 +327,7 @@
             this.cbCarrera.Location = new System.Drawing.Point(102, 386);
             this.cbCarrera.Name = "cbCarrera";
             this.cbCarrera.Size = new System.Drawing.Size(344, 28);
-            this.cbCarrera.TabIndex = 56;
+            this.cbCarrera.TabIndex = 10;
             // 
             // label3
             // 
@@ -345,7 +345,7 @@
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(102, 283);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaNacimiento.TabIndex = 58;
+            this.dtpFechaNacimiento.TabIndex = 7;
             // 
             // FrmEstudianteAE
             // 

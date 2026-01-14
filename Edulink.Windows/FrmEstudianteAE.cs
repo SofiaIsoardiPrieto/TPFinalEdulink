@@ -3,6 +3,7 @@ using EduLink.Entidades.Entidades;
 using EduLink.Entidades.Enums;
 using EduLink.Servicios.Servicios;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Edulink.Windows
@@ -11,9 +12,9 @@ namespace Edulink.Windows
     {
         private Estudiante _estudiante;
         private readonly ServiciosEstudiantes _servicio;
-        private bool _esEdicion = false;
+        private bool _esEdicion = false; // que útil que ha sido!!!!
         private int _carreraId;
-        public FrmEstudianteAE(int carreraId)
+        public FrmEstudianteAE(int carreraId)// Necesito el id de la carrera para setearlo en el estudiante nuevo
         {
             InitializeComponent();
             dtpFechaNacimiento.MinDate = new DateTime(1753, 1, 1);
@@ -33,10 +34,9 @@ namespace Edulink.Windows
 
             if (_estudiante != null)
             {
-                
-                _estudiante.CarreraId = _carreraId;
+
+                _estudiante.CarreraId = _carreraId;// porque necesito esto aqui?
                 cbCarrera.Enabled = true;
-              
                 // ExamentextBox.Text = examen.Nombreexamen;
                 _esEdicion = true;
                 txtContrasenia.Enabled = _esEdicion;
@@ -47,7 +47,7 @@ namespace Edulink.Windows
                 txtTelefono.Text = _estudiante.Telefono;
                 txtDNI.Text = _estudiante.DNI;
                 txtEmail.Text = _estudiante.Email;
-                dtpFechaNacimiento.Value=_estudiante.FechaNacimiento;
+                dtpFechaNacimiento.Value = _estudiante.FechaNacimiento.Date;//controlar que no de error
                 txtContrasenia.Text = _estudiante.Contrasenia;
                 cbCiudad.SelectedValue = _estudiante.CiudadId;
                 if (_estudiante.EstadoEstudiante == EstadoEstudiante.Regular)
@@ -62,7 +62,7 @@ namespace Edulink.Windows
                 {
                     rbRecibido.Checked = true;
                 }
-               
+
             }
         }
         public Estudiante GetExamen()
@@ -89,96 +89,7 @@ namespace Edulink.Windows
             cbCarrera.SelectedIndex = _carreraId; // ver que onda
         }
 
-        //TODO: validar datos
-        private bool ValidarDatos()
-        {
-            bool validez = true;
-            errorProvider1.Clear();
-            //if (string.IsNullOrEmpty(txtLegajo.Text)) // No se asigna legajo manualmente ni se puede editar
-            //{
-            //    validez = false;
-            //    errorProvider1.SetError(txtLegajo,
-            //        "Debe ingresar el legajo del estudiante");
 
-            //}
-            if (string.IsNullOrEmpty(txtNombres.Text))
-            {
-                validez = false;
-                errorProvider1.SetError(txtNombres,
-                    "Debe ingresar el nombre del estudiante");
-
-            }
-            if (string.IsNullOrEmpty(txtApellidos.Text))
-            {
-                validez = false;
-                errorProvider1.SetError(txtApellidos,
-                    "Debe ingresar el apellido del estudiante");
-
-            }
-            if (string.IsNullOrEmpty(txtTelefono.Text))
-            {
-                validez = false;
-                errorProvider1.SetError(txtTelefono,
-                    "Debe ingresar el teléfono del estudiante");
-
-            }
-            if (string.IsNullOrEmpty(txtEmail.Text))
-            {
-                validez = false;
-                errorProvider1.SetError(txtEmail,
-                    "Debe ingresar el email del estudiante");
-
-            }
-            if (string.IsNullOrEmpty(txtDireccion.Text))
-            {
-                validez = false;
-                errorProvider1.SetError(txtDireccion,
-                    "Debe ingresar el dirección del estudiante");
-
-            }
-            if (string.IsNullOrEmpty(txtDNI.Text) || txtDNI.TextLength != 8)
-            {
-                validez = false;
-                errorProvider1.SetError(txtDNI,
-                    "Debe ingresar el DNI del estudiante");
-
-            }
-            if (string.IsNullOrEmpty(txtContrasenia.Text))// nuevo: se asigna contraseña automática, pero se puede editar
-            {
-                validez = false;
-                errorProvider1.SetError(txtContrasenia,
-                    "Debe ingresar la contraseña del estudiante");
-
-            }
-            if (cbCiudad.SelectedIndex == 0)
-            {
-                validez = false;
-                errorProvider1.SetError(cbCiudad, "Debe seleccionar una cuidad");
-            }
-            else
-            {
-                errorProvider1.SetError(cbCiudad, string.Empty);
-            }
-            // Estado estudiante
-            // nuevo: se fija Regular, editar para cambiar de Libre a Regular o recibido
-            if (!rbRegular.Checked && !rbLibre.Checked && !rbRecibido.Checked)
-            {
-                validez = false;
-                errorProvider1.SetError(rbRegular,
-                    "Debe seleccionar el estado del estudiante");
-            } // no es necesario?
-            if (cbCarrera.SelectedIndex == -1)
-            {
-                validez = false;
-                errorProvider1.SetError(cbCarrera,
-                    "Debe seleccionar la carrera del estudiante");
-            }
-            else
-            {
-                errorProvider1.SetError(cbCarrera, string.Empty);
-            }// no es necesario
-            return validez;
-        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (ValidarDatos())
@@ -196,8 +107,12 @@ namespace Edulink.Windows
                 _estudiante.Telefono = txtTelefono.Text;
                 _estudiante.DNI = txtDNI.Text;
                 _estudiante.Email = txtEmail.Text;
-                _estudiante.Contrasenia = txtDNI.Text; // se settea la contraseña como el DNI por defecto
-                _estudiante.FechaNacimiento = dtpFechaNacimiento.Value.Date;
+                _estudiante.Contrasenia = txtDNI.Text; // se settea la contraseña como el DNI por defecto cuando es nuevo
+                if (_esEdicion)
+                {
+                    _estudiante.Contrasenia = txtContrasenia.Text; // cuando es edicion
+                }
+                _estudiante.FechaNacimiento = dtpFechaNacimiento.Value; // probar que pasa
                 _estudiante.CiudadId = (int)cbCiudad.SelectedValue;
                 _estudiante.CarreraId = _carreraId;
 
@@ -213,7 +128,7 @@ namespace Edulink.Windows
                 {
                     if (!_servicio.Existe(_estudiante))
                     {
-                            _servicio.Guardar(_estudiante);
+                        _servicio.Guardar(_estudiante);
 
                         if (!_esEdicion)
                         {
@@ -256,22 +171,124 @@ namespace Edulink.Windows
         }
 
 
+        private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+            // Ayuda a ver si no hay error al ingresar el DNI, y para saber cual es la contraseña por defecto
+            if (!_esEdicion)
+            {
+                string texto = txtDNI.Text;
+                if (texto.Length == 8) // un DNI tiene 8 caracteres
+                {
+                    txtContrasenia.Text = texto; // se lo agrega al txt de contraseña
+                }
+                else
+                {
+                    txtContrasenia.Clear(); // sino lo limpia para que vea que no se puso bien el DNI
+                }
+            }
+        }
+
+        private bool ValidarDatos()
+        {
+            bool validez = true;
+            errorProvider1.Clear();
+
+            //  &= es como un AND lógico, si alguna validación falla, validez será false
+            // es como hacer validez = validez && ValidarTextBox...
+            // Así se van acumulando los errores de validación
+            // Como cuando se pone += para acumular valores,
+            // por ejemplo: suma += valor; => suma = suma + valor;
+            // en &= es lo mismo pero con valores booleanos,
+            // por ejemplo: esValido &= condicion; => esValido = esValido && condicion;
+
+            validez &= ValidarTextBox(txtNombres, "Debe ingresar el nombre del estudiante");
+            validez &= ValidarTextBox(txtApellidos, "Debe ingresar el apellido del estudiante");
+            validez &= ValidarTextBox(txtTelefono, "Debe ingresar el teléfono del estudiante");
+            validez &= ValidarTextBox(txtEmail, "Debe ingresar el email del estudiante");
+            validez &= ValidarTextBox(txtDireccion, "Debe ingresar la dirección del estudiante");
+            validez &= ValidarTextBox(txtDNI, "Debe ingresar el DNI del estudiante");
+            validez &= ValidarTextBox(txtContrasenia, "Debe ingresar la contraseña del estudiante");
+
+            validez &= ValidarComboBox(cbCiudad, "Debe seleccionar una ciudad");
+            validez &= ValidarComboBox(cbCarrera, "Debe seleccionar la carrera del estudiante");
+            validez &= ValidarFecha(dtpFechaNacimiento, "La fecha de nacimiento debe ser posterior a 01/01/1753");
+
+            if (!rbRegular.Checked && !rbLibre.Checked && !rbRecibido.Checked)
+            {
+                errorProvider1.SetError(rbRegular, "Debe seleccionar el estado del estudiante");
+                validez = false;
+            }
+            if (_esEdicion)
+            {
+                if (!ValidarContrasenia(txtContrasenia.Text))
+                {
+                    errorProvider1.SetError(txtContrasenia,
+                        "La contraseña debe tener al menos 8 caracteres, incluir letras, números y una mayúscula.");
+                    validez = false;
+                }
+            }
+
+            return validez;
+        }
+
+
+        private bool ValidarContrasenia(string contrasenia)
+        {
+            if (string.IsNullOrWhiteSpace(contrasenia)) return false;
+
+            // Longitud mínima
+            if (contrasenia.Length < 8) return false;
+
+            // Debe tener al menos una mayúscula
+            if (!contrasenia.Any(char.IsUpper)) return false;
+
+            // Debe tener al menos una letra
+            if (!contrasenia.Any(char.IsLetter)) return false;
+
+            // Debe tener al menos un número
+            if (!contrasenia.Any(char.IsDigit)) return false;
+
+            return true;
+        }
+
+        private bool ValidarTextBox(TextBox txt, string mensaje)
+        {
+            if (string.IsNullOrEmpty(txt.Text))
+            {
+                errorProvider1.SetError(txt, mensaje);
+                return false;
+            }
+            errorProvider1.SetError(txt, string.Empty);
+            return true;
+        }
+
+        private bool ValidarComboBox(ComboBox cb, string mensaje)
+        {
+            if (cb.SelectedIndex <= 0)
+            {
+                errorProvider1.SetError(cb, mensaje);
+                return false;
+            }
+            errorProvider1.SetError(cb, string.Empty);
+            return true;
+        }
+
+        private bool ValidarFecha(DateTimePicker dtp, string mensaje)
+        {
+            if (dtp.Value < new DateTime(1753, 1, 1))
+            {
+                errorProvider1.SetError(dtp, mensaje);
+                return false;
+            }
+            errorProvider1.SetError(dtp, string.Empty);
+            return true;
+        }
+
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
-        private void txtDNI_TextChanged(object sender, EventArgs e)
-        {
-            string texto = txtDNI.Text;
-            if (texto.Length == 8)
-            {
-                txtContrasenia.Text = texto; // cheakear
-            }
-            else
-            {
-                txtContrasenia.Clear();
-            }
-        }
     }
 }
