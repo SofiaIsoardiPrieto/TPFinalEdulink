@@ -115,7 +115,7 @@ namespace Edulink.Windows
                 _estudiante.FechaNacimiento = dtpFechaNacimiento.Value; // probar que pasa
                 _estudiante.CiudadId = (int)cbCiudad.SelectedValue;
                 _estudiante.CarreraId = _carreraId;
-
+                _estudiante.FechaAlta = DateTime.Now;
                 // Estado con RadioButtons
                 if (rbRegular.Checked)
                     _estudiante.EstadoEstudiante = EstadoEstudiante.Regular;

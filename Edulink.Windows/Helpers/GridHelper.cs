@@ -23,12 +23,13 @@ namespace Edulink.Windows.Helpers
                     r.Cells[0].Value = estudianteDto.Legajo;
                     r.Cells[1].Value = $"{estudianteDto.Apellidos}, {estudianteDto.Nombres}";
                     r.Cells[2].Value = estudianteDto.EstadoEstudiante;
-                    r.Cells[3].Value = estudianteDto.NombreCiudad;
-                    r.Cells[4].Value = estudianteDto.Direccion;
-                    r.Cells[5].Value = estudianteDto.Telefono;
-                    r.Cells[6].Value = estudianteDto.Email;
-                    r.Cells[7].Value = estudianteDto.DNI;
-                    r.Cells[8].Value = estudianteDto.FechaNacimiento.ToString("dd/MM/yyyy");
+                    r.Cells[3].Value = estudianteDto.FechaAlta.ToString("dd/MM/yyyy");
+                    r.Cells[4].Value = estudianteDto.NombreCiudad;
+                    r.Cells[5].Value = estudianteDto.Direccion;
+                    r.Cells[6].Value = estudianteDto.Telefono;
+                    r.Cells[7].Value = estudianteDto.Email;
+                    r.Cells[8].Value = estudianteDto.DNI;
+                    r.Cells[9].Value = estudianteDto.FechaNacimiento.ToString("dd/MM/yyyy");
                     break;
                     //case ResultadoDto resultadoDto:
                     //    r.Cells[0].Value = resultadoDto.NombrePrueba;

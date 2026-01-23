@@ -70,17 +70,17 @@
     <Compile Include="FrmEstudianteComboBox.Designer.cs">
       <DependentUpon>FrmEstudianteComboBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEstudiantesEnExamen.cs">
+    <Compile Include="FrmEstudianteExamenes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEstudiantesEnExamen.Designer.cs">
-      <DependentUpon>FrmEstudiantesEnExamen.cs</DependentUpon>
+    <Compile Include="FrmEstudianteExamenes.Designer.cs">
+      <DependentUpon>FrmEstudianteExamenes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEstudiantesEnMateria.cs">
+    <Compile Include="FrmEstudianteMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEstudiantesEnMateria.Designer.cs">
-      <DependentUpon>FrmEstudiantesEnMateria.cs</DependentUpon>
+    <Compile Include="FrmEstudianteMaterias.Designer.cs">
+      <DependentUpon>FrmEstudianteMaterias.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmExamenes.cs">
       <SubType>Form</SubType>
@@ -135,11 +135,11 @@
     <EmbeddedResource Include="FrmEstudianteComboBox.resx">
       <DependentUpon>FrmEstudianteComboBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEstudiantesEnExamen.resx">
-      <DependentUpon>FrmEstudiantesEnExamen.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEstudianteExamenes.resx">
+      <DependentUpon>FrmEstudianteExamenes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEstudiantesEnMateria.resx">
-      <DependentUpon>FrmEstudiantesEnMateria.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEstudianteMaterias.resx">
+      <DependentUpon>FrmEstudianteMaterias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmExamenes.resx">
       <DependentUpon>FrmExamenes.cs</DependentUpon>

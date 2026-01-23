@@ -40,7 +40,8 @@ namespace EduLink.Datos.Repositorios
                         FechaNacimiento = estudiante.FechaNacimiento, // Error aqui?
                         CiudadId = estudiante.CiudadId,
                         EstadoEstudiante = estudiante.EstadoEstudiante.ToString(),// La bdd no entiende de enums, por eso hay que pasarle un string
-                        CarreraId = estudiante.CarreraId
+                        CarreraId = estudiante.CarreraId,
+                        FechaAlta= estudiante.FechaAlta
                     },
                     commandType: CommandType.StoredProcedure
                 );
@@ -113,7 +114,6 @@ namespace EduLink.Datos.Repositorios
                 return cantidad > 0;
             }
         }
-
         /// <summary>
         /// Borra un estudiante de la base de datos
         /// </summary>

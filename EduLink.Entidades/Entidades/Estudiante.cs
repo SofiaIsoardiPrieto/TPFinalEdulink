@@ -18,6 +18,7 @@ namespace EduLink.Entidades.Entidades
         public string DNI { get; set; }
         public string Email { get; set; }
         public string Contrasenia { get; set; }
+        public DateTime FechaAlta { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public EstadoEstudiante EstadoEstudiante { get; set; }
 

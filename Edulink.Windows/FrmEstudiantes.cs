@@ -15,11 +15,11 @@ namespace Edulink.Windows
         private readonly IServiciosEstudiantes _servicio;
         private List<EstudianteDto> _lista;
         private int _carreraId;
-        int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
-        int _registrosTotales;
-        int _paginasTotales; // Cantidad total de páginas calculadas en base a los registros disponibles.
-        int _registrosPorPagina = 5; // Cantidad de registros que se mostrarán por página.
-
+        private int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
+        private int _registrosTotales;
+        private int _paginasTotales; // Cantidad total de páginas calculadas en base a los registros disponibles.
+        private int _registrosPorPagina = 5; // Cantidad de registros que se mostrarán por página.
+        private bool _filterOn = false;
         public FrmEstudiantes(int carreraId)
         {
             InitializeComponent(); // Inicializa los controles del formulario.
@@ -261,12 +261,14 @@ namespace Edulink.Windows
 
         private void tsMaterias_Click(object sender, EventArgs e)
         {
-
+            FrmMaterias frm = new FrmMaterias(_carreraId);
+            frm.ShowDialog(this);
         }
 
         private void tsFinales_Click(object sender, EventArgs e)
         {
-
+            FrmExamenes frm = new FrmExamenes(_carreraId);
+            frm.ShowDialog(this);
         }
 
         private void tsFiltrar_Click(object sender, EventArgs e)

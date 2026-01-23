@@ -17,7 +17,7 @@ namespace EduLink.Entidades.Dtos
         public string Email { get; set; }
         public string DNI { get; set; }
         public DateTime FechaNacimiento { get; set; }
-
+        public DateTime FechaAlta { get; set; }
         public object Clone()
         {
             return this.MemberwiseClone();

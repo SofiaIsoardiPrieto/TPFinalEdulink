@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Edulink.Windows
 {
-    public partial class FrmEstudiantesEnMateria : Form
+    public partial class FrmEstudianteMaterias : Form
     {
-        public FrmEstudiantesEnMateria()
+        public FrmEstudianteMaterias()
         {
             InitializeComponent();
         }
