@@ -65,12 +65,12 @@ namespace Edulink.Windows
 
             }
         }
-        public Estudiante GetExamen()
+        public Estudiante GetEstudiante()
         {
             return _estudiante;
         }
 
-        public void SetExamen(Estudiante estudiante)
+        public void SetEstudiante(Estudiante estudiante)
         {
             this._estudiante = estudiante;
         }

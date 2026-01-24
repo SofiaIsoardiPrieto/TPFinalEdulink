@@ -198,14 +198,14 @@ namespace Edulink.Windows
             try
             {
                 FrmEstudianteAE frm = new FrmEstudianteAE(_carreraId) { Text = "Editar Estudiante" };
-                frm.SetExamen(estudiante);
+                frm.SetEstudiante(estudiante);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.Cancel)
                 {
                     GridHelper.SetearFila(r, estudianteDtoCopia);
                     return;
                 }
-                estudiante = frm.GetExamen();
+                estudiante = frm.GetEstudiante();
                 if (estudianteDto != null)
                 {
                     GridHelper.SetearFila(r, estudianteDto);
@@ -261,33 +261,110 @@ namespace Edulink.Windows
 
         private void tsMaterias_Click(object sender, EventArgs e)
         {
-            FrmMaterias frm = new FrmMaterias(_carreraId);
+            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
+
+            var r = dgvDatosEstudiantes.SelectedRows[0];
+            var estudiante = (EstudianteDto)r.Tag;
+
+            FrmEstudianteMaterias frm = new FrmEstudianteMaterias(estudiante.EstudianteId);
             frm.ShowDialog(this);
         }
 
         private void tsFinales_Click(object sender, EventArgs e)
         {
-            FrmExamenes frm = new FrmExamenes(_carreraId);
+            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
+
+            var r = dgvDatosEstudiantes.SelectedRows[0];
+            var estudiante = (EstudianteDto)r.Tag;
+
+            FrmEstudianteExamenes frm = new FrmEstudianteExamenes(estudiante.EstudianteId);
             frm.ShowDialog(this);
         }
 
-        private void tsFiltrar_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void tsBuscar_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void tsActualizar_Click(object sender, EventArgs e)
         {
             RecargarGrilla();
         }
+
+        private void dNIToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmBuscarDNI frm = new FrmBuscarDNI();
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
+
+            int dni = frm.GetDNI();
+            EstudianteDto estudianteDto = _servicio.GetEstudiantePorDNI(dni);
+
+            if (estudianteDto != null)
+            {
+                _lista = new List<EstudianteDto> { estudianteDto }; // solo ese estudiante
+                MostrarDatosEnGrilla();
+            }
+            else
+            {
+                MessageBox.Show($"No se encontró estudiante con el DNI: {dni}", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+        private void legajoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmBuscarLegajo frm = new FrmBuscarLegajo();
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
+
+            int legajo = frm.GetLegajo();
+            EstudianteDto estudianteDto = _servicio.GetEstudiantePorLegajo(legajo);
+
+            if (estudianteDto != null)
+            {
+                _lista = new List<EstudianteDto> { estudianteDto }; // solo ese estudiante
+                MostrarDatosEnGrilla();
+            }
+            else
+            {
+                MessageBox.Show($"No se encontró estudiante con el Legajo: {legajo}", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void regularToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void libreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void recibidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void legajoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void edadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
         private void tsVolver_Click(object sender, EventArgs e)
         {
             Close();
         }
+
     }
 }

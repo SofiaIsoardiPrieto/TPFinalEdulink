@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBuscarLegajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarLegajo.Designer.cs">
+      <DependentUpon>FrmBuscarLegajo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscarDNI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarDNI.Designer.cs">
+      <DependentUpon>FrmBuscarDNI.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmExamenAE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +135,12 @@
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBuscarLegajo.resx">
+      <DependentUpon>FrmBuscarLegajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscarDNI.resx">
+      <DependentUpon>FrmBuscarDNI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmExamenAE.resx">
       <DependentUpon>FrmExamenAE.cs</DependentUpon>
     </EmbeddedResource>

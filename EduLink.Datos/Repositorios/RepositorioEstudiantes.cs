@@ -7,6 +7,7 @@ using EduLink.Entidades.Entidades;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
 
 namespace EduLink.Datos.Repositorios
 {
@@ -196,6 +197,35 @@ namespace EduLink.Datos.Repositorios
                 return conn.QuerySingleOrDefault<Estudiante>(
                     "sp_GetEstudiantePorId",
                     new { EstudianteId = id },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+        }
+        /// <summary>
+        /// Busca estudiantes por DNI
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <returns></returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public EstudianteDto GetEstudiantePorDNI(int dni)
+        {
+            using (var conn = ConexionBD.GetConexion())
+            {
+                return conn.QuerySingleOrDefault<EstudianteDto>(
+                    "sp_GetEstudiantePorDNI",
+                    new { DNI = dni },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+        }
+
+        public EstudianteDto GetEstudiantePorLegajo(int legajo)
+        {
+            using (var conn = ConexionBD.GetConexion())
+            {
+                return conn.QuerySingleOrDefault<EstudianteDto>(
+                    "sp_GetEstudiantePorLegajo",
+                    new { Legajo = legajo },
                     commandType: CommandType.StoredProcedure
                 );
             }

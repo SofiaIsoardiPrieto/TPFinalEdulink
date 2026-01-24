@@ -6,6 +6,7 @@ using EduLink.Entidades.Entidades;
 using EduLink.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace EduLink.Servicios.Servicios
 {
@@ -144,6 +145,37 @@ namespace EduLink.Servicios.Servicios
             try
             {
                 return _repositorio.GetEstudiantePorId(estudianteId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// Busca un estudiante por su DNI
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public EstudianteDto GetEstudiantePorDNI(int dni)
+        {
+            try
+            {
+                return _repositorio.GetEstudiantePorDNI(dni);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public EstudianteDto GetEstudiantePorLegajo(int legajo)
+        {
+            try
+            {
+                return _repositorio.GetEstudiantePorLegajo(legajo);
             }
             catch (Exception)
             {
