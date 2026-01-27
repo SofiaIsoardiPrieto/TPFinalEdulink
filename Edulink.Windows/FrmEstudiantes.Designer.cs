@@ -43,19 +43,16 @@
             this.regularToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.libreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recibidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.legajoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FechaIngresoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CiudadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsBuscar = new System.Windows.Forms.ToolStripDropDownButton();
-            this.legajoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dNIToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.legajoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsVolver = new System.Windows.Forms.ToolStripButton();
-            this.lblPaginaActual = new System.Windows.Forms.Label();
-            this.lblPaginasTotales = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnUltimo = new System.Windows.Forms.Button();
@@ -64,6 +61,9 @@
             this.btnPrimero = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.dgvDatosEstudiantes = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblPaginasTotales = new System.Windows.Forms.Label();
+            this.lblPaginaActual = new System.Windows.Forms.Label();
             this.ColLegajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNombreApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,7 +101,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.lblPaginaActual);
             this.splitContainer1.Panel2.Controls.Add(this.lblPaginasTotales);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.lblRegistros);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.btnUltimo);
@@ -110,15 +110,15 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnPrimero);
             this.splitContainer1.Panel2.Controls.Add(this.splitter1);
             this.splitContainer1.Panel2.Controls.Add(this.dgvDatosEstudiantes);
-            this.splitContainer1.Size = new System.Drawing.Size(824, 374);
-            this.splitContainer1.SplitterDistance = 65;
+            this.splitContainer1.Size = new System.Drawing.Size(878, 372);
+            this.splitContainer1.SplitterDistance = 64;
             this.splitContainer1.TabIndex = 0;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(64, 19);
+            this.label5.Location = new System.Drawing.Point(90, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(169, 25);
             this.label5.TabIndex = 14;
@@ -129,10 +129,10 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(511, 0);
-            this.toolStripContainer1.Location = new System.Drawing.Point(310, 3);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(515, 0);
+            this.toolStripContainer1.Location = new System.Drawing.Point(355, 3);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(511, 60);
+            this.toolStripContainer1.Size = new System.Drawing.Size(515, 60);
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -230,8 +230,8 @@
             // 
             this.tsOrdenar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.estadoToolStripMenuItem,
-            this.legajoToolStripMenuItem,
-            this.dNIToolStripMenuItem,
+            this.FechaIngresoToolStripMenuItem,
+            this.CiudadToolStripMenuItem,
             this.edadToolStripMenuItem});
             this.tsOrdenar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
             this.tsOrdenar.Image = global::Edulink.Windows.Properties.Resources.filtrar1;
@@ -273,19 +273,18 @@
             this.recibidoToolStripMenuItem.Text = "Recibido";
             this.recibidoToolStripMenuItem.Click += new System.EventHandler(this.recibidoToolStripMenuItem_Click);
             // 
-            // legajoToolStripMenuItem
+            // FechaIngresoToolStripMenuItem
             // 
-            this.legajoToolStripMenuItem.Name = "legajoToolStripMenuItem";
-            this.legajoToolStripMenuItem.Size = new System.Drawing.Size(208, 28);
-            this.legajoToolStripMenuItem.Text = "Fecha Ingreso (rango)";
-            this.legajoToolStripMenuItem.Click += new System.EventHandler(this.legajoToolStripMenuItem_Click);
+            this.FechaIngresoToolStripMenuItem.Name = "FechaIngresoToolStripMenuItem";
+            this.FechaIngresoToolStripMenuItem.Size = new System.Drawing.Size(208, 28);
+            this.FechaIngresoToolStripMenuItem.Text = "Fecha Ingreso (rango)";
             // 
-            // dNIToolStripMenuItem
+            // CiudadToolStripMenuItem
             // 
-            this.dNIToolStripMenuItem.Name = "dNIToolStripMenuItem";
-            this.dNIToolStripMenuItem.Size = new System.Drawing.Size(208, 28);
-            this.dNIToolStripMenuItem.Text = "Ciudad";
-            this.dNIToolStripMenuItem.Click += new System.EventHandler(this.dNIToolStripMenuItem_Click);
+            this.CiudadToolStripMenuItem.Name = "CiudadToolStripMenuItem";
+            this.CiudadToolStripMenuItem.Size = new System.Drawing.Size(208, 28);
+            this.CiudadToolStripMenuItem.Text = "Ciudad";
+            this.CiudadToolStripMenuItem.Click += new System.EventHandler(this.ciudadToolStripMenuItem_Click);
             // 
             // edadToolStripMenuItem
             // 
@@ -297,8 +296,8 @@
             // tsBuscar
             // 
             this.tsBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.legajoToolStripMenuItem1,
-            this.dNIToolStripMenuItem1});
+            this.legajoToolStripMenuItem,
+            this.dNIToolStripMenuItem});
             this.tsBuscar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
             this.tsBuscar.Image = global::Edulink.Windows.Properties.Resources.buscar1;
             this.tsBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -308,19 +307,19 @@
             this.tsBuscar.Text = "Buscar";
             this.tsBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // legajoToolStripMenuItem1
+            // legajoToolStripMenuItem
             // 
-            this.legajoToolStripMenuItem1.Name = "legajoToolStripMenuItem1";
-            this.legajoToolStripMenuItem1.Size = new System.Drawing.Size(180, 28);
-            this.legajoToolStripMenuItem1.Text = "Legajo";
-            this.legajoToolStripMenuItem1.Click += new System.EventHandler(this.legajoToolStripMenuItem1_Click);
+            this.legajoToolStripMenuItem.Name = "legajoToolStripMenuItem";
+            this.legajoToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.legajoToolStripMenuItem.Text = "Legajo";
+            this.legajoToolStripMenuItem.Click += new System.EventHandler(this.legajoToolStripMenuItem_Click);
             // 
-            // dNIToolStripMenuItem1
+            // dNIToolStripMenuItem
             // 
-            this.dNIToolStripMenuItem1.Name = "dNIToolStripMenuItem1";
-            this.dNIToolStripMenuItem1.Size = new System.Drawing.Size(180, 28);
-            this.dNIToolStripMenuItem1.Text = "DNI";
-            this.dNIToolStripMenuItem1.Click += new System.EventHandler(this.dNIToolStripMenuItem1_Click);
+            this.dNIToolStripMenuItem.Name = "dNIToolStripMenuItem";
+            this.dNIToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.dNIToolStripMenuItem.Text = "DNI";
+            this.dNIToolStripMenuItem.Click += new System.EventHandler(this.dNIToolStripMenuItem_Click);
             // 
             // tsActualizar
             // 
@@ -351,60 +350,33 @@
             this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsVolver.Click += new System.EventHandler(this.tsVolver_Click);
             // 
-            // lblPaginaActual
-            // 
-            this.lblPaginaActual.AutoSize = true;
-            this.lblPaginaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaginaActual.Location = new System.Drawing.Point(66, 283);
-            this.lblPaginaActual.Name = "lblPaginaActual";
-            this.lblPaginaActual.Size = new System.Drawing.Size(14, 13);
-            this.lblPaginaActual.TabIndex = 11;
-            this.lblPaginaActual.Text = "0";
-            // 
-            // lblPaginasTotales
-            // 
-            this.lblPaginasTotales.AutoSize = true;
-            this.lblPaginasTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaginasTotales.Location = new System.Drawing.Point(137, 282);
-            this.lblPaginasTotales.Name = "lblPaginasTotales";
-            this.lblPaginasTotales.Size = new System.Drawing.Size(14, 13);
-            this.lblPaginasTotales.TabIndex = 10;
-            this.lblPaginasTotales.Text = "0";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(109, 282);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(433, 266);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(22, 13);
+            this.label3.Size = new System.Drawing.Size(31, 20);
             this.label3.TabIndex = 9;
             this.label3.Text = "de:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 283);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Página:";
             // 
             // lblRegistros
             // 
             this.lblRegistros.AutoSize = true;
-            this.lblRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistros.Location = new System.Drawing.Point(138, 262);
+            this.lblRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistros.Location = new System.Drawing.Point(179, 268);
             this.lblRegistros.Name = "lblRegistros";
-            this.lblRegistros.Size = new System.Drawing.Size(14, 13);
+            this.lblRegistros.Size = new System.Drawing.Size(19, 20);
             this.lblRegistros.TabIndex = 7;
             this.lblRegistros.Text = "0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 262);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(17, 267);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
+            this.label1.Size = new System.Drawing.Size(164, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "Cantidad de registros:";
             // 
@@ -413,7 +385,7 @@
             this.btnUltimo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUltimo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnUltimo.Image = global::Edulink.Windows.Properties.Resources.ultimo;
-            this.btnUltimo.Location = new System.Drawing.Point(441, 262);
+            this.btnUltimo.Location = new System.Drawing.Point(730, 260);
             this.btnUltimo.Name = "btnUltimo";
             this.btnUltimo.Size = new System.Drawing.Size(51, 35);
             this.btnUltimo.TabIndex = 5;
@@ -425,7 +397,7 @@
             this.btnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnSiguiente.Image = global::Edulink.Windows.Properties.Resources.siguiente;
-            this.btnSiguiente.Location = new System.Drawing.Point(380, 262);
+            this.btnSiguiente.Location = new System.Drawing.Point(669, 260);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(51, 35);
             this.btnSiguiente.TabIndex = 4;
@@ -437,7 +409,7 @@
             this.btnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAnterior.Image = global::Edulink.Windows.Properties.Resources.atras;
-            this.btnAnterior.Location = new System.Drawing.Point(323, 262);
+            this.btnAnterior.Location = new System.Drawing.Point(612, 260);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(51, 35);
             this.btnAnterior.TabIndex = 3;
@@ -449,7 +421,7 @@
             this.btnPrimero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrimero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnPrimero.Image = global::Edulink.Windows.Properties.Resources.primero;
-            this.btnPrimero.Location = new System.Drawing.Point(262, 262);
+            this.btnPrimero.Location = new System.Drawing.Point(551, 260);
             this.btnPrimero.Name = "btnPrimero";
             this.btnPrimero.Size = new System.Drawing.Size(51, 35);
             this.btnPrimero.TabIndex = 2;
@@ -459,9 +431,9 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 255);
+            this.splitter1.Location = new System.Drawing.Point(0, 254);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(824, 50);
+            this.splitter1.Size = new System.Drawing.Size(878, 50);
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
@@ -491,84 +463,125 @@
             this.dgvDatosEstudiantes.Name = "dgvDatosEstudiantes";
             this.dgvDatosEstudiantes.ReadOnly = true;
             this.dgvDatosEstudiantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatosEstudiantes.Size = new System.Drawing.Size(824, 305);
+            this.dgvDatosEstudiantes.Size = new System.Drawing.Size(878, 304);
             this.dgvDatosEstudiantes.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(259, 268);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Página:";
+            // 
+            // lblPaginasTotales
+            // 
+            this.lblPaginasTotales.AutoSize = true;
+            this.lblPaginasTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginasTotales.Location = new System.Drawing.Point(464, 267);
+            this.lblPaginasTotales.Name = "lblPaginasTotales";
+            this.lblPaginasTotales.Size = new System.Drawing.Size(19, 20);
+            this.lblPaginasTotales.TabIndex = 10;
+            this.lblPaginasTotales.Text = "0";
+            // 
+            // lblPaginaActual
+            // 
+            this.lblPaginaActual.AutoSize = true;
+            this.lblPaginaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaActual.Location = new System.Drawing.Point(320, 269);
+            this.lblPaginaActual.Name = "lblPaginaActual";
+            this.lblPaginaActual.Size = new System.Drawing.Size(19, 20);
+            this.lblPaginaActual.TabIndex = 11;
+            this.lblPaginaActual.Text = "0";
             // 
             // ColLegajo
             // 
-            this.ColLegajo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColLegajo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColLegajo.HeaderText = "Legajo";
             this.ColLegajo.Name = "ColLegajo";
             this.ColLegajo.ReadOnly = true;
+            this.ColLegajo.Width = 64;
             // 
             // ColNombreApellido
             // 
-            this.ColNombreApellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColNombreApellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColNombreApellido.HeaderText = "Nombre y Apellido";
             this.ColNombreApellido.Name = "ColNombreApellido";
             this.ColNombreApellido.ReadOnly = true;
+            this.ColNombreApellido.Width = 107;
             // 
             // ColEstado
             // 
-            this.ColEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColEstado.HeaderText = "Estado";
             this.ColEstado.Name = "ColEstado";
             this.ColEstado.ReadOnly = true;
+            this.ColEstado.Width = 65;
             // 
             // ColFechaAlta
             // 
+            this.ColFechaAlta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColFechaAlta.HeaderText = "FechaAlta";
             this.ColFechaAlta.Name = "ColFechaAlta";
             this.ColFechaAlta.ReadOnly = true;
+            this.ColFechaAlta.Width = 80;
             // 
             // ColCiudad
             // 
-            this.ColCiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColCiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColCiudad.HeaderText = "Ciudad";
             this.ColCiudad.Name = "ColCiudad";
             this.ColCiudad.ReadOnly = true;
+            this.ColCiudad.Width = 65;
             // 
             // ColDireccion
             // 
-            this.ColDireccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColDireccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColDireccion.HeaderText = "Dirección";
             this.ColDireccion.Name = "ColDireccion";
             this.ColDireccion.ReadOnly = true;
+            this.ColDireccion.Width = 77;
             // 
             // ColTelefono
             // 
-            this.ColTelefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColTelefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColTelefono.HeaderText = "Teléfono";
             this.ColTelefono.Name = "ColTelefono";
             this.ColTelefono.ReadOnly = true;
+            this.ColTelefono.Width = 74;
             // 
             // ColEmail
             // 
-            this.ColEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColEmail.HeaderText = "Email";
             this.ColEmail.Name = "ColEmail";
             this.ColEmail.ReadOnly = true;
+            this.ColEmail.Width = 57;
             // 
             // ColDNI
             // 
-            this.ColDNI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColDNI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColDNI.HeaderText = "DNI";
             this.ColDNI.Name = "ColDNI";
             this.ColDNI.ReadOnly = true;
+            this.ColDNI.Width = 51;
             // 
             // ColFechaNac
             // 
-            this.ColFechaNac.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColFechaNac.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColFechaNac.HeaderText = "Fecha Nac.";
             this.ColFechaNac.Name = "ColFechaNac";
             this.ColFechaNac.ReadOnly = true;
+            this.ColFechaNac.Width = 81;
             // 
             // FrmEstudiantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
-            this.ClientSize = new System.Drawing.Size(824, 374);
+            this.ClientSize = new System.Drawing.Size(878, 372);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmEstudiantes";
@@ -603,20 +616,7 @@
         private System.Windows.Forms.Button btnAnterior;
         private System.Windows.Forms.Label lblRegistros;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblPaginaActual;
-        private System.Windows.Forms.Label lblPaginasTotales;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColLegajo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColNombreApellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColEstado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColFechaAlta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColCiudad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColDireccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColTelefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColDNI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColFechaNac;
         private System.Windows.Forms.ToolStripButton tsAlta;
         private System.Windows.Forms.ToolStripButton tsEditar;
         private System.Windows.Forms.ToolStripButton tsBorrar;
@@ -628,17 +628,30 @@
         private System.Windows.Forms.ToolStripMenuItem regularToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recibidoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem legajoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dNIToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FechaIngresoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CiudadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem edadToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton tsBuscar;
-        private System.Windows.Forms.ToolStripMenuItem legajoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem dNIToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem legajoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dNIToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tsActualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsVolver;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblPaginaActual;
+        private System.Windows.Forms.Label lblPaginasTotales;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLegajo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNombreApellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColFechaAlta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCiudad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColDireccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColTelefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColDNI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColFechaNac;
     }
 }

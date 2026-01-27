@@ -11,10 +11,10 @@ using System.Net;
 
 namespace EduLink.Datos.Repositorios
 {
-    public class RepositorioEstudiantes : IRepositorioEstudiantes
+    public class RepositorioEstudiantesMaterias : IRepositorioEstudiantesMaterias
     {
 
-        public RepositorioEstudiantes()
+        public RepositorioEstudiantesMaterias()
         {
 
         }

@@ -13,10 +13,13 @@ namespace Edulink.Windows
     public partial class FrmMenuPrincipal : Form
     {
         private int _carreraId;
-        public FrmMenuPrincipal(int carreraId)
+       
+        public FrmMenuPrincipal(int carreraId, string nombreCarrera)
         {
             InitializeComponent();
             _carreraId = carreraId;
+            lblNombreCarrera.Text = $"{nombreCarrera}";
+            
         }
 
         private void btnEstudiantes_Click(object sender, EventArgs e)

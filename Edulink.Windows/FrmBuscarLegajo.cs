@@ -33,7 +33,6 @@ namespace Edulink.Windows
         }
         private bool ValidarDatos()
         {
-            bool validez = true;
             errorProvider1.Clear();
 
             if (string.IsNullOrEmpty(txtLegajo.Text))

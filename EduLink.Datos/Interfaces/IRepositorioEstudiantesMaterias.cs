@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace EduLink.Datos.Interfaces
 {
-    public interface IRepositorioEstudiantes
+    public interface IRepositorioEstudiantesMaterias
     {
 
         void Agregar(Estudiante estudiante);     

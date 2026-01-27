@@ -10,32 +10,33 @@ using System.Linq;
 
 namespace EduLink.Datos.Repositorios
 {
-    public class RepositorioCarreras : IRepositorioCarreras
+    public class RepositorioAdministradores : IRepositorioAdministradores
     {
 
-        public RepositorioCarreras()
+        public RepositorioAdministradores()
         {
 
         }
         /// <summary>
-        /// Trae la lista de carreras para el combo segun el administrador logueado
+        /// Validar los datos de inicio de sesión del administrador
         /// </summary>
-        /// <param name="adminId"></param>
+        /// <param name="codigoAdmin"></param>
+        /// <param name="contrasenia"></param>
         /// <returns></returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public List<Carrera> GetCarreraCombo(int? adminId)
+
+        public int? ValidarInicioSesion(string codigoAdmin, string contrasenia)
         {
             using (var conn = ConexionBD.GetConexion())
             {
-                var lista = conn.Query<Carrera>(
-                    "sp_GetCarrerasPorAdmin",
-                    new { AdministradorId = adminId },
+                return conn.ExecuteScalar<int?>(
+                    "sp_GetAdminInicioSesion",
+                    new { Codigo = codigoAdmin, Contrasenia = contrasenia },
                     commandType: CommandType.StoredProcedure
-                ).ToList();
-
-                return lista;
+                );
             }
         }
+
 
     }
 }

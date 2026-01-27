@@ -16,7 +16,8 @@ namespace Edulink.Windows
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMenuPrincipal(1));//hardcoedeado!!!
+            //Application.Run(new FrmInicioSesion());
+            Application.Run(new FrmMenuPrincipal(1, "Tecnicatura Superior en Análisis, Desarrollo y Programación de Aplicaciones"));//hardcoedeado!!!
         }
     }
 }

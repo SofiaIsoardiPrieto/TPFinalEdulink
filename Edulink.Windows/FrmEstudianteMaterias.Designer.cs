@@ -29,6 +29,18 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label4 = new System.Windows.Forms.Label();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsAgregar = new System.Windows.Forms.ToolStripButton();
+            this.tsBorrar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsFiltrar = new System.Windows.Forms.ToolStripButton();
+            this.tsBuscar = new System.Windows.Forms.ToolStripButton();
+            this.tsActualizar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsVolver = new System.Windows.Forms.ToolStripButton();
+            this.splitter2 = new System.Windows.Forms.Splitter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,27 +60,15 @@
             this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.splitter2 = new System.Windows.Forms.Splitter();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsAgregar = new System.Windows.Forms.ToolStripButton();
-            this.tsBorrar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsFiltrar = new System.Windows.Forms.ToolStripButton();
-            this.tsBuscar = new System.Windows.Forms.ToolStripButton();
-            this.tsActualizar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsVolver = new System.Windows.Forms.ToolStripButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantes)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantes)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -102,6 +102,134 @@
             this.splitContainer1.Size = new System.Drawing.Size(530, 375);
             this.splitContainer1.SplitterDistance = 65;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(20, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 25);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "MATERIAS";
+            // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(366, 0);
+            this.toolStripContainer1.Location = new System.Drawing.Point(164, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(366, 65);
+            this.toolStripContainer1.TabIndex = 5;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsAgregar,
+            this.tsBorrar,
+            this.toolStripSeparator1,
+            this.tsFiltrar,
+            this.tsBuscar,
+            this.tsActualizar,
+            this.toolStripSeparator2,
+            this.tsVolver});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(357, 66);
+            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsAgregar
+            // 
+            this.tsAgregar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsAgregar.Image = global::Edulink.Windows.Properties.Resources.nuevo1;
+            this.tsAgregar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsAgregar.Name = "tsAgregar";
+            this.tsAgregar.Size = new System.Drawing.Size(62, 63);
+            this.tsAgregar.Text = "Agregar";
+            this.tsAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsBorrar
+            // 
+            this.tsBorrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsBorrar.Image = global::Edulink.Windows.Properties.Resources.borrar1;
+            this.tsBorrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsBorrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBorrar.Name = "tsBorrar";
+            this.tsBorrar.Size = new System.Drawing.Size(51, 63);
+            this.tsBorrar.Text = "Borrar";
+            this.tsBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 66);
+            // 
+            // tsFiltrar
+            // 
+            this.tsFiltrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsFiltrar.Image = global::Edulink.Windows.Properties.Resources.filtrar1;
+            this.tsFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsFiltrar.Name = "tsFiltrar";
+            this.tsFiltrar.Size = new System.Drawing.Size(47, 63);
+            this.tsFiltrar.Text = "Filtrar";
+            this.tsFiltrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsBuscar
+            // 
+            this.tsBuscar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsBuscar.Image = global::Edulink.Windows.Properties.Resources.buscar1;
+            this.tsBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBuscar.Name = "tsBuscar";
+            this.tsBuscar.Size = new System.Drawing.Size(52, 63);
+            this.tsBuscar.Text = "Buscar";
+            this.tsBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsActualizar
+            // 
+            this.tsActualizar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsActualizar.Image = global::Edulink.Windows.Properties.Resources.actualizar1;
+            this.tsActualizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsActualizar.Name = "tsActualizar";
+            this.tsActualizar.Size = new System.Drawing.Size(70, 63);
+            this.tsActualizar.Text = "Actualizar";
+            this.tsActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 66);
+            // 
+            // tsVolver
+            // 
+            this.tsVolver.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsVolver.Image = global::Edulink.Windows.Properties.Resources.volver;
+            this.tsVolver.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsVolver.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsVolver.Name = "tsVolver";
+            this.tsVolver.Size = new System.Drawing.Size(51, 63);
+            this.tsVolver.Text = "Volver";
+            this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // splitter2
+            // 
+            this.splitter2.Location = new System.Drawing.Point(0, 0);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(3, 65);
+            this.splitter2.TabIndex = 1;
+            this.splitter2.TabStop = false;
             // 
             // dataGridView1
             // 
@@ -299,134 +427,6 @@
             this.ColEstado.Name = "ColEstado";
             this.ColEstado.ReadOnly = true;
             // 
-            // splitter2
-            // 
-            this.splitter2.Location = new System.Drawing.Point(0, 0);
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 65);
-            this.splitter2.TabIndex = 1;
-            this.splitter2.TabStop = false;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsAgregar,
-            this.tsBorrar,
-            this.toolStripSeparator1,
-            this.tsFiltrar,
-            this.tsBuscar,
-            this.tsActualizar,
-            this.toolStripSeparator2,
-            this.tsVolver});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(357, 66);
-            this.toolStrip1.TabIndex = 4;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tsAgregar
-            // 
-            this.tsAgregar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsAgregar.Image = global::Edulink.Windows.Properties.Resources.nuevo1;
-            this.tsAgregar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsAgregar.Name = "tsAgregar";
-            this.tsAgregar.Size = new System.Drawing.Size(62, 63);
-            this.tsAgregar.Text = "Agregar";
-            this.tsAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsBorrar
-            // 
-            this.tsBorrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsBorrar.Image = global::Edulink.Windows.Properties.Resources.borrar1;
-            this.tsBorrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsBorrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBorrar.Name = "tsBorrar";
-            this.tsBorrar.Size = new System.Drawing.Size(51, 63);
-            this.tsBorrar.Text = "Borrar";
-            this.tsBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 66);
-            // 
-            // tsFiltrar
-            // 
-            this.tsFiltrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsFiltrar.Image = global::Edulink.Windows.Properties.Resources.filtrar1;
-            this.tsFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsFiltrar.Name = "tsFiltrar";
-            this.tsFiltrar.Size = new System.Drawing.Size(47, 63);
-            this.tsFiltrar.Text = "Filtrar";
-            this.tsFiltrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsBuscar
-            // 
-            this.tsBuscar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsBuscar.Image = global::Edulink.Windows.Properties.Resources.buscar1;
-            this.tsBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBuscar.Name = "tsBuscar";
-            this.tsBuscar.Size = new System.Drawing.Size(52, 63);
-            this.tsBuscar.Text = "Buscar";
-            this.tsBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsActualizar
-            // 
-            this.tsActualizar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsActualizar.Image = global::Edulink.Windows.Properties.Resources.actualizar1;
-            this.tsActualizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsActualizar.Name = "tsActualizar";
-            this.tsActualizar.Size = new System.Drawing.Size(70, 63);
-            this.tsActualizar.Text = "Actualizar";
-            this.tsActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 66);
-            // 
-            // tsVolver
-            // 
-            this.tsVolver.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsVolver.Image = global::Edulink.Windows.Properties.Resources.volver;
-            this.tsVolver.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsVolver.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsVolver.Name = "tsVolver";
-            this.tsVolver.Size = new System.Drawing.Size(51, 63);
-            this.tsVolver.Text = "Volver";
-            this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(20, 21);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 25);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "MATERIAS";
-            // 
-            // toolStripContainer1
-            // 
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(366, 0);
-            this.toolStripContainer1.Location = new System.Drawing.Point(164, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(366, 65);
-            this.toolStripContainer1.TabIndex = 5;
-            this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
-            // 
             // FrmEstudianteMaterias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,14 +444,14 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantes)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantes)).EndInit();
             this.ResumeLayout(false);
 
         }

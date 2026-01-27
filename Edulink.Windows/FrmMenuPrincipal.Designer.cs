@@ -39,7 +39,7 @@
             // 
             this.lblNombreCarrera.AutoSize = true;
             this.lblNombreCarrera.Font = new System.Drawing.Font("Myanmar Text", 11F);
-            this.lblNombreCarrera.Location = new System.Drawing.Point(12, 9);
+            this.lblNombreCarrera.Location = new System.Drawing.Point(10, 38);
             this.lblNombreCarrera.Name = "lblNombreCarrera";
             this.lblNombreCarrera.Size = new System.Drawing.Size(115, 27);
             this.lblNombreCarrera.TabIndex = 2;
@@ -47,12 +47,12 @@
             // 
             // btnExamenes
             // 
-            this.btnExamenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(12)))), ((int)(((byte)(166)))));
+            this.btnExamenes.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnExamenes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExamenes.Font = new System.Drawing.Font("Myanmar Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExamenes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExamenes.Image = global::Edulink.Windows.Properties.Resources.examen;
-            this.btnExamenes.Location = new System.Drawing.Point(367, 75);
+            this.btnExamenes.Location = new System.Drawing.Point(371, 88);
             this.btnExamenes.Name = "btnExamenes";
             this.btnExamenes.Size = new System.Drawing.Size(110, 72);
             this.btnExamenes.TabIndex = 10;
@@ -63,12 +63,12 @@
             // 
             // btnMaterias
             // 
-            this.btnMaterias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(12)))), ((int)(((byte)(166)))));
+            this.btnMaterias.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnMaterias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaterias.Font = new System.Drawing.Font("Myanmar Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMaterias.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnMaterias.Image = global::Edulink.Windows.Properties.Resources.materia;
-            this.btnMaterias.Location = new System.Drawing.Point(215, 75);
+            this.btnMaterias.Location = new System.Drawing.Point(206, 88);
             this.btnMaterias.Name = "btnMaterias";
             this.btnMaterias.Size = new System.Drawing.Size(110, 72);
             this.btnMaterias.TabIndex = 9;
@@ -79,12 +79,12 @@
             // 
             // btnEstudiantes
             // 
-            this.btnEstudiantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(12)))), ((int)(((byte)(166)))));
+            this.btnEstudiantes.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnEstudiantes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEstudiantes.Font = new System.Drawing.Font("Myanmar Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEstudiantes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnEstudiantes.Image = global::Edulink.Windows.Properties.Resources.estudiante;
-            this.btnEstudiantes.Location = new System.Drawing.Point(62, 75);
+            this.btnEstudiantes.Location = new System.Drawing.Point(34, 88);
             this.btnEstudiantes.Name = "btnEstudiantes";
             this.btnEstudiantes.Size = new System.Drawing.Size(110, 72);
             this.btnEstudiantes.TabIndex = 4;
@@ -97,10 +97,10 @@
             // 
             this.btnCerrarSesion.BackColor = System.Drawing.Color.White;
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarSesion.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(12)))), ((int)(((byte)(166)))));
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(430, 5);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(405, 2);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(114, 28);
             this.btnCerrarSesion.TabIndex = 11;
@@ -113,7 +113,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
-            this.ClientSize = new System.Drawing.Size(549, 196);
+            this.ClientSize = new System.Drawing.Size(531, 196);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.btnExamenes);
             this.Controls.Add(this.btnMaterias);

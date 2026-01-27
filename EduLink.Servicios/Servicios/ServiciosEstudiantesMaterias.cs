@@ -9,12 +9,12 @@ using System.Collections.Generic;
 
 namespace EduLink.Servicios.Servicios
 {
-    public class ServiciosEstudiantes : IServiciosEstudiantes
+    public class ServiciosEstudiantesMaterias : IServiciosEstudiantesMaterias
     {
         private readonly IRepositorioEstudiantes _repositorio;
-        public ServiciosEstudiantes()
+        public ServiciosEstudiantesMaterias()
         {
-            _repositorio = new RepositorioEstudiantes();
+            _repositorio = new RepositorioEstudiantesMaterias();
         }
         /// <summary>
         /// Determina si ya existe un estudiante 

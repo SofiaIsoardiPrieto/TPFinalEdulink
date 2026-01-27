@@ -14,5 +14,6 @@ namespace EduLink.Entidades.Entidades
         public string ContraseniaAdmin { get; set; }
         public string Codigo { get; set; }
 
+        //public ICollection<Carrera> Carreras { get; set; }
     }
 }

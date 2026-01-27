@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBuscarEdad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarEdad.Designer.cs">
+      <DependentUpon>FrmBuscarEdad.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBuscarLegajo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,12 @@
     </Compile>
     <Compile Include="FrmBuscarDNI.Designer.cs">
       <DependentUpon>FrmBuscarDNI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscarCiudad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarCiudad.Designer.cs">
+      <DependentUpon>FrmBuscarCiudad.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmExamenAE.cs">
       <SubType>Form</SubType>
@@ -135,11 +147,17 @@
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBuscarEdad.resx">
+      <DependentUpon>FrmBuscarEdad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBuscarLegajo.resx">
       <DependentUpon>FrmBuscarLegajo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBuscarDNI.resx">
       <DependentUpon>FrmBuscarDNI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscarCiudad.resx">
+      <DependentUpon>FrmBuscarCiudad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmExamenAE.resx">
       <DependentUpon>FrmExamenAE.cs</DependentUpon>

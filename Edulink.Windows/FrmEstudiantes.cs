@@ -1,11 +1,13 @@
 ﻿using Edulink.Windows.Helpers;
 using EduLink.Entidades.Dtos;
-using EduLink.Servicios.Servicios;
+using EduLink.Entidades.Entidades;
+using EduLink.Entidades.Enums;
 using EduLink.Servicios.Interfaces;
+using EduLink.Servicios.Servicios;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
-using EduLink.Entidades.Entidades;
 
 namespace Edulink.Windows
 {
@@ -19,13 +21,19 @@ namespace Edulink.Windows
         private int _registrosTotales;
         private int _paginasTotales; // Cantidad total de páginas calculadas en base a los registros disponibles.
         private int _registrosPorPagina = 5; // Cantidad de registros que se mostrarán por página.
-        private bool _filterOn = false;
+        private bool _filterOn = false; // por lo pronto no lo necesito
+        private EstadoEstudiante? _estadoEstudiante;
+        private int? _edadMin;
+        private int? _edadMax;
+        private int? _anioAlta;
+        private int? _ciudadId;
+
         public FrmEstudiantes(int carreraId)
         {
             InitializeComponent(); // Inicializa los controles del formulario.
             _servicio = new ServiciosEstudiantes(); // Se instancia el servicio concreto.
             // ¿Sería útil usar inyección de dependencias para mayor flexibilidad?
-            _carreraId= carreraId;
+            _carreraId = carreraId;
         }
 
         private void FrmEstudiantes_Load(object sender, EventArgs e)
@@ -46,8 +54,8 @@ namespace Edulink.Windows
         {
             try
             {
-                _registrosTotales = _servicio.GetCantidad(_carreraId);// obtiene la cantidad total de registros.
-                _paginasTotales = FormHelper.CalcularPaginas( _registrosTotales, _registrosPorPagina);// calcula el total de páginas.
+                _registrosTotales = _servicio.GetCantidad(_carreraId, _edadMin, _edadMax, _anioAlta, _ciudadId, _estadoEstudiante.ToString());// obtiene la cantidad total de registros.
+                _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);// calcula el total de páginas.
                 MostrarPaginado();
             }
             catch (Exception) { throw; }
@@ -57,7 +65,7 @@ namespace Edulink.Windows
         /// </summary>
         private void MostrarPaginado()
         {
-            _lista = _servicio.GetEstudiantesPorPagina(_carreraId, _registrosPorPagina, _paginaActual);
+            _lista = _servicio.GetEstudiantesPorPagina(_carreraId, _registrosPorPagina, _paginaActual, _edadMin, _edadMax, _anioAlta, _ciudadId, _estadoEstudiante.ToString());
             MostrarDatosEnGrilla();
         }
         /// <summary>
@@ -120,22 +128,27 @@ namespace Edulink.Windows
                 btnSiguiente.Enabled = true;
                 btnUltimo.Enabled = true;
             }
-           
+
         }
         private void LimpiarBotonesYActualizarLista()
         {
-            //orden = Orden.SinOrden;
-            //brand = null;
-            //colour = null;
-            //rangoPrecio = null;
-            //FiltrotoolStripButton.Enabled = true;
-            //brandToolStripMenuItem.BackColor = Color.FromArgb(240, 240, 240);
-            //colourToolStripMenuItem.BackColor = Color.FromArgb(240, 240, 240);
-            //rangoDePrecioToolStripMenuItem.BackColor = Color.FromArgb(240, 240, 240);
-            //aZToolStripMenuItem.BackColor = Color.FromArgb(240, 240, 240);
-            //zAToolStripMenuItem.BackColor = Color.FromArgb(240, 240, 240);
-            //menorPercioToolStripMenuItem.BackColor = Color.FromArgb(240, 240, 240);
-            //mayorPrecioToolStripMenuItem.BackColor = Color.FromArgb(240, 240, 240);
+            _filterOn = false;
+            _estadoEstudiante = null;
+            _edadMin = null;
+            _edadMax = null;
+            _anioAlta = null;
+            _ciudadId = null;
+
+            edadToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+            regularToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+            libreToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+            recibidoToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+            CiudadToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+            dNIToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+            legajoToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+            FechaIngresoToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+
+
             RecargarGrilla();
         }
         private void btnPrimero_Click(object sender, EventArgs e)
@@ -281,37 +294,59 @@ namespace Edulink.Windows
             frm.ShowDialog(this);
         }
 
-
-      
-
         private void tsActualizar_Click(object sender, EventArgs e)
         {
+            LimpiarBotonesYActualizarLista();
+        }
+
+
+        private void regularToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _filterOn = true;
+            _estadoEstudiante = EstadoEstudiante.Regular;
+            regularToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
             RecargarGrilla();
         }
 
-        private void dNIToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void libreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmBuscarDNI frm = new FrmBuscarDNI();
-            DialogResult dr = frm.ShowDialog(this);
-            if (dr == DialogResult.Cancel) return;
-
-            int dni = frm.GetDNI();
-            EstudianteDto estudianteDto = _servicio.GetEstudiantePorDNI(dni);
-
-            if (estudianteDto != null)
-            {
-                _lista = new List<EstudianteDto> { estudianteDto }; // solo ese estudiante
-                MostrarDatosEnGrilla();
-            }
-            else
-            {
-                MessageBox.Show($"No se encontró estudiante con el DNI: {dni}", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            _filterOn = true;
+            _estadoEstudiante = EstadoEstudiante.Libre;
+            libreToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
+            RecargarGrilla();
         }
 
+        private void recibidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _filterOn = true;
+            _estadoEstudiante = EstadoEstudiante.Recibido;
+            recibidoToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
+            RecargarGrilla();
+        }
 
-        private void legajoToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void edadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBuscarEdad frm = new FrmBuscarEdad();
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
+            edadToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
+            _filterOn = true;
+            _edadMin = frm.GetEdadMin();
+            _edadMax = frm.GetEdadMax();
+            RecargarGrilla();
+        }
+
+        private void ciudadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBuscarCiudad frm = new FrmBuscarCiudad();
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
+            CiudadToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
+            _filterOn = true;
+            _ciudadId = frm.GetCiudad();
+            RecargarGrilla();
+        }
+        private void legajoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmBuscarLegajo frm = new FrmBuscarLegajo();
             DialogResult dr = frm.ShowDialog(this);
@@ -330,37 +365,31 @@ namespace Edulink.Windows
                 MessageBox.Show($"No se encontró estudiante con el Legajo: {legajo}", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void regularToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void libreToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void recibidoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void legajoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            legajoToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
         }
 
         private void dNIToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FrmBuscarDNI frm = new FrmBuscarDNI();
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
 
+            int dni = frm.GetDNI();
+            EstudianteDto estudianteDto = _servicio.GetEstudiantePorDNI(dni);
+
+            if (estudianteDto != null)
+            {
+                _lista = new List<EstudianteDto> { estudianteDto }; // solo ese estudiante
+                MostrarDatosEnGrilla();
+            }
+            else
+            {
+                MessageBox.Show($"No se encontró estudiante con el DNI: {dni}", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            dNIToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
         }
 
-        private void edadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
         private void tsVolver_Click(object sender, EventArgs e)
         {
             Close();

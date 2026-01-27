@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace EduLink.Servicios.Interfaces
 {
-    public interface IServiciosEstudiantes
+    public interface IServiciosEstudiantesMaterias
     {
        
         bool Existe(Estudiante estudiante);

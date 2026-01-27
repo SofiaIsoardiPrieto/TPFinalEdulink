@@ -29,24 +29,29 @@ namespace Edulink.Windows
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (cbCarrera.SelectedIndex == -1)
+            if (cbCarrera.SelectedIndex <= 0) // el índice 0 es "Seleccione Carrera"
             {
                 MessageBox.Show("Debe seleccionar una carrera", "Atención",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Recuperar el valor seleccionado (CarreraId)
-            int carreraId = (int)cbCarrera.SelectedValue;
+            // Recuperar el objeto Carrera seleccionado
+            var carreraSeleccionada = (Carrera)cbCarrera.SelectedItem;
 
-            // Pasar el id al siguiente formulario
-            FrmMenuPrincipal frm = new FrmMenuPrincipal(carreraId);
+            int carreraId = carreraSeleccionada.CarreraId;
+            string nombreCarrera = carreraSeleccionada.NombreCarrera;
+
+            // Pasar ambos datos al siguiente formulario
+            FrmMenuPrincipal frm = new FrmMenuPrincipal(carreraId, nombreCarrera);
             frm.ShowDialog();
         }
 
 
+
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
+            Close();
 
         }
     }
