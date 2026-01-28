@@ -35,8 +35,8 @@
             this.tsAlta = new System.Windows.Forms.ToolStripButton();
             this.tsEditar = new System.Windows.Forms.ToolStripButton();
             this.tsBorrar = new System.Windows.Forms.ToolStripButton();
-            this.tsMaterias = new System.Windows.Forms.ToolStripButton();
-            this.tsFinales = new System.Windows.Forms.ToolStripButton();
+            this.tsInscripcion = new System.Windows.Forms.ToolStripButton();
+            this.tsHistorial = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsOrdenar = new System.Windows.Forms.ToolStripDropDownButton();
             this.estadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +52,10 @@
             this.tsActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsVolver = new System.Windows.Forms.ToolStripButton();
+            this.lblPaginaActual = new System.Windows.Forms.Label();
+            this.lblPaginasTotales = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnUltimo = new System.Windows.Forms.Button();
@@ -61,9 +64,6 @@
             this.btnPrimero = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.dgvDatosEstudiantes = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblPaginasTotales = new System.Windows.Forms.Label();
-            this.lblPaginaActual = new System.Windows.Forms.Label();
             this.ColLegajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNombreApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,8 +147,8 @@
             this.tsAlta,
             this.tsEditar,
             this.tsBorrar,
-            this.tsMaterias,
-            this.tsFinales,
+            this.tsInscripcion,
+            this.tsHistorial,
             this.toolStripSeparator1,
             this.tsOrdenar,
             this.tsBuscar,
@@ -157,7 +157,7 @@
             this.tsVolver});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(508, 66);
+            this.toolStrip1.Size = new System.Drawing.Size(512, 66);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -197,29 +197,29 @@
             this.tsBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsBorrar.Click += new System.EventHandler(this.tsBorrar_Click);
             // 
-            // tsMaterias
+            // tsInscripcion
             // 
-            this.tsMaterias.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsMaterias.Image = global::Edulink.Windows.Properties.Resources.materias1;
-            this.tsMaterias.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsMaterias.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsMaterias.Name = "tsMaterias";
-            this.tsMaterias.Size = new System.Drawing.Size(65, 63);
-            this.tsMaterias.Text = "Materias";
-            this.tsMaterias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsMaterias.Click += new System.EventHandler(this.tsMaterias_Click);
+            this.tsInscripcion.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsInscripcion.Image = global::Edulink.Windows.Properties.Resources.Inscripcion;
+            this.tsInscripcion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsInscripcion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsInscripcion.Name = "tsInscripcion";
+            this.tsInscripcion.Size = new System.Drawing.Size(76, 63);
+            this.tsInscripcion.Text = "Inscripción";
+            this.tsInscripcion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsInscripcion.Click += new System.EventHandler(this.tsInscripcion_Click);
             // 
-            // tsFinales
+            // tsHistorial
             // 
-            this.tsFinales.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsFinales.Image = global::Edulink.Windows.Properties.Resources.examen1;
-            this.tsFinales.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsFinales.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsFinales.Name = "tsFinales";
-            this.tsFinales.Size = new System.Drawing.Size(53, 63);
-            this.tsFinales.Text = "Finales";
-            this.tsFinales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsFinales.Click += new System.EventHandler(this.tsFinales_Click);
+            this.tsHistorial.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsHistorial.Image = global::Edulink.Windows.Properties.Resources.historial1;
+            this.tsHistorial.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsHistorial.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsHistorial.Name = "tsHistorial";
+            this.tsHistorial.Size = new System.Drawing.Size(62, 63);
+            this.tsHistorial.Text = "Historial";
+            this.tsHistorial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsHistorial.Click += new System.EventHandler(this.tsHistorial_Click);
             // 
             // toolStripSeparator1
             // 
@@ -255,21 +255,21 @@
             // regularToolStripMenuItem
             // 
             this.regularToolStripMenuItem.Name = "regularToolStripMenuItem";
-            this.regularToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.regularToolStripMenuItem.Size = new System.Drawing.Size(131, 28);
             this.regularToolStripMenuItem.Text = "Regular";
             this.regularToolStripMenuItem.Click += new System.EventHandler(this.regularToolStripMenuItem_Click);
             // 
             // libreToolStripMenuItem
             // 
             this.libreToolStripMenuItem.Name = "libreToolStripMenuItem";
-            this.libreToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.libreToolStripMenuItem.Size = new System.Drawing.Size(131, 28);
             this.libreToolStripMenuItem.Text = "Libre";
             this.libreToolStripMenuItem.Click += new System.EventHandler(this.libreToolStripMenuItem_Click);
             // 
             // recibidoToolStripMenuItem
             // 
             this.recibidoToolStripMenuItem.Name = "recibidoToolStripMenuItem";
-            this.recibidoToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.recibidoToolStripMenuItem.Size = new System.Drawing.Size(131, 28);
             this.recibidoToolStripMenuItem.Text = "Recibido";
             this.recibidoToolStripMenuItem.Click += new System.EventHandler(this.recibidoToolStripMenuItem_Click);
             // 
@@ -310,14 +310,14 @@
             // legajoToolStripMenuItem
             // 
             this.legajoToolStripMenuItem.Name = "legajoToolStripMenuItem";
-            this.legajoToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.legajoToolStripMenuItem.Size = new System.Drawing.Size(119, 28);
             this.legajoToolStripMenuItem.Text = "Legajo";
             this.legajoToolStripMenuItem.Click += new System.EventHandler(this.legajoToolStripMenuItem_Click);
             // 
             // dNIToolStripMenuItem
             // 
             this.dNIToolStripMenuItem.Name = "dNIToolStripMenuItem";
-            this.dNIToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.dNIToolStripMenuItem.Size = new System.Drawing.Size(119, 28);
             this.dNIToolStripMenuItem.Text = "DNI";
             this.dNIToolStripMenuItem.Click += new System.EventHandler(this.dNIToolStripMenuItem_Click);
             // 
@@ -350,6 +350,26 @@
             this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsVolver.Click += new System.EventHandler(this.tsVolver_Click);
             // 
+            // lblPaginaActual
+            // 
+            this.lblPaginaActual.AutoSize = true;
+            this.lblPaginaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaActual.Location = new System.Drawing.Point(320, 269);
+            this.lblPaginaActual.Name = "lblPaginaActual";
+            this.lblPaginaActual.Size = new System.Drawing.Size(19, 20);
+            this.lblPaginaActual.TabIndex = 11;
+            this.lblPaginaActual.Text = "0";
+            // 
+            // lblPaginasTotales
+            // 
+            this.lblPaginasTotales.AutoSize = true;
+            this.lblPaginasTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginasTotales.Location = new System.Drawing.Point(464, 267);
+            this.lblPaginasTotales.Name = "lblPaginasTotales";
+            this.lblPaginasTotales.Size = new System.Drawing.Size(19, 20);
+            this.lblPaginasTotales.TabIndex = 10;
+            this.lblPaginasTotales.Text = "0";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -359,6 +379,16 @@
             this.label3.Size = new System.Drawing.Size(31, 20);
             this.label3.TabIndex = 9;
             this.label3.Text = "de:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(259, 268);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Página:";
             // 
             // lblRegistros
             // 
@@ -460,41 +490,12 @@
             this.ColFechaNac});
             this.dgvDatosEstudiantes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatosEstudiantes.Location = new System.Drawing.Point(0, 0);
+            this.dgvDatosEstudiantes.MultiSelect = false;
             this.dgvDatosEstudiantes.Name = "dgvDatosEstudiantes";
             this.dgvDatosEstudiantes.ReadOnly = true;
             this.dgvDatosEstudiantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatosEstudiantes.Size = new System.Drawing.Size(878, 304);
             this.dgvDatosEstudiantes.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(259, 268);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 20);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Página:";
-            // 
-            // lblPaginasTotales
-            // 
-            this.lblPaginasTotales.AutoSize = true;
-            this.lblPaginasTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaginasTotales.Location = new System.Drawing.Point(464, 267);
-            this.lblPaginasTotales.Name = "lblPaginasTotales";
-            this.lblPaginasTotales.Size = new System.Drawing.Size(19, 20);
-            this.lblPaginasTotales.TabIndex = 10;
-            this.lblPaginasTotales.Text = "0";
-            // 
-            // lblPaginaActual
-            // 
-            this.lblPaginaActual.AutoSize = true;
-            this.lblPaginaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaginaActual.Location = new System.Drawing.Point(320, 269);
-            this.lblPaginaActual.Name = "lblPaginaActual";
-            this.lblPaginaActual.Size = new System.Drawing.Size(19, 20);
-            this.lblPaginaActual.TabIndex = 11;
-            this.lblPaginaActual.Text = "0";
             // 
             // ColLegajo
             // 
@@ -620,8 +621,8 @@
         private System.Windows.Forms.ToolStripButton tsAlta;
         private System.Windows.Forms.ToolStripButton tsEditar;
         private System.Windows.Forms.ToolStripButton tsBorrar;
-        private System.Windows.Forms.ToolStripButton tsMaterias;
-        private System.Windows.Forms.ToolStripButton tsFinales;
+        private System.Windows.Forms.ToolStripButton tsInscripcion;
+        private System.Windows.Forms.ToolStripButton tsHistorial;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripDropDownButton tsOrdenar;
         private System.Windows.Forms.ToolStripMenuItem estadoToolStripMenuItem;

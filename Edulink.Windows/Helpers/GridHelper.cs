@@ -1,4 +1,5 @@
 ﻿using EduLink.Entidades.Dtos;
+using EduLink.Entidades.Entidades;
 using System.Windows.Forms;
 
 namespace Edulink.Windows.Helpers
@@ -31,11 +32,16 @@ namespace Edulink.Windows.Helpers
                     r.Cells[8].Value = estudianteDto.DNI;
                     r.Cells[9].Value = estudianteDto.FechaNacimiento.ToString("dd/MM/yyyy");
                     break;
-                    //case ResultadoDto resultadoDto:
-                    //    r.Cells[0].Value = resultadoDto.NombrePrueba;
-                    //    r.Cells[1].Value = resultadoDto.ResultadoPrueba;
-                    //    r.Cells[2].Value = resultadoDto.NombreRango;
-                    //    break;
+                case MateriaDto materiaDto:
+                    r.Cells[0].Value = materiaDto.NombreMateria;
+                    r.Cells[1].Value = materiaDto.AnioDeLaMateria;
+                    r.Cells[2].Value = materiaDto.DiasYHorarios;
+
+                    var cell = (DataGridViewCheckBoxCell)r.Cells[4];
+                    cell.Value = false; // valor por defecto
+                    cell.ReadOnly = !materiaDto.CondicionLibre; // solo editable si la materia permite libre
+                    break;
+
                     //case ExamenDto examen:
                     //    r.Cells[0].Value = examen.NombreExamen;
                     //    r.Cells[1].Value = examen.NombrePrueba;

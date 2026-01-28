@@ -11,7 +11,6 @@ namespace EduLink.Entidades.Entidades
         public int MateriaId { get; set; }
         public string NombreMateria { get; set; }
         public int AnioCarrera { get; set; }
-        public DateTime Fecha { get; set; }   // si la usás para registrar alta/creación
         public int Cuatrimestre { get; set; }
 
         // Relación con Módulo
@@ -25,7 +24,7 @@ namespace EduLink.Entidades.Entidades
         public bool CondicionLibre { get; set; }
 
         // Relación con correlativas (muchos-a-muchos)
-        public ICollection<Correlativa> Correlativas { get; set; }
+        public ICollection<Materia> Correlativas { get; set; }
 
         public object Clone()
         {

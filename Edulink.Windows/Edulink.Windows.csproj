@@ -94,17 +94,17 @@
     <Compile Include="FrmEstudianteComboBox.Designer.cs">
       <DependentUpon>FrmEstudianteComboBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEstudianteExamenes.cs">
+    <Compile Include="FrmInscripcionExamenes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEstudianteExamenes.Designer.cs">
-      <DependentUpon>FrmEstudianteExamenes.cs</DependentUpon>
+    <Compile Include="FrmInscripcionExamenes.Designer.cs">
+      <DependentUpon>FrmInscripcionExamenes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEstudianteMaterias.cs">
+    <Compile Include="FrmInscripcionMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEstudianteMaterias.Designer.cs">
-      <DependentUpon>FrmEstudianteMaterias.cs</DependentUpon>
+    <Compile Include="FrmInscripcionMaterias.Designer.cs">
+      <DependentUpon>FrmInscripcionMaterias.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmExamenes.cs">
       <SubType>Form</SubType>
@@ -123,6 +123,12 @@
     </Compile>
     <Compile Include="FrmEstudiantes.Designer.cs">
       <DependentUpon>FrmEstudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSeleccionEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSeleccionEstudiante.Designer.cs">
+      <DependentUpon>FrmSeleccionEstudiante.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -171,11 +177,11 @@
     <EmbeddedResource Include="FrmEstudianteComboBox.resx">
       <DependentUpon>FrmEstudianteComboBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEstudianteExamenes.resx">
-      <DependentUpon>FrmEstudianteExamenes.cs</DependentUpon>
+    <EmbeddedResource Include="FrmInscripcionExamenes.resx">
+      <DependentUpon>FrmInscripcionExamenes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEstudianteMaterias.resx">
-      <DependentUpon>FrmEstudianteMaterias.cs</DependentUpon>
+    <EmbeddedResource Include="FrmInscripcionMaterias.resx">
+      <DependentUpon>FrmInscripcionMaterias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmExamenes.resx">
       <DependentUpon>FrmExamenes.cs</DependentUpon>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEstudiantes.resx">
       <DependentUpon>FrmEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSeleccionEstudiante.resx">
+      <DependentUpon>FrmSeleccionEstudiante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
@@ -308,6 +317,15 @@
       <Project>{e4786897-92ef-4612-9a3f-56729d23744e}</Project>
       <Name>EduLink.Servicios</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\historial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\historial1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Inscripcion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Combos\EstudianteCombo.cs" />
     <Compile Include="Dtos\EstudianteDto.cs" />
+    <Compile Include="Dtos\ModuloDto.cs" />
     <Compile Include="Entidades\Administrador.cs" />
     <Compile Include="Entidades\Carrera.cs" />
     <Compile Include="Entidades\Ciudad.cs" />

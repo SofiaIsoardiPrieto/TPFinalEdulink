@@ -74,10 +74,10 @@ namespace Edulink.Windows
         private void MostrarDatosEnGrilla()
         {
             GridHelper.LimpiarGrilla(dgvDatosEstudiantes);
-            foreach (var estudiante in _lista)
+            foreach (var estudianteDto in _lista)
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvDatosEstudiantes);
-                GridHelper.SetearFila(r, estudiante);
+                GridHelper.SetearFila(r, estudianteDto);
                 GridHelper.AgregarFila(dgvDatosEstudiantes, r);
             }
 
@@ -272,25 +272,25 @@ namespace Edulink.Windows
             }
         }
 
-        private void tsMaterias_Click(object sender, EventArgs e)
+        private void tsInscripcion_Click(object sender, EventArgs e)
         {
             if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
 
             var r = dgvDatosEstudiantes.SelectedRows[0];
             var estudiante = (EstudianteDto)r.Tag;
 
-            FrmEstudianteMaterias frm = new FrmEstudianteMaterias(estudiante.EstudianteId);
+            FrmSeleccionEstudiante frm = new FrmSeleccionEstudiante(_carreraId, estudiante.EstudianteId, true);
             frm.ShowDialog(this);
         }
 
-        private void tsFinales_Click(object sender, EventArgs e)
+        private void tsHistorial_Click(object sender, EventArgs e)
         {
             if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
 
             var r = dgvDatosEstudiantes.SelectedRows[0];
             var estudiante = (EstudianteDto)r.Tag;
 
-            FrmEstudianteExamenes frm = new FrmEstudianteExamenes(estudiante.EstudianteId);
+            FrmSeleccionEstudiante frm = new FrmSeleccionEstudiante(_carreraId, estudiante.EstudianteId, false);
             frm.ShowDialog(this);
         }
 
@@ -395,5 +395,6 @@ namespace Edulink.Windows
             Close();
         }
 
+       
     }
 }

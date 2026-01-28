@@ -10,13 +10,10 @@ using System.Windows.Forms;
 
 namespace Edulink.Windows
 {
-    public partial class FrmEstudianteMaterias : Form
+    public partial class FrmInscripcionExamenes : Form
     {
-        private int _estudianteId;
-        private List<MateriaDto> _lista;
-        public FrmEstudianteMaterias(int estudianteId)
+        public FrmInscripcionExamenes(int estudianteId)
         {
-            _estudianteId = estudianteId;
             InitializeComponent();
         }
     }

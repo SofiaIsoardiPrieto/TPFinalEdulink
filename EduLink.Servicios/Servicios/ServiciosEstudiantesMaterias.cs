@@ -11,87 +11,21 @@ namespace EduLink.Servicios.Servicios
 {
     public class ServiciosEstudiantesMaterias : IServiciosEstudiantesMaterias
     {
-        private readonly IRepositorioEstudiantes _repositorio;
+        private readonly IRepositorioEstudiantesMaterias _repositorio;
         public ServiciosEstudiantesMaterias()
         {
             _repositorio = new RepositorioEstudiantesMaterias();
         }
         /// <summary>
-        /// Determina si ya existe un estudiante 
-        /// </summary>
-        /// <param name="estudiante"></param>
-        /// <returns></returns>
-        public bool Existe(Estudiante estudiante)
-        {
-            try
-            {
-                return _repositorio.Existe(estudiante);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        /// <summary>
-        /// Agrega o edita un estudiante
-        /// </summary>
-        /// <param name="estudiante"></param>
-
-        public void Guardar(Estudiante estudiante)
-        {
-            try
-            {
-                if (estudiante.EstudianteId == 0)
-                {
-                    _repositorio.Agregar(estudiante);
-                }
-                else
-                {
-                    _repositorio.Editar(estudiante);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        /// <summary>
-        /// Determina si un estudiante esta relacionado con alguna otra entidad
-        /// </summary>NuevoId;
-        /// <param name="estudianteId"></param>
-        /// <returns></returns>
-        public bool EstaRelacionado(int estudianteId)
-        {
-            return _repositorio.EstaRelacionado(estudianteId);
-        }
-        /// <summary>
-        /// Borra un estudiante
+        /// Trae la cantidad de materias disponibles (filtra por correlativas) de un estudiante
         /// </summary>
         /// <param name="estudianteId"></param>
-        public void Borrar(int estudianteId)
-        {
-            try
-            {
-                _repositorio.Borrar(estudianteId);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        /// <summary>
-        /// obtiene la cantidad de estudiantes
-        /// </summary>
-        /// <param name="textoFiltro"></param>
         /// <returns></returns>
-        public int GetCantidad(int carreraId, int? edadMin = null, int? edadMax = null, int? anioAlta = null, int? ciudadId = null, string estado = null)
+        public int GetCantidad(int estudianteId)
         {
             try
             {
-                return _repositorio.GetCantidad(carreraId,edadMin,edadMax,anioAlta,ciudadId,estado);
+                return _repositorio.GetCantidad(estudianteId);
             }
             catch (Exception)
             {
@@ -100,81 +34,18 @@ namespace EduLink.Servicios.Servicios
             }
         }
         /// <summary>
-        /// Devuelve una lista de estudiantesDtos por pagina
+        /// Trae las materias disponibles (filtra por correlativas) de un estudiante por pagina
         /// </summary>
+        /// <param name="estudianteId"></param>
         /// <param name="registrosPorPagina"></param>
         /// <param name="paginaActual"></param>
-        /// <param name="textoFiltro"></param>
         /// <returns></returns>
-        public List<EstudianteDto> GetEstudiantesPorPagina(int carreraId, int cantidadPorPagina, int paginaActual, int? edadMin = null, int? edadMax = null, int? anioAlta = null, int? ciudadId = null, string estado = null)
+
+        public List<MateriaDto> GetMateriasPorEstudiantePorPagina(int estudianteId, int registrosPorPagina, int paginaActual)
         {
             try
             {
-                return _repositorio.GetEstudiantesPorPagina(carreraId,cantidadPorPagina, paginaActual,edadMin, edadMax, anioAlta, ciudadId, estado);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        /// <summary>
-        /// Devuelve una lista de estudiantes para cargar en un combo
-        /// </summary>
-        /// <returns></returns>
-        public List<EstudianteCombo> GetEstudiantesCombo()
-        {
-            try
-            {
-                return _repositorio.GetEstudiantesCombo();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        /// <summary>
-        /// Trae un estudiante por su Id
-        /// </summary>
-        /// <param name="estudianteId"></param>
-        /// <returns></returns>
-        public Estudiante GetEstudiantePorId(int estudianteId)
-        {
-            try
-            {
-                return _repositorio.GetEstudiantePorId(estudianteId);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        /// <summary>
-        /// Busca un estudiante por su DNI
-        /// </summary>
-        /// <param name="dni"></param>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public EstudianteDto GetEstudiantePorDNI(int dni)
-        {
-            try
-            {
-                return _repositorio.GetEstudiantePorDNI(dni);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public EstudianteDto GetEstudiantePorLegajo(int legajo)
-        {
-            try
-            {
-                return _repositorio.GetEstudiantePorLegajo(legajo);
+                return _repositorio.GetEstudiantesPorPagina(estudianteId, registrosPorPagina,paginaActual);
             }
             catch (Exception)
             {
