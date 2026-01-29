@@ -33,5 +33,23 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
+        /// <summary>
+        /// Obtiene la carrera por Id
+        /// </summary>
+        /// <param name="carreraId"></param>
+        /// <returns></returns>
+
+        public Carrera GetCarreraPorId(int carreraId)
+        {
+            try
+            {
+                return _repositorio.GetCarreraPorId(carreraId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

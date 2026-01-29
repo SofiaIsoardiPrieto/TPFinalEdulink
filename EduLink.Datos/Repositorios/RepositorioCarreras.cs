@@ -37,6 +37,19 @@ namespace EduLink.Datos.Repositorios
             }
         }
 
+        public Carrera GetCarreraPorId(int carreraId)
+        {
+            using (var conn = ConexionBD.GetConexion())
+            {
+                var carrera = conn.QuerySingleOrDefault<Carrera>(
+                    "sp_GetCarreraPorId",
+                    new { CarreraId = carreraId },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return carrera;
+            }
+        }
     }
 }
 

@@ -28,28 +28,36 @@ namespace EduLink.Datos.Repositorios
             {
                 int id = conn.QuerySingle<int>(
                     "sp_InsertEstudiante",
-                    new // se tuvo que  especificar los campos porque sino Dapper no mapea bien la CarreraId
+                    new
                     {
-                        Legajo = estudiante.Legajo,
-                        Nombres = estudiante.Nombres,
-                        Apellidos = estudiante.Apellidos,
-                        Direccion = estudiante.Direccion,
-                        Telefono = estudiante.Telefono,
-                        DNI = estudiante.DNI,
-                        Email = estudiante.Email,
-                        Contrasenia = estudiante.Contrasenia,
-                        FechaNacimiento = estudiante.FechaNacimiento, // Error aqui?
-                        CiudadId = estudiante.CiudadId,
-                        EstadoEstudiante = estudiante.EstadoEstudiante.ToString(),// La bdd no entiende de enums, por eso hay que pasarle un string
-                        CarreraId = estudiante.CarreraId,
-                        FechaAlta= estudiante.FechaAlta
+                        estudiante.Legajo,
+                        estudiante.Nombres,
+                        estudiante.Apellidos,
+                        estudiante.Direccion,
+                        estudiante.Telefono,
+                        estudiante.DNI,
+                        estudiante.Email,
+                        estudiante.Contrasenia,
+                        estudiante.FechaNacimiento,
+                        estudiante.CiudadId,
+                        EstadoEstudiante = estudiante.EstadoEstudiante.ToString(),
+                        estudiante.CarreraId,
+                        estudiante.FechaAlta
                     },
                     commandType: CommandType.StoredProcedure
                 );
 
-                estudiante.EstudianteId = id; // Para obtener el ID generado y guardarlo en el objeto, por la dudas que se lo necesite
+                estudiante.EstudianteId = id;
+
+                //Inscribir automáticamente en materias de primer año
+                conn.Execute(
+                    "sp_InscribirMateriasPrimerAnio",
+                    new { EstudianteId = id, CarreraId = estudiante.CarreraId },
+                    commandType: CommandType.StoredProcedure
+                );
             }
         }
+
         /// <summary>
         /// Determina si ya existe un estudiante en la base de datos
         /// </summary>

@@ -18,7 +18,23 @@ namespace EduLink.Datos.Repositorios
         {
 
         }
-       
+
+        public void Agregar(int estudianteId, int materiaId)
+        {
+            using (var conn = ConexionBD.GetConexion())
+            {
+                conn.Execute(
+                    "sp_InscribirMateriaEstudiante",
+                    new { EstudianteId = estudianteId,  MateriaId = materiaId },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+        }
+
+        public void Editar(int estudianteId, int materiaId)
+        {
+            throw new System.NotImplementedException();
+        }
 
         public int GetCantidad(int estudianteId)
         {

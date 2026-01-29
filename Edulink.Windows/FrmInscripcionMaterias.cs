@@ -1,5 +1,7 @@
 ﻿using Edulink.Windows.Helpers;
+using EduLink.Entidades.Dtos;
 using EduLink.Entidades.Entidades;
+using EduLink.Entidades.Enums;
 using EduLink.Servicios.Interfaces;
 using EduLink.Servicios.Servicios;
 using System;
@@ -12,7 +14,7 @@ namespace Edulink.Windows
     {
         private int _estudianteId;
         private List<MateriaDto> _lista;
-        private IServiciosEstudiantesMaterias _servicio;
+        private IServiciosEstudiantesMaterias _servicioEstudianteMaterias;
         //  private int _carreraId;
         private int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
         private int _registrosTotales;
@@ -21,14 +23,14 @@ namespace Edulink.Windows
         public FrmInscripcionMaterias(int estudianteId)
         {
             InitializeComponent();
-            _servicio = new ServiciosEstudiantesMaterias();
+            _servicioEstudianteMaterias = new ServiciosEstudiantesMaterias();
             _estudianteId = estudianteId;
 
         }
 
         private void FrmEstudianteMaterias_Load(object sender, EventArgs e)
         {
-            if (_servicio is null) // comprueba que el servicio se haya inicializado correctamente.
+            if (_servicioEstudianteMaterias is null) // comprueba que el servicio se haya inicializado correctamente.
             {
                 MessageBox.Show("Habilitar el servicio de SQL", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -40,7 +42,7 @@ namespace Edulink.Windows
         {
             try
             {
-                _registrosTotales = _servicio.GetCantidad(_estudianteId);// obtiene la cantidad total de registros.
+                _registrosTotales = _servicioEstudianteMaterias.GetCantidad(_estudianteId);// obtiene la cantidad total de registros.
                 _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);// calcula el total de páginas.
                 MostrarPaginado();
             }
@@ -51,7 +53,7 @@ namespace Edulink.Windows
         /// </summary>
         private void MostrarPaginado()
         {
-            _lista = _servicio.GetMateriasPorEstudiantePorPagina(_estudianteId, _registrosPorPagina, _paginaActual);
+            _lista = _servicioEstudianteMaterias.GetMateriasPorEstudiantePorPagina(_estudianteId, _registrosPorPagina, _paginaActual);
             MostrarDatosEnGrilla();
         }
         /// <summary>
@@ -59,10 +61,10 @@ namespace Edulink.Windows
         /// </summary>
         private void MostrarDatosEnGrilla()
         {
-            GridHelper.LimpiarGrilla(dgvMateriasEstudiantes);
+            GridHelper.LimpiarGrilla(dgvInscripcionMaterias);
             foreach (var materiaDto in _lista)
             {
-                DataGridViewRow r = GridHelper.ConstruirFila(dgvMateriasEstudiantes);
+                DataGridViewRow r = GridHelper.ConstruirFila(dgvInscripcionMaterias);
                 GridHelper.SetearFila(r, materiaDto);
                 GridHelper.AgregarFila(dgvDatosEstudiantes, r);
             }
@@ -136,5 +138,47 @@ namespace Edulink.Windows
 
             RecargarGrilla();
         }
+
+        private void tsVolver_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void tsInscribir_Click(object sender, EventArgs e)
+        {
+            if (dgvDatosEstudiantes.SelectedRows.Count == 0) { return; }
+
+            foreach (DataGridViewRow r in dgvDatosEstudiantes.SelectedRows)
+            {
+                MateriaDto materiaDto = (MateriaDto)r.Tag;
+
+                try
+                {
+                    if (!_servicioEstudianteMaterias.Existe(_estudianteId, materiaDto.MateriaId))
+                    {
+                        _servicioEstudianteMaterias.Guardar(_estudianteId, materiaDto.MateriaId);
+
+                        
+                            MessageBox.Show("Inscripción realizada correctamente.", "Éxito",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RecargarGrilla();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se puedo realizar la inscrpción", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+           
+               
+        
     }
 }

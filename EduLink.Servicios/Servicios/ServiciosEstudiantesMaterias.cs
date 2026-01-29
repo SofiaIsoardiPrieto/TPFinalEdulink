@@ -16,6 +16,30 @@ namespace EduLink.Servicios.Servicios
         {
             _repositorio = new RepositorioEstudiantesMaterias();
         }
+
+        public bool Existe(int estudianteId, int materiaId)
+        {
+            throw new NotImplementedException();
+        }
+        public void Guardar(int estudianteId, int materiaId)
+        {
+            try
+            {
+                if (estudianteId == 0 || materiaId==0)
+                {
+                    _repositorio.Agregar(estudianteId,materiaId);
+                }
+                else
+                {
+                    _repositorio.Editar(estudianteId,materiaId);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         /// <summary>
         /// Trae la cantidad de materias disponibles (filtra por correlativas) de un estudiante
         /// </summary>
@@ -53,5 +77,7 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
+
+       
     }
 }

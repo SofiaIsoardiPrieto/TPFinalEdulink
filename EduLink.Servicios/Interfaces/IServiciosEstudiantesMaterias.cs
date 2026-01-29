@@ -7,7 +7,9 @@ namespace EduLink.Servicios.Interfaces
 {
     public interface IServiciosEstudiantesMaterias
     {
+        bool Existe(int estudianteId, int materiaId);
         int GetCantidad(int estudianteId);
         List<MateriaDto> GetMateriasPorEstudiantePorPagina(int estudianteId, int registrosPorPagina, int paginaActual);
+        void Guardar(int estudianteId, int materiaId);
     }
 }

@@ -42,7 +42,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsVolver = new System.Windows.Forms.ToolStripButton();
             this.splitter2 = new System.Windows.Forms.Splitter();
-            this.dgvMateriasEstudiantes = new System.Windows.Forms.DataGridView();
+            this.dgvInscripcionMaterias = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +69,7 @@
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasEstudiantes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInscripcionMaterias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +89,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dgvMateriasEstudiantes);
+            this.splitContainer1.Panel2.Controls.Add(this.dgvInscripcionMaterias);
             this.splitContainer1.Panel2.Controls.Add(this.lblPaginaActual);
             this.splitContainer1.Panel2.Controls.Add(this.lblPaginasTotales);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
@@ -102,7 +102,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnPrimero);
             this.splitContainer1.Panel2.Controls.Add(this.splitter1);
             this.splitContainer1.Panel2.Controls.Add(this.dgvDatosEstudiantes);
-            this.splitContainer1.Size = new System.Drawing.Size(530, 375);
+            this.splitContainer1.Size = new System.Drawing.Size(549, 375);
             this.splitContainer1.SplitterDistance = 65;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -156,7 +156,7 @@
             this.tsVolver});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(355, 66);
+            this.toolStrip1.Size = new System.Drawing.Size(363, 66);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -170,6 +170,7 @@
             this.tsInscribir.Size = new System.Drawing.Size(60, 63);
             this.tsInscribir.Text = "Inscribir";
             this.tsInscribir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsInscribir.Click += new System.EventHandler(this.tsInscribir_Click);
             // 
             // tsBorrar
             // 
@@ -235,6 +236,7 @@
             this.tsVolver.Size = new System.Drawing.Size(51, 63);
             this.tsVolver.Text = "Volver";
             this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsVolver.Click += new System.EventHandler(this.tsVolver_Click);
             // 
             // splitter2
             // 
@@ -244,28 +246,28 @@
             this.splitter2.TabIndex = 1;
             this.splitter2.TabStop = false;
             // 
-            // dgvMateriasEstudiantes
+            // dgvInscripcionMaterias
             // 
-            this.dgvMateriasEstudiantes.AllowUserToAddRows = false;
-            this.dgvMateriasEstudiantes.AllowUserToDeleteRows = false;
-            this.dgvMateriasEstudiantes.AllowUserToResizeColumns = false;
-            this.dgvMateriasEstudiantes.AllowUserToResizeRows = false;
-            this.dgvMateriasEstudiantes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
-            this.dgvMateriasEstudiantes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvMateriasEstudiantes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvMateriasEstudiantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMateriasEstudiantes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvInscripcionMaterias.AllowUserToAddRows = false;
+            this.dgvInscripcionMaterias.AllowUserToDeleteRows = false;
+            this.dgvInscripcionMaterias.AllowUserToResizeColumns = false;
+            this.dgvInscripcionMaterias.AllowUserToResizeRows = false;
+            this.dgvInscripcionMaterias.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
+            this.dgvInscripcionMaterias.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvInscripcionMaterias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvInscripcionMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInscripcionMaterias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.ColHorario,
             this.ColCondicionLibre});
-            this.dgvMateriasEstudiantes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMateriasEstudiantes.Location = new System.Drawing.Point(0, 0);
-            this.dgvMateriasEstudiantes.Name = "dgvMateriasEstudiantes";
-            this.dgvMateriasEstudiantes.ReadOnly = true;
-            this.dgvMateriasEstudiantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMateriasEstudiantes.Size = new System.Drawing.Size(530, 246);
-            this.dgvMateriasEstudiantes.TabIndex = 12;
+            this.dgvInscripcionMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvInscripcionMaterias.Location = new System.Drawing.Point(0, 0);
+            this.dgvInscripcionMaterias.Name = "dgvInscripcionMaterias";
+            this.dgvInscripcionMaterias.ReadOnly = true;
+            this.dgvInscripcionMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInscripcionMaterias.Size = new System.Drawing.Size(549, 246);
+            this.dgvInscripcionMaterias.TabIndex = 12;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -401,7 +403,7 @@
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.splitter1.Location = new System.Drawing.Point(0, 246);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(530, 60);
+            this.splitter1.Size = new System.Drawing.Size(549, 60);
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
@@ -424,7 +426,7 @@
             this.dgvDatosEstudiantes.Name = "dgvDatosEstudiantes";
             this.dgvDatosEstudiantes.ReadOnly = true;
             this.dgvDatosEstudiantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatosEstudiantes.Size = new System.Drawing.Size(530, 306);
+            this.dgvDatosEstudiantes.Size = new System.Drawing.Size(549, 306);
             this.dgvDatosEstudiantes.TabIndex = 0;
             // 
             // ColNombre
@@ -453,7 +455,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
-            this.ClientSize = new System.Drawing.Size(530, 375);
+            this.ClientSize = new System.Drawing.Size(549, 375);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmInscripcionMaterias";
@@ -472,7 +474,7 @@
             this.toolStripContainer1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasEstudiantes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInscripcionMaterias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantes)).EndInit();
             this.ResumeLayout(false);
 
@@ -496,7 +498,7 @@
         private System.Windows.Forms.Label lblPaginasTotales;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgvMateriasEstudiantes;
+        private System.Windows.Forms.DataGridView dgvInscripcionMaterias;
         private System.Windows.Forms.Splitter splitter2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;

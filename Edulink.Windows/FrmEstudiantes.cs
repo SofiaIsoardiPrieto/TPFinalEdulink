@@ -14,7 +14,8 @@ namespace Edulink.Windows
     public partial class FrmEstudiantes : Form
     {
         // Se usa readonly para asegurar que no se reasigne fuera del constructor.
-        private readonly IServiciosEstudiantes _servicio;
+        private readonly IServiciosEstudiantes _servicioEstudiante;
+        private readonly IServiciosCarreras _servicioCarreras;
         private List<EstudianteDto> _lista;
         private int _carreraId;
         private int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
@@ -31,14 +32,15 @@ namespace Edulink.Windows
         public FrmEstudiantes(int carreraId)
         {
             InitializeComponent(); // Inicializa los controles del formulario.
-            _servicio = new ServiciosEstudiantes(); // Se instancia el servicio concreto.
+            _servicioEstudiante = new ServiciosEstudiantes(); // Se instancia el servicio concreto.
             // ¿Sería útil usar inyección de dependencias para mayor flexibilidad?
             _carreraId = carreraId;
+            _servicioCarreras = new ServiciosCarreras();
         }
 
         private void FrmEstudiantes_Load(object sender, EventArgs e)
         {
-            if (_servicio is null) // comprueba que el servicio se haya inicializado correctamente.
+            if (_servicioEstudiante is null) // comprueba que el servicio se haya inicializado correctamente.
             {
                 MessageBox.Show("Habilitar el servicio de SQL", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -54,7 +56,7 @@ namespace Edulink.Windows
         {
             try
             {
-                _registrosTotales = _servicio.GetCantidad(_carreraId, _edadMin, _edadMax, _anioAlta, _ciudadId, _estadoEstudiante.ToString());// obtiene la cantidad total de registros.
+                _registrosTotales = _servicioEstudiante.GetCantidad(_carreraId, _edadMin, _edadMax, _anioAlta, _ciudadId, _estadoEstudiante.ToString());// obtiene la cantidad total de registros.
                 _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);// calcula el total de páginas.
                 MostrarPaginado();
             }
@@ -65,7 +67,7 @@ namespace Edulink.Windows
         /// </summary>
         private void MostrarPaginado()
         {
-            _lista = _servicio.GetEstudiantesPorPagina(_carreraId, _registrosPorPagina, _paginaActual, _edadMin, _edadMax, _anioAlta, _ciudadId, _estadoEstudiante.ToString());
+            _lista = _servicioEstudiante.GetEstudiantesPorPagina(_carreraId, _registrosPorPagina, _paginaActual, _edadMin, _edadMax, _anioAlta, _ciudadId, _estadoEstudiante.ToString());
             MostrarDatosEnGrilla();
         }
         /// <summary>
@@ -130,6 +132,9 @@ namespace Edulink.Windows
             }
 
         }
+        /// <summary>
+        /// Limpia los filtros aplicados y actualiza la lista de estudiantes.
+        /// </summary>
         private void LimpiarBotonesYActualizarLista()
         {
             _filterOn = false;
@@ -147,7 +152,6 @@ namespace Edulink.Windows
             dNIToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
             legajoToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
             FechaIngresoToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
-
 
             RecargarGrilla();
         }
@@ -207,7 +211,7 @@ namespace Edulink.Windows
             var r = dgvDatosEstudiantes.SelectedRows[0];
             EstudianteDto estudianteDto = (EstudianteDto)r.Tag;
             EstudianteDto estudianteDtoCopia = (EstudianteDto)estudianteDto.Clone();
-            Estudiante estudiante = _servicio.GetEstudiantePorId(estudianteDto.EstudianteId);
+            Estudiante estudiante = _servicioEstudiante.GetEstudiantePorId(estudianteDto.EstudianteId);
             try
             {
                 FrmEstudianteAE frm = new FrmEstudianteAE(_carreraId) { Text = "Editar Estudiante" };
@@ -250,11 +254,11 @@ namespace Edulink.Windows
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (dr == DialogResult.No) { return; }
-                if (!_servicio.EstaRelacionado(estudianteDto.EstudianteId))
+                if (!_servicioEstudiante.EstaRelacionado(estudianteDto.EstudianteId))
                 {
-                    _servicio.Borrar(estudianteDto.EstudianteId);
+                    _servicioEstudiante.Borrar(estudianteDto.EstudianteId);
                     GridHelper.QuitarFila(dgvDatosEstudiantes, r);
-                    _registrosTotales = _servicio.GetCantidad(_carreraId);
+                    _registrosTotales = _servicioEstudiante.GetCantidad(_carreraId);
                     _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);
                     lblRegistros.Text = _registrosTotales.ToString();
                     lblPaginasTotales.Text = _paginasTotales.ToString();
@@ -277,9 +281,9 @@ namespace Edulink.Windows
             if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
 
             var r = dgvDatosEstudiantes.SelectedRows[0];
-            var estudiante = (EstudianteDto)r.Tag;
+            var estudianteDto = (EstudianteDto)r.Tag;
 
-            FrmSeleccionEstudiante frm = new FrmSeleccionEstudiante(_carreraId, estudiante.EstudianteId, true);
+            FrmSeleccionEstudiante frm = new FrmSeleccionEstudiante(_carreraId, estudianteDto.EstudianteId, true);
             frm.ShowDialog(this);
         }
 
@@ -298,7 +302,6 @@ namespace Edulink.Windows
         {
             LimpiarBotonesYActualizarLista();
         }
-
 
         private void regularToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -353,7 +356,7 @@ namespace Edulink.Windows
             if (dr == DialogResult.Cancel) return;
 
             int legajo = frm.GetLegajo();
-            EstudianteDto estudianteDto = _servicio.GetEstudiantePorLegajo(legajo);
+            EstudianteDto estudianteDto = _servicioEstudiante.GetEstudiantePorLegajo(legajo);
 
             if (estudianteDto != null)
             {
@@ -375,7 +378,7 @@ namespace Edulink.Windows
             if (dr == DialogResult.Cancel) return;
 
             int dni = frm.GetDNI();
-            EstudianteDto estudianteDto = _servicio.GetEstudiantePorDNI(dni);
+            EstudianteDto estudianteDto = _servicioEstudiante.GetEstudiantePorDNI(dni);
 
             if (estudianteDto != null)
             {
@@ -390,11 +393,24 @@ namespace Edulink.Windows
             dNIToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
         }
 
+        private void toolCertificado_Click(object sender, EventArgs e)
+        {
+            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
+
+            var r = dgvDatosEstudiantes.SelectedRows[0];
+            var estudianteDto = (EstudianteDto)r.Tag;
+            var carrera= _servicioCarreras.GetCarreraPorId(_carreraId);
+            if (estudianteDto.EstadoEstudiante==EstadoEstudiante.Regular.ToString())
+            {
+                
+                ImprimirHelper.CrearCertificadoAlumnoRegular(estudianteDto,carrera.NombreCarrera);
+            }
+
+        }
+
         private void tsVolver_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-       
     }
 }
