@@ -56,8 +56,7 @@
     <Compile Include="Entidades\Correlativa.cs" />
     <Compile Include="Entidades\Materia.cs" />
     <Compile Include="Entidades\Modulo.cs" />
-    <Compile Include="Enums\EstadoExamen.cs" />
-    <Compile Include="Enums\EstadoMateria.cs" />
+    <Compile Include="Enums\Estado.cs" />
     <Compile Include="Enums\EstadoEstudiante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

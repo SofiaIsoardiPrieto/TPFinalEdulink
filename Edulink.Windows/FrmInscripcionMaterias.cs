@@ -6,6 +6,7 @@ using EduLink.Servicios.Interfaces;
 using EduLink.Servicios.Servicios;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Edulink.Windows
@@ -15,6 +16,8 @@ namespace Edulink.Windows
         private int _estudianteId;
         private List<MateriaDto> _lista;
         private IServiciosEstudiantesMaterias _servicioEstudianteMaterias;
+        private int _anioMateria;
+        private bool _inscripto;
         //  private int _carreraId;
         private int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
         private int _registrosTotales;
@@ -42,7 +45,7 @@ namespace Edulink.Windows
         {
             try
             {
-                _registrosTotales = _servicioEstudianteMaterias.GetCantidad(_estudianteId);// obtiene la cantidad total de registros.
+                _registrosTotales = _servicioEstudianteMaterias.GetCantidad(_estudianteId, _anioMateria,_inscripto);// obtiene la cantidad total de registros.
                 _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);// calcula el total de páginas.
                 MostrarPaginado();
             }
@@ -53,7 +56,7 @@ namespace Edulink.Windows
         /// </summary>
         private void MostrarPaginado()
         {
-            _lista = _servicioEstudianteMaterias.GetMateriasPorEstudiantePorPagina(_estudianteId, _registrosPorPagina, _paginaActual);
+            _lista = _servicioEstudianteMaterias.GetMateriasPorEstudiantePorPagina(_estudianteId, _anioMateria, _inscripto, _registrosPorPagina, _paginaActual);
             MostrarDatosEnGrilla();
         }
         /// <summary>
@@ -66,15 +69,26 @@ namespace Edulink.Windows
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvInscripcionMaterias);
                 GridHelper.SetearFila(r, materiaDto);
-                GridHelper.AgregarFila(dgvDatosEstudiantes, r);
+
+                // Cambia color si la materia ya está inscripta
+                if (_inscripto) // o la condición que uses para saber si está inscripta
+                {
+                    r.DefaultCellStyle.BackColor = Color.FromArgb(230, 230, 250);
+                }
+                else
+                {
+                    r.DefaultCellStyle.BackColor = Color.FromArgb(249, 245, 253);
+                }
+
+                    GridHelper.AgregarFila(dgvInscripcionMaterias, r);
             }
 
             lblPaginaActual.Text = _paginaActual.ToString();
             lblPaginasTotales.Text = _paginasTotales.ToString();
             lblRegistros.Text = _registrosTotales.ToString();
             ActualizarBotonesPaginado();
-
         }
+
         /// <summary>
         /// Actualiza el estado (habilitado/deshabilitado) de los botones de paginación
         /// </summary>
@@ -120,21 +134,16 @@ namespace Edulink.Windows
         }
         private void LimpiarBotonesYActualizarLista()
         {
-            //_filterOn = false;
-            //_estadoEstudiante = null;
-            //_edadMin = null;
-            //_edadMax = null;
-            //_anioAlta = null;
-            //_ciudadId = null;
+            _inscripto = false;
+            _anioMateria = 0;
 
-            //edadToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
-            //regularToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
-            //libreToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
-            //recibidoToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
-            //CiudadToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
-            //dNIToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
-            //legajoToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
-            //FechaIngresoToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+
+            erToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+            doToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+            erToolStripMenuItem1.BackColor = Color.FromArgb(249, 245, 253); // color base
+            inscriptoToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+            disponiblesToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+
 
             RecargarGrilla();
         }
@@ -147,38 +156,158 @@ namespace Edulink.Windows
         private void tsInscribir_Click(object sender, EventArgs e)
         {
             if (dgvDatosEstudiantes.SelectedRows.Count == 0) { return; }
+            DataGridViewRow r = dgvDatosEstudiantes.SelectedRows[0];
+            MateriaDto materiaDto = (MateriaDto)r.Tag;
 
-            foreach (DataGridViewRow r in dgvDatosEstudiantes.SelectedRows)
+            try
             {
-                MateriaDto materiaDto = (MateriaDto)r.Tag;
-
-                try
+                if (!_servicioEstudianteMaterias.Existe(_estudianteId, materiaDto.MateriaId))
                 {
-                    if (!_servicioEstudianteMaterias.Existe(_estudianteId, materiaDto.MateriaId))
-                    {
-                        _servicioEstudianteMaterias.Guardar(_estudianteId, materiaDto.MateriaId);
+                    _servicioEstudianteMaterias.Guardar(_estudianteId, materiaDto.MateriaId);
 
-                        
-                            MessageBox.Show("Inscripción realizada correctamente.", "Éxito",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        RecargarGrilla();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se puedo realizar la inscrpción", "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        
-                    }
+
+                    MessageBox.Show("Inscripción realizada correctamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RecargarGrilla();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Mensaje",
+                    MessageBox.Show("No se puedo realizar la inscrpción", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
         }
-           
-               
-        
+
+
+        private void tsEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvInscripcionMaterias.SelectedRows.Count == 0) { return; }
+            //var r = dgvDatosEstudiantes.SelectedRows[0];
+            //EstudianteDto estudianteDto = (EstudianteDto)r.Tag;
+            //EstudianteDto estudianteDtoCopia = (EstudianteDto)estudianteDto.Clone();
+            //Estudiante estudiante = _servicioEstudiante.GetEstudiantePorId(estudianteDto.EstudianteId);
+            //try
+            //{
+            //    FrmEstudianteAE frm = new FrmEstudianteAE(_carreraId) { Text = "Editar Estudiante" };
+            //    frm.SetEstudiante(estudiante);
+            //    DialogResult dr = frm.ShowDialog(this);
+            //    if (dr == DialogResult.Cancel)
+            //    {
+            //        GridHelper.SetearFila(r, estudianteDtoCopia);
+            //        return;
+            //    }
+            //    estudiante = frm.GetEstudiante();
+            //    if (estudianteDto != null)
+            //    {
+            //        GridHelper.SetearFila(r, estudianteDto);
+            //    }
+            //    else
+            //    {
+            //        GridHelper.SetearFila(r, estudianteDtoCopia);
+            //    }
+            //    RecargarGrilla();
+            //    MostrarDatosEnGrilla();
+            //}
+            //catch (Exception ex)
+            //{
+            //    GridHelper.SetearFila(r, estudianteDtoCopia);
+            //    MessageBox.Show(ex.Message, "Error",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
+
+        private void tsBorrar_Click(object sender, EventArgs e)
+        {
+            if (dgvInscripcionMaterias.SelectedRows.Count == 0) return;
+            var r = dgvInscripcionMaterias.SelectedRows[0];
+            MateriaDto materiaDto = (MateriaDto)r.Tag;
+            try
+            {
+                DialogResult dr = MessageBox.Show("¿Desea dar de baja el registro seleccionado?", // Se le pone como alumno libre
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dr == DialogResult.No) { return; }
+
+               // if (!_servicioEstudianteMaterias.EstaRelacionado(materiaDto.MateriaId, _estudianteId)) return; // es necesario? deberia de salir un cartel? deberia invertir el if?
+
+               // _servicioEstudianteMaterias.Borrar(materiaDto.MateriaId, _estudianteId);
+              
+                MessageBox.Show($"Se eliminó la inscripcion a la materia {materiaDto.NombreMateria}", "Confirmación", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarDatosEnGrilla();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void inscriptoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _inscripto = true;
+            erToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
+            RecargarGrilla();
+        }
+
+        private void disponiblesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _inscripto = false;
+            erToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
+            RecargarGrilla();
+        }
+
+        //todo  : imprimir certificado de inscripcion de materias
+        private void tsCertificado_Click(object sender, EventArgs e)
+        {
+            //ImprimirHelper.CertificadoIncripcionMaterias(_estudianteId);
+        }
+
+        private void tsActualizar_Click(object sender, EventArgs e)
+        {
+            LimpiarBotonesYActualizarLista();
+        }
+
+        private void erToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            _anioMateria = 1;
+            erToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
+            RecargarGrilla();
+        }
+
+        private void doToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _anioMateria = 2;
+            doToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
+            RecargarGrilla();
+        }
+
+        private void erToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            _anioMateria = 3;
+            erToolStripMenuItem1.BackColor = Color.FromArgb(230, 230, 250);
+            RecargarGrilla();
+        }
+
+        private void dgvInscripcionMaterias_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvInscripcionMaterias_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

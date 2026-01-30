@@ -204,10 +204,7 @@ namespace Edulink.Windows
 
         private void tsEditar_Click(object sender, EventArgs e)
         {
-            if (dgvDatosEstudiantes.SelectedRows.Count == 0)
-            {
-                return;
-            }
+            if (dgvDatosEstudiantes.SelectedRows.Count == 0) { return; }
             var r = dgvDatosEstudiantes.SelectedRows[0];
             EstudianteDto estudianteDto = (EstudianteDto)r.Tag;
             EstudianteDto estudianteDtoCopia = (EstudianteDto)estudianteDto.Clone();
@@ -254,7 +251,7 @@ namespace Edulink.Windows
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (dr == DialogResult.No) { return; }
-                if (!_servicioEstudiante.EstaRelacionado(estudianteDto.EstudianteId))
+                if (!_servicioEstudiante.EstaRelacionado(estudianteDto.EstudianteId))// Veo si el estudiante esta en otras tablas, problema de FK
                 {
                     _servicioEstudiante.Borrar(estudianteDto.EstudianteId);
                     GridHelper.QuitarFila(dgvDatosEstudiantes, r);

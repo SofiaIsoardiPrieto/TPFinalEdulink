@@ -34,19 +34,23 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsInscribir = new System.Windows.Forms.ToolStripButton();
+            this.tsEditar = new System.Windows.Forms.ToolStripButton();
             this.tsBorrar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsFiltrar = new System.Windows.Forms.ToolStripButton();
-            this.tsBuscar = new System.Windows.Forms.ToolStripButton();
+            this.tsFiltrar = new System.Windows.Forms.ToolStripDropDownButton();
+            this.añoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.erToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.erToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.inscrpciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inscriptoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disponiblesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsCertificado = new System.Windows.Forms.ToolStripButton();
             this.tsActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsVolver = new System.Windows.Forms.ToolStripButton();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.dgvInscripcionMaterias = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColCondicionLibre = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblPaginaActual = new System.Windows.Forms.Label();
             this.lblPaginasTotales = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -62,6 +66,10 @@
             this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCondicionLibre = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -102,7 +110,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnPrimero);
             this.splitContainer1.Panel2.Controls.Add(this.splitter1);
             this.splitContainer1.Panel2.Controls.Add(this.dgvDatosEstudiantes);
-            this.splitContainer1.Size = new System.Drawing.Size(549, 375);
+            this.splitContainer1.Size = new System.Drawing.Size(655, 375);
             this.splitContainer1.SplitterDistance = 65;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -131,10 +139,10 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(366, 0);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(459, 0);
             this.toolStripContainer1.Location = new System.Drawing.Point(164, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(366, 65);
+            this.toolStripContainer1.Size = new System.Drawing.Size(459, 65);
             this.toolStripContainer1.TabIndex = 5;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -147,16 +155,17 @@
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsInscribir,
+            this.tsEditar,
             this.tsBorrar,
             this.toolStripSeparator1,
             this.tsFiltrar,
-            this.tsBuscar,
+            this.tsCertificado,
             this.tsActualizar,
             this.toolStripSeparator2,
             this.tsVolver});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(363, 66);
+            this.toolStrip1.Size = new System.Drawing.Size(456, 66);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -172,6 +181,18 @@
             this.tsInscribir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsInscribir.Click += new System.EventHandler(this.tsInscribir_Click);
             // 
+            // tsEditar
+            // 
+            this.tsEditar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsEditar.Image = global::Edulink.Windows.Properties.Resources.editar1;
+            this.tsEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsEditar.Name = "tsEditar";
+            this.tsEditar.Size = new System.Drawing.Size(48, 63);
+            this.tsEditar.Text = "Editar";
+            this.tsEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
+            // 
             // tsBorrar
             // 
             this.tsBorrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
@@ -182,6 +203,7 @@
             this.tsBorrar.Size = new System.Drawing.Size(51, 63);
             this.tsBorrar.Text = "Borrar";
             this.tsBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBorrar.Click += new System.EventHandler(this.tsBorrar_Click);
             // 
             // toolStripSeparator1
             // 
@@ -190,25 +212,83 @@
             // 
             // tsFiltrar
             // 
+            this.tsFiltrar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.añoToolStripMenuItem,
+            this.inscrpciónToolStripMenuItem});
             this.tsFiltrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
             this.tsFiltrar.Image = global::Edulink.Windows.Properties.Resources.filtrar1;
             this.tsFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsFiltrar.Name = "tsFiltrar";
-            this.tsFiltrar.Size = new System.Drawing.Size(47, 63);
+            this.tsFiltrar.Size = new System.Drawing.Size(56, 63);
             this.tsFiltrar.Text = "Filtrar";
             this.tsFiltrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // tsBuscar
+            // añoToolStripMenuItem
             // 
-            this.tsBuscar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsBuscar.Image = global::Edulink.Windows.Properties.Resources.buscar1;
-            this.tsBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBuscar.Name = "tsBuscar";
-            this.tsBuscar.Size = new System.Drawing.Size(52, 63);
-            this.tsBuscar.Text = "Buscar";
-            this.tsBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.añoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.erToolStripMenuItem,
+            this.doToolStripMenuItem,
+            this.erToolStripMenuItem1});
+            this.añoToolStripMenuItem.Name = "añoToolStripMenuItem";
+            this.añoToolStripMenuItem.Size = new System.Drawing.Size(139, 28);
+            this.añoToolStripMenuItem.Text = "Año";
+            // 
+            // erToolStripMenuItem
+            // 
+            this.erToolStripMenuItem.Name = "erToolStripMenuItem";
+            this.erToolStripMenuItem.Size = new System.Drawing.Size(103, 28);
+            this.erToolStripMenuItem.Text = "1er";
+            this.erToolStripMenuItem.Click += new System.EventHandler(this.erToolStripMenuItem_Click);
+            // 
+            // doToolStripMenuItem
+            // 
+            this.doToolStripMenuItem.Name = "doToolStripMenuItem";
+            this.doToolStripMenuItem.Size = new System.Drawing.Size(103, 28);
+            this.doToolStripMenuItem.Text = "2do";
+            this.doToolStripMenuItem.Click += new System.EventHandler(this.doToolStripMenuItem_Click);
+            // 
+            // erToolStripMenuItem1
+            // 
+            this.erToolStripMenuItem1.Name = "erToolStripMenuItem1";
+            this.erToolStripMenuItem1.Size = new System.Drawing.Size(103, 28);
+            this.erToolStripMenuItem1.Text = "3er";
+            this.erToolStripMenuItem1.Click += new System.EventHandler(this.erToolStripMenuItem1_Click);
+            // 
+            // inscrpciónToolStripMenuItem
+            // 
+            this.inscrpciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inscriptoToolStripMenuItem,
+            this.disponiblesToolStripMenuItem});
+            this.inscrpciónToolStripMenuItem.Name = "inscrpciónToolStripMenuItem";
+            this.inscrpciónToolStripMenuItem.Size = new System.Drawing.Size(139, 28);
+            this.inscrpciónToolStripMenuItem.Text = "Inscrpción";
+            // 
+            // inscriptoToolStripMenuItem
+            // 
+            this.inscriptoToolStripMenuItem.Name = "inscriptoToolStripMenuItem";
+            this.inscriptoToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
+            this.inscriptoToolStripMenuItem.Text = "Inscripto";
+            this.inscriptoToolStripMenuItem.Click += new System.EventHandler(this.inscriptoToolStripMenuItem_Click);
+            // 
+            // disponiblesToolStripMenuItem
+            // 
+            this.disponiblesToolStripMenuItem.Name = "disponiblesToolStripMenuItem";
+            this.disponiblesToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
+            this.disponiblesToolStripMenuItem.Text = "Disponibles";
+            this.disponiblesToolStripMenuItem.Click += new System.EventHandler(this.disponiblesToolStripMenuItem_Click);
+            // 
+            // tsCertificado
+            // 
+            this.tsCertificado.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsCertificado.Image = global::Edulink.Windows.Properties.Resources.certificado;
+            this.tsCertificado.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsCertificado.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCertificado.Name = "tsCertificado";
+            this.tsCertificado.Size = new System.Drawing.Size(77, 63);
+            this.tsCertificado.Text = "Certificado";
+            this.tsCertificado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsCertificado.Click += new System.EventHandler(this.tsCertificado_Click);
             // 
             // tsActualizar
             // 
@@ -220,6 +300,7 @@
             this.tsActualizar.Size = new System.Drawing.Size(70, 63);
             this.tsActualizar.Text = "Actualizar";
             this.tsActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsActualizar.Click += new System.EventHandler(this.tsActualizar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -263,39 +344,14 @@
             this.ColCondicionLibre});
             this.dgvInscripcionMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInscripcionMaterias.Location = new System.Drawing.Point(0, 0);
+            this.dgvInscripcionMaterias.MultiSelect = false;
             this.dgvInscripcionMaterias.Name = "dgvInscripcionMaterias";
             this.dgvInscripcionMaterias.ReadOnly = true;
             this.dgvInscripcionMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInscripcionMaterias.Size = new System.Drawing.Size(549, 246);
+            this.dgvInscripcionMaterias.Size = new System.Drawing.Size(655, 246);
             this.dgvInscripcionMaterias.TabIndex = 12;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Año";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // ColHorario
-            // 
-            this.ColHorario.HeaderText = "Horario";
-            this.ColHorario.Name = "ColHorario";
-            this.ColHorario.ReadOnly = true;
-            // 
-            // ColCondicionLibre
-            // 
-            this.ColCondicionLibre.HeaderText = "Libre";
-            this.ColCondicionLibre.Name = "ColCondicionLibre";
-            this.ColCondicionLibre.ReadOnly = true;
-            this.ColCondicionLibre.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColCondicionLibre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvInscripcionMaterias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInscripcionMaterias_CellClick);
+            this.dgvInscripcionMaterias.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInscripcionMaterias_CellValueChanged);
             // 
             // lblPaginaActual
             // 
@@ -403,7 +459,7 @@
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.splitter1.Location = new System.Drawing.Point(0, 246);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(549, 60);
+            this.splitter1.Size = new System.Drawing.Size(655, 60);
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
@@ -426,7 +482,7 @@
             this.dgvDatosEstudiantes.Name = "dgvDatosEstudiantes";
             this.dgvDatosEstudiantes.ReadOnly = true;
             this.dgvDatosEstudiantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatosEstudiantes.Size = new System.Drawing.Size(549, 306);
+            this.dgvDatosEstudiantes.Size = new System.Drawing.Size(655, 306);
             this.dgvDatosEstudiantes.TabIndex = 0;
             // 
             // ColNombre
@@ -450,12 +506,40 @@
             this.ColEstado.Name = "ColEstado";
             this.ColEstado.ReadOnly = true;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Año";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // ColHorario
+            // 
+            this.ColHorario.HeaderText = "Horario";
+            this.ColHorario.Name = "ColHorario";
+            this.ColHorario.ReadOnly = true;
+            // 
+            // ColCondicionLibre
+            // 
+            this.ColCondicionLibre.HeaderText = "Libre";
+            this.ColCondicionLibre.Name = "ColCondicionLibre";
+            this.ColCondicionLibre.ReadOnly = true;
+            this.ColCondicionLibre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ColCondicionLibre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // FrmInscripcionMaterias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
-            this.ClientSize = new System.Drawing.Size(549, 375);
+            this.ClientSize = new System.Drawing.Size(655, 375);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmInscripcionMaterias";
@@ -506,15 +590,23 @@
         private System.Windows.Forms.ToolStripButton tsInscribir;
         private System.Windows.Forms.ToolStripButton tsBorrar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsFiltrar;
-        private System.Windows.Forms.ToolStripButton tsBuscar;
+        private System.Windows.Forms.ToolStripButton tsCertificado;
         private System.Windows.Forms.ToolStripButton tsActualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsVolver;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolStripButton tsEditar;
+        private System.Windows.Forms.ToolStripDropDownButton tsFiltrar;
+        private System.Windows.Forms.ToolStripMenuItem añoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inscrpciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inscriptoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disponiblesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem erToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem doToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem erToolStripMenuItem1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColHorario;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColCondicionLibre;
-        private System.Windows.Forms.Label label5;
     }
 }

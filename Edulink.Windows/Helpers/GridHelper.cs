@@ -39,7 +39,7 @@ namespace Edulink.Windows.Helpers
 
                     var cell = (DataGridViewCheckBoxCell)r.Cells[4];
                     cell.Value = false; // valor por defecto
-                    cell.ReadOnly = !materiaDto.CondicionLibre; // solo editable si la materia permite libre
+                    cell.ReadOnly = !materiaDto.EsLibre; // solo editable si la materia permite libre
                     break;
 
                     //case ExamenDto examen:

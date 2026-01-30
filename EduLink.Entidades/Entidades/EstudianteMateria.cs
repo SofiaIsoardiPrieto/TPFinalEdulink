@@ -13,10 +13,12 @@ namespace EduLink.Entidades.Entidades
         public int EstudianteId { get; set; }
         public int MateriaId { get; set; }
         public int AnioCursado { get; set; }
-        public EstadoMateria EstadoMateria { get; set; }
+        public int Nota { get; set; }
+        public Estado EstadoMateria { get; set; }
+
         public Estudiante Estudiante { get; set; } 
         public Materia Materia { get; set; }
-
+        public bool EsLibre { get; set; }
         public object Clone()
         {
             return this.MemberwiseClone();
