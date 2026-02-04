@@ -34,20 +34,21 @@ namespace Edulink.Windows.Helpers
                     break;
                 case MateriaDto materiaDto:
                     r.Cells[0].Value = materiaDto.NombreMateria;
-                    r.Cells[1].Value = materiaDto.AnioDeLaMateria;
+                    r.Cells[1].Value = materiaDto.AnioCarrera;
                     r.Cells[2].Value = materiaDto.DiasYHorarios;
 
-                    var cell = (DataGridViewCheckBoxCell)r.Cells[4];
+                    var cell = (DataGridViewCheckBoxCell)r.Cells[3];
                     cell.Value = false; // valor por defecto
                     cell.ReadOnly = !materiaDto.EsLibre; // solo editable si la materia permite libre
                     break;
-
-                    //case ExamenDto examen:
-                    //    r.Cells[0].Value = examen.NombreExamen;
-                    //    r.Cells[1].Value = examen.NombrePrueba;
-                    //    r.Cells[2].Value = examen.Rango;
-                    //    r.Cells[3].Value = examen.NombreTipoRango;
-                    //    break;
+                case ExamenDto examenDto:
+                    r.Cells[0].Value = examenDto.NombreMateria;
+                    r.Cells[1].Value = examenDto.AnioCarrera;
+                    r.Cells[2].Value = examenDto.FechaExamen.ToString("dd/MM/yyyy");
+                    cell = (DataGridViewCheckBoxCell)r.Cells[3];
+                    cell.Value = examenDto.EsLibre; // valor por defecto, viene de la materia
+                    cell.ReadOnly = true; // no se puede editar, depende de la materia
+                    break;
                     //case Protocolo protocolo:
                     //    r.Cells[0].Value = protocolo.NombrePaciente;
                     //    r.Cells[1].Value = $"{protocolo.FechaRealizacion.Day}/{protocolo.FechaRealizacion.Month}/{protocolo.FechaRealizacion.Year}";

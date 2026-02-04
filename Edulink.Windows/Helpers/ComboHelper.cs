@@ -1,6 +1,7 @@
 ﻿using EduLink.Entidades.Entidades;
 using EduLink.Servicios.Interfaces;
 using EduLink.Servicios.Servicios;
+using System;
 using System.Windows.Forms;
 
 namespace Edulink.Windows.Helpers
@@ -26,18 +27,35 @@ namespace Edulink.Windows.Helpers
 
         public static void CargarComboCiudades(ref ComboBox combo)
         {
-            IServiciosCiudades serviciosCuidadess = new ServiciosCiudades();
-            var lista = serviciosCuidadess.GetCiudadesCombo();
-            var defaultPaciente = new Ciudad()
+            IServiciosCiudades serviciosCuidades = new ServiciosCiudades();
+            var lista = serviciosCuidades.GetCiudadesCombo();
+            var defaultCiudad = new Ciudad()
             {
                 CiudadId = 0,
                 NombreCiudad = "Seleccione Ciudad"
 
             };
-            lista.Insert(0, defaultPaciente);
+            lista.Insert(0, defaultCiudad);
             combo.DataSource = lista;
             combo.DisplayMember = "NombreCiudad";
             combo.ValueMember = "CiudadId";
+            combo.SelectedIndex = 0;
+        }
+
+        internal static void CargarComboMaterias(ref ComboBox combo,int carreraId)
+        {
+            IServiciosEstudiantesMaterias serviciosMaterias = new ServiciosEstudiantesMaterias();
+            var lista = serviciosMaterias.GetMateriasCombo(carreraId);
+            var defaultMateria = new Materia()
+            {
+                MateriaId = 0,
+                NombreMateria = "Seleccione Materia"
+
+            };
+            lista.Insert(0, defaultMateria);
+            combo.DataSource = lista;
+            combo.DisplayMember = "NombreMateria";
+            combo.ValueMember = "MateriaId";
             combo.SelectedIndex = 0;
         }
 

@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,15 +46,16 @@
             this.erToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.doToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.erToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.inscrpciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inscriptoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disponiblesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsCertificado = new System.Windows.Forms.ToolStripButton();
             this.tsActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsVolver = new System.Windows.Forms.ToolStripButton();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.dgvInscripcionMaterias = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCondicionLibre = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblPaginaActual = new System.Windows.Forms.Label();
             this.lblPaginasTotales = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -66,10 +71,6 @@
             this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColCondicionLibre = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -165,7 +166,7 @@
             this.tsVolver});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(456, 66);
+            this.toolStrip1.Size = new System.Drawing.Size(437, 66);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -213,8 +214,7 @@
             // tsFiltrar
             // 
             this.tsFiltrar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.añoToolStripMenuItem,
-            this.inscrpciónToolStripMenuItem});
+            this.añoToolStripMenuItem});
             this.tsFiltrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
             this.tsFiltrar.Image = global::Edulink.Windows.Properties.Resources.filtrar1;
             this.tsFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -231,7 +231,7 @@
             this.doToolStripMenuItem,
             this.erToolStripMenuItem1});
             this.añoToolStripMenuItem.Name = "añoToolStripMenuItem";
-            this.añoToolStripMenuItem.Size = new System.Drawing.Size(139, 28);
+            this.añoToolStripMenuItem.Size = new System.Drawing.Size(103, 28);
             this.añoToolStripMenuItem.Text = "Año";
             // 
             // erToolStripMenuItem
@@ -254,29 +254,6 @@
             this.erToolStripMenuItem1.Size = new System.Drawing.Size(103, 28);
             this.erToolStripMenuItem1.Text = "3er";
             this.erToolStripMenuItem1.Click += new System.EventHandler(this.erToolStripMenuItem1_Click);
-            // 
-            // inscrpciónToolStripMenuItem
-            // 
-            this.inscrpciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inscriptoToolStripMenuItem,
-            this.disponiblesToolStripMenuItem});
-            this.inscrpciónToolStripMenuItem.Name = "inscrpciónToolStripMenuItem";
-            this.inscrpciónToolStripMenuItem.Size = new System.Drawing.Size(139, 28);
-            this.inscrpciónToolStripMenuItem.Text = "Inscrpción";
-            // 
-            // inscriptoToolStripMenuItem
-            // 
-            this.inscriptoToolStripMenuItem.Name = "inscriptoToolStripMenuItem";
-            this.inscriptoToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
-            this.inscriptoToolStripMenuItem.Text = "Inscripto";
-            this.inscriptoToolStripMenuItem.Click += new System.EventHandler(this.inscriptoToolStripMenuItem_Click);
-            // 
-            // disponiblesToolStripMenuItem
-            // 
-            this.disponiblesToolStripMenuItem.Name = "disponiblesToolStripMenuItem";
-            this.disponiblesToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
-            this.disponiblesToolStripMenuItem.Text = "Disponibles";
-            this.disponiblesToolStripMenuItem.Click += new System.EventHandler(this.disponiblesToolStripMenuItem_Click);
             // 
             // tsCertificado
             // 
@@ -336,12 +313,28 @@
             this.dgvInscripcionMaterias.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
             this.dgvInscripcionMaterias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvInscripcionMaterias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInscripcionMaterias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvInscripcionMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInscripcionMaterias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.ColHorario,
             this.ColCondicionLibre});
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInscripcionMaterias.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvInscripcionMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInscripcionMaterias.Location = new System.Drawing.Point(0, 0);
             this.dgvInscripcionMaterias.MultiSelect = false;
@@ -352,6 +345,34 @@
             this.dgvInscripcionMaterias.TabIndex = 12;
             this.dgvInscripcionMaterias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInscripcionMaterias_CellClick);
             this.dgvInscripcionMaterias.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInscripcionMaterias_CellValueChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Año";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // ColHorario
+            // 
+            this.ColHorario.HeaderText = "Horario";
+            this.ColHorario.Name = "ColHorario";
+            this.ColHorario.ReadOnly = true;
+            // 
+            // ColCondicionLibre
+            // 
+            this.ColCondicionLibre.HeaderText = "Libre";
+            this.ColCondicionLibre.Name = "ColCondicionLibre";
+            this.ColCondicionLibre.ReadOnly = true;
+            this.ColCondicionLibre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ColCondicionLibre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // lblPaginaActual
             // 
@@ -420,6 +441,7 @@
             this.btnUltimo.Size = new System.Drawing.Size(51, 35);
             this.btnUltimo.TabIndex = 5;
             this.btnUltimo.UseVisualStyleBackColor = true;
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
             // btnSiguiente
             // 
@@ -431,6 +453,7 @@
             this.btnSiguiente.Size = new System.Drawing.Size(51, 35);
             this.btnSiguiente.TabIndex = 4;
             this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // btnAnterior
             // 
@@ -442,6 +465,7 @@
             this.btnAnterior.Size = new System.Drawing.Size(51, 35);
             this.btnAnterior.TabIndex = 3;
             this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
             // btnPrimero
             // 
@@ -453,6 +477,7 @@
             this.btnPrimero.Size = new System.Drawing.Size(51, 35);
             this.btnPrimero.TabIndex = 2;
             this.btnPrimero.UseVisualStyleBackColor = true;
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
             // 
             // splitter1
             // 
@@ -472,11 +497,27 @@
             this.dgvDatosEstudiantes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
             this.dgvDatosEstudiantes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDatosEstudiantes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDatosEstudiantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvDatosEstudiantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatosEstudiantes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColNombre,
             this.ColApellido,
             this.ColEstado});
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatosEstudiantes.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgvDatosEstudiantes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatosEstudiantes.Location = new System.Drawing.Point(0, 0);
             this.dgvDatosEstudiantes.Name = "dgvDatosEstudiantes";
@@ -505,34 +546,6 @@
             this.ColEstado.HeaderText = "Estado";
             this.ColEstado.Name = "ColEstado";
             this.ColEstado.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Año";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // ColHorario
-            // 
-            this.ColHorario.HeaderText = "Horario";
-            this.ColHorario.Name = "ColHorario";
-            this.ColHorario.ReadOnly = true;
-            // 
-            // ColCondicionLibre
-            // 
-            this.ColCondicionLibre.HeaderText = "Libre";
-            this.ColCondicionLibre.Name = "ColCondicionLibre";
-            this.ColCondicionLibre.ReadOnly = true;
-            this.ColCondicionLibre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ColCondicionLibre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FrmInscripcionMaterias
             // 
@@ -598,9 +611,6 @@
         private System.Windows.Forms.ToolStripButton tsEditar;
         private System.Windows.Forms.ToolStripDropDownButton tsFiltrar;
         private System.Windows.Forms.ToolStripMenuItem añoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inscrpciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inscriptoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem disponiblesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem erToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem doToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem erToolStripMenuItem1;

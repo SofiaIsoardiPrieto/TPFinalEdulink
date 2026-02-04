@@ -7,7 +7,6 @@ using EduLink.Entidades.Entidades;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Net;
 
 namespace EduLink.Datos.Repositorios
 {
@@ -43,18 +42,28 @@ namespace EduLink.Datos.Repositorios
                         EstadoEstudiante = estudiante.EstadoEstudiante.ToString(),
                         estudiante.CarreraId,
                         estudiante.FechaAlta
-                    },
+                        
+                    } ,
                     commandType: CommandType.StoredProcedure
                 );
 
                 estudiante.EstudianteId = id;
 
-                //Inscribir automáticamente en materias de primer año
+                InscribirEstudianteNuevoMaterias(id, estudiante.CarreraId);
+
+            }
+        }
+
+        private void InscribirEstudianteNuevoMaterias(int id, int carreraId)
+        {
+            //Inscribir automáticamente en materias de primer año
+            using (var conn = ConexionBD.GetConexion())
+            {
                 conn.Execute(
-                    "sp_InscribirMateriasPrimerAnio",
-                    new { EstudianteId = id, CarreraId = estudiante.CarreraId },
-                    commandType: CommandType.StoredProcedure
-                );
+                "sp_InscribirMateriasPrimerAnio",
+                new { EstudianteId = id, CarreraId = carreraId },
+                commandType: CommandType.StoredProcedure
+            );
             }
         }
 
@@ -98,7 +107,8 @@ namespace EduLink.Datos.Repositorios
                     Email = estudiante.Email,
                     Contrasenia = estudiante.Contrasenia,
                     FechaNacimiento = estudiante.FechaNacimiento,
-                    CiudadId = estudiante.CiudadId,   
+                    EstadoEstudiante = estudiante.EstadoEstudiante.ToString(),
+                    CiudadId = estudiante.CiudadId,
                     CarreraId = estudiante.CarreraId // nuevamente problema de mapeo con dapper y carreraId
                 },
                 commandType: CommandType.StoredProcedure
@@ -150,7 +160,7 @@ namespace EduLink.Datos.Repositorios
             if (string.IsNullOrWhiteSpace(estado)) estado = null;
             using (var conn = ConexionBD.GetConexion())
             {
-                
+
                 return conn.ExecuteScalar<int>(
                     "sp_GetCantidadEstudiantes",
                     new { CarreraId = carreraId, EdadMin = edadMin, EdadMax = edadMax, AnioAlta = anioAlta, CiudadId = ciudadId, Estado = estado },
@@ -241,7 +251,7 @@ namespace EduLink.Datos.Repositorios
             }
         }
 
-     
+
     }
 }
 

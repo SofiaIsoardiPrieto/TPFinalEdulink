@@ -23,10 +23,10 @@ namespace Edulink.Windows
             txtLegajo.Enabled = false;
             rbRegular.Checked = true;
             _carreraId = carreraId;
-            cbCarrera.Enabled = false;
+          
             ComboHelper.CargarComboCiudades(ref cbCiudad);
             ComboHelper.CargarComboCarreras(ref cbCarrera, null);
-            cbCarrera.SelectedValue = carreraId;
+            
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -34,9 +34,6 @@ namespace Edulink.Windows
 
             if (_estudiante != null)
             {
-
-                _estudiante.CarreraId = _carreraId;// porque necesito esto aqui?
-                cbCarrera.Enabled = true;
                 // ExamentextBox.Text = examen.Nombreexamen;
                 _esEdicion = true;
                 txtContrasenia.Enabled = _esEdicion;
@@ -50,6 +47,7 @@ namespace Edulink.Windows
                 dtpFechaNacimiento.Value = _estudiante.FechaNacimiento.Date;//controlar que no de error
                 txtContrasenia.Text = _estudiante.Contrasenia;
                 cbCiudad.SelectedValue = _estudiante.CiudadId;
+                cbCarrera.SelectedValue = _estudiante.CarreraId;
                 if (_estudiante.EstadoEstudiante == EstadoEstudiante.Regular)
                 {
                     rbRegular.Checked = true;
@@ -63,6 +61,11 @@ namespace Edulink.Windows
                     rbRecibido.Checked = true;
                 }
 
+            }
+            else
+            {
+                cbCarrera.SelectedValue = _carreraId;
+               cbCarrera.Enabled = false;
             }
         }
         public Estudiante GetEstudiante()
@@ -114,7 +117,7 @@ namespace Edulink.Windows
                 }
                 _estudiante.FechaNacimiento = dtpFechaNacimiento.Value; // probar que pasa
                 _estudiante.CiudadId = (int)cbCiudad.SelectedValue;
-                _estudiante.CarreraId = _carreraId;
+                _estudiante.CarreraId = (int)cbCarrera.SelectedValue;
                 _estudiante.FechaAlta = DateTime.Now;
                 // Estado con RadioButtons
                 if (rbRegular.Checked)

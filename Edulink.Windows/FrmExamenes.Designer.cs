@@ -40,7 +40,7 @@
             this.tsActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsVolver = new System.Windows.Forms.ToolStripButton();
-            this.lvlPaginaActual = new System.Windows.Forms.Label();
+            this.lblPaginaActual = new System.Windows.Forms.Label();
             this.lblPaginasTotales = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnPrimero = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.dgvDatosEstudiantes = new System.Windows.Forms.DataGridView();
+            this.dgvDatosExamenes = new System.Windows.Forms.DataGridView();
             this.ColMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +61,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosExamenes)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -77,7 +77,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.lvlPaginaActual);
+            this.splitContainer1.Panel2.Controls.Add(this.lblPaginaActual);
             this.splitContainer1.Panel2.Controls.Add(this.lblPaginasTotales);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
@@ -88,7 +88,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnAnterior);
             this.splitContainer1.Panel2.Controls.Add(this.btnPrimero);
             this.splitContainer1.Panel2.Controls.Add(this.splitter1);
-            this.splitContainer1.Panel2.Controls.Add(this.dgvDatosEstudiantes);
+            this.splitContainer1.Panel2.Controls.Add(this.dgvDatosExamenes);
             this.splitContainer1.Size = new System.Drawing.Size(523, 376);
             this.splitContainer1.SplitterDistance = 67;
             this.splitContainer1.TabIndex = 0;
@@ -122,6 +122,7 @@
             this.tsNuevo.Size = new System.Drawing.Size(52, 63);
             this.tsNuevo.Text = "Nuevo";
             this.tsNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsNuevo.Click += new System.EventHandler(this.tsNuevo_Click);
             // 
             // tsEditar
             // 
@@ -133,6 +134,7 @@
             this.tsEditar.Size = new System.Drawing.Size(48, 63);
             this.tsEditar.Text = "Editar";
             this.tsEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
             // 
             // tsBorrar
             // 
@@ -144,6 +146,7 @@
             this.tsBorrar.Size = new System.Drawing.Size(51, 63);
             this.tsBorrar.Text = "Borrar";
             this.tsBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBorrar.Click += new System.EventHandler(this.tsBorrar_Click);
             // 
             // tsAlumnos
             // 
@@ -155,6 +158,7 @@
             this.tsAlumnos.Size = new System.Drawing.Size(64, 63);
             this.tsAlumnos.Text = "Alumnos";
             this.tsAlumnos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsAlumnos.Click += new System.EventHandler(this.tsAlumnos_Click);
             // 
             // toolStripSeparator1
             // 
@@ -193,6 +197,7 @@
             this.tsActualizar.Size = new System.Drawing.Size(70, 63);
             this.tsActualizar.Text = "Actualizar";
             this.tsActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsActualizar.Click += new System.EventHandler(this.tsActualizar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -209,16 +214,17 @@
             this.tsVolver.Size = new System.Drawing.Size(51, 63);
             this.tsVolver.Text = "Volver";
             this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsVolver.Click += new System.EventHandler(this.tsVolver_Click);
             // 
-            // lvlPaginaActual
+            // lblPaginaActual
             // 
-            this.lvlPaginaActual.AutoSize = true;
-            this.lvlPaginaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvlPaginaActual.Location = new System.Drawing.Point(66, 283);
-            this.lvlPaginaActual.Name = "lvlPaginaActual";
-            this.lvlPaginaActual.Size = new System.Drawing.Size(14, 13);
-            this.lvlPaginaActual.TabIndex = 11;
-            this.lvlPaginaActual.Text = "0";
+            this.lblPaginaActual.AutoSize = true;
+            this.lblPaginaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaActual.Location = new System.Drawing.Point(66, 283);
+            this.lblPaginaActual.Name = "lblPaginaActual";
+            this.lblPaginaActual.Size = new System.Drawing.Size(14, 13);
+            this.lblPaginaActual.TabIndex = 11;
+            this.lblPaginaActual.Text = "0";
             // 
             // lblPaginasTotales
             // 
@@ -320,28 +326,28 @@
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
-            // dgvDatosEstudiantes
+            // dgvDatosExamenes
             // 
-            this.dgvDatosEstudiantes.AllowUserToAddRows = false;
-            this.dgvDatosEstudiantes.AllowUserToDeleteRows = false;
-            this.dgvDatosEstudiantes.AllowUserToResizeColumns = false;
-            this.dgvDatosEstudiantes.AllowUserToResizeRows = false;
-            this.dgvDatosEstudiantes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
-            this.dgvDatosEstudiantes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvDatosEstudiantes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvDatosEstudiantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatosEstudiantes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDatosExamenes.AllowUserToAddRows = false;
+            this.dgvDatosExamenes.AllowUserToDeleteRows = false;
+            this.dgvDatosExamenes.AllowUserToResizeColumns = false;
+            this.dgvDatosExamenes.AllowUserToResizeRows = false;
+            this.dgvDatosExamenes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
+            this.dgvDatosExamenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDatosExamenes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvDatosExamenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosExamenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColMateria,
             this.ColFecha,
             this.ColHorario,
             this.ColLibre});
-            this.dgvDatosEstudiantes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatosEstudiantes.Location = new System.Drawing.Point(0, 0);
-            this.dgvDatosEstudiantes.Name = "dgvDatosEstudiantes";
-            this.dgvDatosEstudiantes.ReadOnly = true;
-            this.dgvDatosEstudiantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatosEstudiantes.Size = new System.Drawing.Size(523, 305);
-            this.dgvDatosEstudiantes.TabIndex = 0;
+            this.dgvDatosExamenes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDatosExamenes.Location = new System.Drawing.Point(0, 0);
+            this.dgvDatosExamenes.Name = "dgvDatosExamenes";
+            this.dgvDatosExamenes.ReadOnly = true;
+            this.dgvDatosExamenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDatosExamenes.Size = new System.Drawing.Size(523, 305);
+            this.dgvDatosExamenes.TabIndex = 0;
             // 
             // ColMateria
             // 
@@ -381,6 +387,7 @@
             this.Name = "FrmExamenes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEstudiantes";
+            this.Load += new System.EventHandler(this.FrmExamenes_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -389,7 +396,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosExamenes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -398,7 +405,7 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.DataGridView dgvDatosEstudiantes;
+        private System.Windows.Forms.DataGridView dgvDatosExamenes;
         private System.Windows.Forms.ToolStripButton tsNuevo;
         private System.Windows.Forms.ToolStripButton tsEditar;
         private System.Windows.Forms.ToolStripButton tsBorrar;
@@ -416,7 +423,7 @@
         private System.Windows.Forms.Button btnAnterior;
         private System.Windows.Forms.Label lblRegistros;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lvlPaginaActual;
+        private System.Windows.Forms.Label lblPaginaActual;
         private System.Windows.Forms.Label lblPaginasTotales;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

@@ -273,27 +273,6 @@ namespace Edulink.Windows
             }
         }
 
-        private void tsInscripcion_Click(object sender, EventArgs e)
-        {
-            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
-
-            var r = dgvDatosEstudiantes.SelectedRows[0];
-            var estudianteDto = (EstudianteDto)r.Tag;
-
-            FrmSeleccionEstudiante frm = new FrmSeleccionEstudiante(_carreraId, estudianteDto.EstudianteId, true);
-            frm.ShowDialog(this);
-        }
-
-        private void tsHistorial_Click(object sender, EventArgs e)
-        {
-            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
-
-            var r = dgvDatosEstudiantes.SelectedRows[0];
-            var estudiante = (EstudianteDto)r.Tag;
-
-            FrmSeleccionEstudiante frm = new FrmSeleccionEstudiante(_carreraId, estudiante.EstudianteId, false);
-            frm.ShowDialog(this);
-        }
 
         private void tsActualizar_Click(object sender, EventArgs e)
         {
@@ -408,6 +387,37 @@ namespace Edulink.Windows
         private void tsVolver_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
+
+            var r = dgvDatosEstudiantes.SelectedRows[0];
+            var estudianteDto = (EstudianteDto)r.Tag;
+
+            FrmInscripcionMaterias frm = new FrmInscripcionMaterias(estudianteDto.EstudianteId);
+            frm.ShowDialog();
+        }
+
+        private void examenesFinalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
+
+            var r = dgvDatosEstudiantes.SelectedRows[0];
+            var estudianteDto = (EstudianteDto)r.Tag;
+            FrmInscripcionExamenes frm = new FrmInscripcionExamenes(estudianteDto.EstudianteId);
+            frm.ShowDialog();
+        }
+
+        private void materiasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // Falta formulario para historial de materias
+        }
+
+        private void examenesFinalesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // Falta formulario para historial de examenes finales
         }
     }
 }

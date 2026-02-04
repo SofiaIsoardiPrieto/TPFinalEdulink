@@ -39,5 +39,10 @@ namespace Edulink.Windows
             FrmExamenes frm = new FrmExamenes(_carreraId);
             frm.ShowDialog();
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace EduLink.Servicios.Interfaces
 {
     public interface IServiciosCarreras
     {
-        List<Carrera> GetCarreraCombo(int? adminId);
+        List<CarreraCombo> GetCarreraCombo(int? adminId);
         Carrera GetCarreraPorId(int carreraId);
     }
 }

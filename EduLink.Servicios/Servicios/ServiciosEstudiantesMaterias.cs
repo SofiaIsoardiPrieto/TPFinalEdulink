@@ -48,16 +48,28 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
+        public void Borrar(int estudianteId, int materiaId)
+        {
+            try
+            {
+                 _repositorio.Borrar(estudianteId, materiaId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         /// <summary>
         /// Trae la cantidad de materias disponibles (filtra por correlativas) de un estudiante
         /// </summary>
         /// <param name="estudianteId"></param>
         /// <returns></returns>
-        public int GetCantidad(int estudianteId, int anioMateria, bool inscripto)
+        public int GetCantidad(int estudianteId, int? anioMateria)
         {
             try
             {
-                return _repositorio.GetCantidad(estudianteId, anioMateria,  inscripto);
+                return _repositorio.GetCantidad(estudianteId, anioMateria);
             }
             catch (Exception)
             {
@@ -73,11 +85,11 @@ namespace EduLink.Servicios.Servicios
         /// <param name="paginaActual"></param>
         /// <returns></returns>
 
-        public List<MateriaDto> GetMateriasPorEstudiantePorPagina(int estudianteId, int anioMateria, bool inscripto, int registrosPorPagina, int paginaActual)
+        public List<MateriaDto> GetMateriasPorEstudiantePorPagina(int estudianteId, int? anioMateria, int registrosPorPagina, int paginaActual)
         {
             try
             {
-                return _repositorio.GetEstudiantesPorPagina(estudianteId,  anioMateria,  inscripto,registrosPorPagina, paginaActual);
+                return _repositorio.GetEstudiantesPorPagina(estudianteId,  anioMateria, registrosPorPagina, paginaActual);
             }
             catch (Exception)
             {
@@ -86,6 +98,17 @@ namespace EduLink.Servicios.Servicios
             }
         }
 
-       
+        public List<MateriaCombo> GetMateriasCombo(int carreraId)
+        {
+            try
+            {
+                return _repositorio.GetMateriasCombo(carreraId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

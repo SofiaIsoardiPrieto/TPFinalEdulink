@@ -23,11 +23,11 @@ namespace EduLink.Datos.Repositorios
         /// <param name="adminId"></param>
         /// <returns></returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public List<Carrera> GetCarreraCombo(int? adminId)
+        public List<CarreraCombo> GetCarreraCombo(int? adminId)
         {
             using (var conn = ConexionBD.GetConexion())
             {
-                var lista = conn.Query<Carrera>(
+                var lista = conn.Query<CarreraCombo>(
                     "sp_GetCarrerasPorAdmin",
                     new { AdministradorId = adminId },
                     commandType: CommandType.StoredProcedure

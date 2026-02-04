@@ -23,11 +23,11 @@ namespace EduLink.Datos.Repositorios
         /// <param name="adminId"></param>
         /// <returns></returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public List<Ciudad> GetCiudadesCombo()
+        public List<CiudadCombo> GetCiudadesCombo()
         {
             using (var conn = ConexionBD.GetConexion())
             {
-                var lista = conn.Query<Ciudad>(
+                var lista = conn.Query<CiudadCombo>(
                     "sp_GetCiudades",
                     commandType: CommandType.StoredProcedure
                 ).ToList();

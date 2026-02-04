@@ -80,7 +80,25 @@ namespace Edulink.Windows.Helpers
             }
         }
 
-       
+        internal static void CertificadoIncripcionMaterias(Estudiante estudiante)
+        {
+        //    CrearCarpetaCertificados();
+        //    var path = Environment.CurrentDirectory + @"\Certificados";
+        //    var archivo = "CertificadoInscripcionMaterias.pdf";
+        //    var completo = Path.Combine(path, archivo);
+        //    // Esto se modifica porque no me detecta la ruta por referencias
+        //    string rutaHtml = "C:\\_PROGRAMACION_\\2º Año\\Seminario de Programación\\TP FINAL EduLink\\TPFinalEdulink\\Edulink.Windows\\Resources\\CertificadoInscripcionMaterias.html";
+        //    string htmlTemplate = File.ReadAllText(rutaHtml); // leer contenido
+
+        //    string htmlFinal = htmlTemplate
+        //        .Replace("@APELLIDOS", estudianteDto.Apellidos)
+        //        .Replace("@NOMBRES", estudianteDto.Nombres)
+        //        .Replace("@DNI", estudianteDto.DNI.ToString())
+        //        .Replace("@CARRERA", nombreCarrera)
+        //        .Replace("@FECHA", DateTime.Today.ToShortDateString());
+
+        //    GuardarPdfImagen(completo, htmlFinal);
+        }
     }
 }
 

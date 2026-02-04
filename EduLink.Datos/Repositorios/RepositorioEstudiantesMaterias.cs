@@ -2,12 +2,10 @@
 using EduLink.Datos.Helper;
 using EduLink.Datos.Interfaces;
 using EduLink.Entidades.Combos;
-using EduLink.Entidades.Dtos;
 using EduLink.Entidades.Entidades;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Net;
 
 namespace EduLink.Datos.Repositorios
 {
@@ -31,14 +29,24 @@ namespace EduLink.Datos.Repositorios
                 return cantidad > 0;
             }
         }
-
+        public void Borrar(int estudianteId, int materiaId)
+        {
+            using (var conn = ConexionBD.GetConexion())
+            {
+                conn.Execute(
+                    "sp_BorrarInscripcionMateriaEstudiante",
+                    new { EstudianteId = estudianteId, MateriaId = materiaId },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+        }
         public void Agregar(int estudianteId, int materiaId)
         {
             using (var conn = ConexionBD.GetConexion())
             {
                 conn.Execute(
                     "sp_InscribirMateriaEstudiante",
-                    new { EstudianteId = estudianteId,  MateriaId = materiaId },
+                    new { EstudianteId = estudianteId, MateriaId = materiaId },
                     commandType: CommandType.StoredProcedure
                 );
             }
@@ -49,36 +57,45 @@ namespace EduLink.Datos.Repositorios
             throw new System.NotImplementedException();
         }
 
-       
 
-        public int GetCantidad(int estudianteId, int anioMateria, bool inscripto)
+
+        public int GetCantidad(int estudianteId, int? anioMateria)
         {
-           
+
             using (var conn = ConexionBD.GetConexion())
             {
-
-                return conn.ExecuteScalar<int>(
+                int cantidad = conn.ExecuteScalar<int>(
                     "sp_GetCantidadMateriasPorEstudiante",
-                    new { estudianteId=estudianteId , AnioCarrera = anioMateria , Inscripto=inscripto },
+                    new { estudianteId = estudianteId, AnioCarrera = anioMateria },
                     commandType: CommandType.StoredProcedure
                 );
+                return cantidad;
             }
         }
 
-        public List<MateriaDto> GetEstudiantesPorPagina(int estudianteId, int anioMateria, bool inscripto, int registrosPorPagina, int paginaActual)
+        public List<MateriaDto> GetEstudiantesPorPagina(int estudianteId, int? anioMateria, int registrosPorPagina, int paginaActual)
         {
             using (var conn = ConexionBD.GetConexion())
             {
                 return conn.Query<MateriaDto>(
                     "sp_GetMateriasPorEstudiantePorPagina",
-                    new { EstudianteId = estudianteId, AnioCarrera = anioMateria, Inscripto = inscripto, CantidadPorPagina = registrosPorPagina, PaginaActual = paginaActual },
+                    new { EstudianteId = estudianteId, AnioCarrera = anioMateria, CantidadPorPagina = registrosPorPagina, PaginaActual = paginaActual },
                     commandType: CommandType.StoredProcedure
                 ).ToList();
             }
         }
 
-        
-
+        public List<MateriaCombo> GetMateriasCombo(int carreraId)
+        {
+            using (var conn = ConexionBD.GetConexion())
+            {
+                return conn.Query<MateriaCombo>(
+                    "sp_GetMateriasCombo",
+                    new { CarreraId = carreraId, },
+                    commandType: CommandType.StoredProcedure
+                ).ToList();
+            }
+        }
     }
 }
 

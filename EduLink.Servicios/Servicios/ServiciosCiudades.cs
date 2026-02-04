@@ -21,7 +21,7 @@ namespace EduLink.Servicios.Servicios
         /// </summary>
         /// <param name="adminId"></param>
         /// <returns></returns>
-        public List<Ciudad> GetCiudadesCombo()
+        public List<CiudadCombo> GetCiudadesCombo()
         {
             try
             {

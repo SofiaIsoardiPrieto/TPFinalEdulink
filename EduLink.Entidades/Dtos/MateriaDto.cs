@@ -11,7 +11,7 @@ namespace EduLink.Entidades.Entidades
     {
         public int MateriaId { get; set; }
         public string NombreMateria { get; set; }
-        public int AnioDeLaMateria { get; set; }
+        public int AnioCarrera { get; set; }
         public List<ModuloDto> Modulos { get; set; } = new List<ModuloDto>();
 
         //Para saber si el estudiante ya está inscripto en la materia

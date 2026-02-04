@@ -21,7 +21,7 @@ namespace EduLink.Servicios.Servicios
         /// </summary>
         /// <param name="adminId"></param>
         /// <returns></returns>
-        public List<Carrera> GetCarreraCombo(int? adminId)
+        public List<CarreraCombo> GetCarreraCombo(int? adminId)
         {
             try
             {

@@ -32,14 +32,14 @@
             this.btnExamenes = new System.Windows.Forms.Button();
             this.btnMaterias = new System.Windows.Forms.Button();
             this.btnEstudiantes = new System.Windows.Forms.Button();
-            this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblNombreCarrera
             // 
             this.lblNombreCarrera.AutoSize = true;
             this.lblNombreCarrera.Font = new System.Drawing.Font("Myanmar Text", 11F);
-            this.lblNombreCarrera.Location = new System.Drawing.Point(10, 38);
+            this.lblNombreCarrera.Location = new System.Drawing.Point(10, 14);
             this.lblNombreCarrera.Name = "lblNombreCarrera";
             this.lblNombreCarrera.Size = new System.Drawing.Size(115, 27);
             this.lblNombreCarrera.TabIndex = 2;
@@ -52,7 +52,7 @@
             this.btnExamenes.Font = new System.Drawing.Font("Myanmar Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExamenes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExamenes.Image = global::Edulink.Windows.Properties.Resources.examen;
-            this.btnExamenes.Location = new System.Drawing.Point(371, 88);
+            this.btnExamenes.Location = new System.Drawing.Point(371, 60);
             this.btnExamenes.Name = "btnExamenes";
             this.btnExamenes.Size = new System.Drawing.Size(110, 72);
             this.btnExamenes.TabIndex = 10;
@@ -68,7 +68,7 @@
             this.btnMaterias.Font = new System.Drawing.Font("Myanmar Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMaterias.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnMaterias.Image = global::Edulink.Windows.Properties.Resources.materia;
-            this.btnMaterias.Location = new System.Drawing.Point(206, 88);
+            this.btnMaterias.Location = new System.Drawing.Point(206, 60);
             this.btnMaterias.Name = "btnMaterias";
             this.btnMaterias.Size = new System.Drawing.Size(110, 72);
             this.btnMaterias.TabIndex = 9;
@@ -84,7 +84,7 @@
             this.btnEstudiantes.Font = new System.Drawing.Font("Myanmar Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEstudiantes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnEstudiantes.Image = global::Edulink.Windows.Properties.Resources.estudiante;
-            this.btnEstudiantes.Location = new System.Drawing.Point(34, 88);
+            this.btnEstudiantes.Location = new System.Drawing.Point(34, 60);
             this.btnEstudiantes.Name = "btnEstudiantes";
             this.btnEstudiantes.Size = new System.Drawing.Size(110, 72);
             this.btnEstudiantes.TabIndex = 4;
@@ -93,20 +93,21 @@
             this.btnEstudiantes.UseVisualStyleBackColor = false;
             this.btnEstudiantes.Click += new System.EventHandler(this.btnEstudiantes_Click);
             // 
-            // btnCerrarSesion
+            // btnVolver
             // 
-            this.btnCerrarSesion.BackColor = System.Drawing.Color.White;
-            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarSesion.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesion.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(405, 2);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(114, 28);
-            this.btnCerrarSesion.TabIndex = 11;
-            this.btnCerrarSesion.Text = "Cerrar Sesión";
-            this.btnCerrarSesion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnVolver.BackColor = System.Drawing.Color.White;
+            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolver.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVolver.Location = new System.Drawing.Point(407, 158);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(114, 28);
+            this.btnVolver.TabIndex = 11;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // FrmMenuPrincipal
             // 
@@ -114,7 +115,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(531, 196);
-            this.Controls.Add(this.btnCerrarSesion);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnExamenes);
             this.Controls.Add(this.btnMaterias);
             this.Controls.Add(this.btnEstudiantes);
@@ -133,7 +134,7 @@
         private System.Windows.Forms.Button btnEstudiantes;
         private System.Windows.Forms.Button btnMaterias;
         private System.Windows.Forms.Button btnExamenes;
-        private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Button btnVolver;
     }
 }
 

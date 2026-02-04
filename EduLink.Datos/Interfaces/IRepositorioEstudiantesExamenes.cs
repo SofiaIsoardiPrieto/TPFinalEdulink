@@ -3,10 +3,11 @@ using EduLink.Entidades.Dtos;
 using EduLink.Entidades.Entidades;
 using System.Collections.Generic;
 
-namespace EduLink.Servicios.Interfaces
+namespace EduLink.Datos.Interfaces
 {
-    public interface IServiciosCiudades
+    public interface IRepositorioEstudiantesExamenes
     {
-        List<CiudadCombo> GetCiudadesCombo();
+        bool Existe(Examen examen);
     }
 }
+

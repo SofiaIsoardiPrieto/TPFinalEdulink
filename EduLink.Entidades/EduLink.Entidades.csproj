@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Combos\MateriaCombo.cs" />
+    <Compile Include="Combos\CarreraCombo.cs" />
+    <Compile Include="Combos\CiudadCombo.cs" />
     <Compile Include="Combos\EstudianteCombo.cs" />
     <Compile Include="Dtos\EstudianteDto.cs" />
     <Compile Include="Dtos\ExamenDto.cs" />

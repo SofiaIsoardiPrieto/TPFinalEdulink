@@ -34,8 +34,6 @@
             this.tsEditar = new System.Windows.Forms.ToolStripButton();
             this.tsBorrar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsInscripcion = new System.Windows.Forms.ToolStripButton();
-            this.tsHistorial = new System.Windows.Forms.ToolStripButton();
             this.toolCertificado = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsOrdenar = new System.Windows.Forms.ToolStripDropDownButton();
@@ -76,6 +74,12 @@
             this.ColDNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColFechaNac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.tsInscripcion = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsHistorial = new System.Windows.Forms.ToolStripDropDownButton();
+            this.materiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.examenesFinalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materiasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.examenesFinalesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -134,7 +138,7 @@
             this.tsVolver});
             this.toolStrip1.Location = new System.Drawing.Point(352, 2);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(616, 66);
+            this.toolStrip1.Size = new System.Drawing.Size(634, 66);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -178,30 +182,6 @@
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 66);
-            // 
-            // tsInscripcion
-            // 
-            this.tsInscripcion.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsInscripcion.Image = global::Edulink.Windows.Properties.Resources.Inscripcion;
-            this.tsInscripcion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsInscripcion.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsInscripcion.Name = "tsInscripcion";
-            this.tsInscripcion.Size = new System.Drawing.Size(76, 63);
-            this.tsInscripcion.Text = "Inscripción";
-            this.tsInscripcion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsInscripcion.Click += new System.EventHandler(this.tsInscripcion_Click);
-            // 
-            // tsHistorial
-            // 
-            this.tsHistorial.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsHistorial.Image = global::Edulink.Windows.Properties.Resources.historial1;
-            this.tsHistorial.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsHistorial.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsHistorial.Name = "tsHistorial";
-            this.tsHistorial.Size = new System.Drawing.Size(62, 63);
-            this.tsHistorial.Text = "Historial";
-            this.tsHistorial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsHistorial.Click += new System.EventHandler(this.tsHistorial_Click);
             // 
             // toolCertificado
             // 
@@ -593,6 +573,62 @@
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
+            // tsInscripcion
+            // 
+            this.tsInscripcion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.materiasToolStripMenuItem,
+            this.examenesFinalesToolStripMenuItem});
+            this.tsInscripcion.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsInscripcion.Image = global::Edulink.Windows.Properties.Resources.Inscripcion;
+            this.tsInscripcion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsInscripcion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsInscripcion.Name = "tsInscripcion";
+            this.tsInscripcion.Size = new System.Drawing.Size(85, 63);
+            this.tsInscripcion.Text = "Inscripción";
+            this.tsInscripcion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsHistorial
+            // 
+            this.tsHistorial.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.materiasToolStripMenuItem1,
+            this.examenesFinalesToolStripMenuItem1});
+            this.tsHistorial.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsHistorial.Image = global::Edulink.Windows.Properties.Resources.historial1;
+            this.tsHistorial.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsHistorial.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsHistorial.Name = "tsHistorial";
+            this.tsHistorial.Size = new System.Drawing.Size(71, 63);
+            this.tsHistorial.Text = "Historial";
+            this.tsHistorial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // materiasToolStripMenuItem
+            // 
+            this.materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
+            this.materiasToolStripMenuItem.Size = new System.Drawing.Size(181, 28);
+            this.materiasToolStripMenuItem.Text = "Materias";
+            this.materiasToolStripMenuItem.Click += new System.EventHandler(this.materiasToolStripMenuItem_Click);
+            // 
+            // examenesFinalesToolStripMenuItem
+            // 
+            this.examenesFinalesToolStripMenuItem.Name = "examenesFinalesToolStripMenuItem";
+            this.examenesFinalesToolStripMenuItem.Size = new System.Drawing.Size(181, 28);
+            this.examenesFinalesToolStripMenuItem.Text = "Examenes Finales";
+            this.examenesFinalesToolStripMenuItem.Click += new System.EventHandler(this.examenesFinalesToolStripMenuItem_Click);
+            // 
+            // materiasToolStripMenuItem1
+            // 
+            this.materiasToolStripMenuItem1.Name = "materiasToolStripMenuItem1";
+            this.materiasToolStripMenuItem1.Size = new System.Drawing.Size(181, 28);
+            this.materiasToolStripMenuItem1.Text = "Materias";
+            this.materiasToolStripMenuItem1.Click += new System.EventHandler(this.materiasToolStripMenuItem1_Click);
+            // 
+            // examenesFinalesToolStripMenuItem1
+            // 
+            this.examenesFinalesToolStripMenuItem1.Name = "examenesFinalesToolStripMenuItem1";
+            this.examenesFinalesToolStripMenuItem1.Size = new System.Drawing.Size(181, 28);
+            this.examenesFinalesToolStripMenuItem1.Text = "Examenes Finales";
+            this.examenesFinalesToolStripMenuItem1.Click += new System.EventHandler(this.examenesFinalesToolStripMenuItem1_Click);
+            // 
             // FrmEstudiantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -636,8 +672,6 @@
         private System.Windows.Forms.ToolStripButton tsAlta;
         private System.Windows.Forms.ToolStripButton tsEditar;
         private System.Windows.Forms.ToolStripButton tsBorrar;
-        private System.Windows.Forms.ToolStripButton tsInscripcion;
-        private System.Windows.Forms.ToolStripButton tsHistorial;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripDropDownButton tsOrdenar;
         private System.Windows.Forms.ToolStripMenuItem estadoToolStripMenuItem;
@@ -671,5 +705,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColFechaNac;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolCertificado;
+        private System.Windows.Forms.ToolStripDropDownButton tsInscripcion;
+        private System.Windows.Forms.ToolStripMenuItem materiasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem examenesFinalesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton tsHistorial;
+        private System.Windows.Forms.ToolStripMenuItem materiasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem examenesFinalesToolStripMenuItem1;
     }
 }

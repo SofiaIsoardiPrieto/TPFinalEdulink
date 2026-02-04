@@ -29,15 +29,32 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsInscribir = new System.Windows.Forms.ToolStripButton();
+            this.tsEditar = new System.Windows.Forms.ToolStripButton();
             this.tsBorrar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsFiltrar = new System.Windows.Forms.ToolStripButton();
-            this.tsBuscar = new System.Windows.Forms.ToolStripButton();
+            this.tsFiltrar = new System.Windows.Forms.ToolStripDropDownButton();
+            this.añoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.erToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.erToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.inscrpciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inscriptoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disponiblesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsCertificado = new System.Windows.Forms.ToolStripButton();
             this.tsActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsVolver = new System.Windows.Forms.ToolStripButton();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.dgvInscripcionExamenes = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCondicionLibre = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblPaginaActual = new System.Windows.Forms.Label();
             this.lblPaginasTotales = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,7 +74,10 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
+            this.toolStripContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInscripcionExamenes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,10 +90,14 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
+            this.splitContainer1.Panel1.Controls.Add(this.label5);
+            this.splitContainer1.Panel1.Controls.Add(this.label4);
+            this.splitContainer1.Panel1.Controls.Add(this.toolStripContainer1);
+            this.splitContainer1.Panel1.Controls.Add(this.splitter2);
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.dgvInscripcionExamenes);
             this.splitContainer1.Panel2.Controls.Add(this.lblPaginaActual);
             this.splitContainer1.Panel2.Controls.Add(this.lblPaginasTotales);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
@@ -86,37 +110,88 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnPrimero);
             this.splitContainer1.Panel2.Controls.Add(this.splitter1);
             this.splitContainer1.Panel2.Controls.Add(this.dgvDatosEstudiantes);
-            this.splitContainer1.Size = new System.Drawing.Size(530, 375);
-            this.splitContainer1.SplitterDistance = 66;
+            this.splitContainer1.Size = new System.Drawing.Size(655, 375);
+            this.splitContainer1.SplitterDistance = 65;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(20, 5);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 25);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Inscripción";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(15, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(137, 25);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "EXÁMENES";
+            // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(459, 0);
+            this.toolStripContainer1.Location = new System.Drawing.Point(164, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(459, 65);
+            this.toolStripContainer1.TabIndex = 5;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsNuevo,
+            this.tsInscribir,
+            this.tsEditar,
             this.tsBorrar,
             this.toolStripSeparator1,
             this.tsFiltrar,
-            this.tsBuscar,
+            this.tsCertificado,
             this.tsActualizar,
             this.toolStripSeparator2,
             this.tsVolver});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(530, 66);
-            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Size = new System.Drawing.Size(437, 66);
+            this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // tsNuevo
+            // tsInscribir
             // 
-            this.tsNuevo.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsNuevo.Image = global::Edulink.Windows.Properties.Resources.nuevo1;
-            this.tsNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsNuevo.Name = "tsNuevo";
-            this.tsNuevo.Size = new System.Drawing.Size(52, 63);
-            this.tsNuevo.Text = "Nuevo";
-            this.tsNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsInscribir.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsInscribir.Image = global::Edulink.Windows.Properties.Resources.nuevo1;
+            this.tsInscribir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsInscribir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsInscribir.Name = "tsInscribir";
+            this.tsInscribir.Size = new System.Drawing.Size(60, 63);
+            this.tsInscribir.Text = "Inscribir";
+            this.tsInscribir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsInscribir.Click += new System.EventHandler(this.tsInscribir_Click);
+            // 
+            // tsEditar
+            // 
+            this.tsEditar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsEditar.Image = global::Edulink.Windows.Properties.Resources.editar1;
+            this.tsEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsEditar.Name = "tsEditar";
+            this.tsEditar.Size = new System.Drawing.Size(48, 63);
+            this.tsEditar.Text = "Editar";
+            this.tsEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
             // 
             // tsBorrar
             // 
@@ -128,6 +203,7 @@
             this.tsBorrar.Size = new System.Drawing.Size(51, 63);
             this.tsBorrar.Text = "Borrar";
             this.tsBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBorrar.Click += new System.EventHandler(this.tsBorrar_Click);
             // 
             // toolStripSeparator1
             // 
@@ -136,25 +212,83 @@
             // 
             // tsFiltrar
             // 
+            this.tsFiltrar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.añoToolStripMenuItem,
+            this.inscrpciónToolStripMenuItem});
             this.tsFiltrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
             this.tsFiltrar.Image = global::Edulink.Windows.Properties.Resources.filtrar1;
             this.tsFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsFiltrar.Name = "tsFiltrar";
-            this.tsFiltrar.Size = new System.Drawing.Size(47, 63);
+            this.tsFiltrar.Size = new System.Drawing.Size(56, 63);
             this.tsFiltrar.Text = "Filtrar";
             this.tsFiltrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // tsBuscar
+            // añoToolStripMenuItem
             // 
-            this.tsBuscar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsBuscar.Image = global::Edulink.Windows.Properties.Resources.buscar1;
-            this.tsBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBuscar.Name = "tsBuscar";
-            this.tsBuscar.Size = new System.Drawing.Size(52, 63);
-            this.tsBuscar.Text = "Buscar";
-            this.tsBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.añoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.erToolStripMenuItem,
+            this.doToolStripMenuItem,
+            this.erToolStripMenuItem1});
+            this.añoToolStripMenuItem.Name = "añoToolStripMenuItem";
+            this.añoToolStripMenuItem.Size = new System.Drawing.Size(139, 28);
+            this.añoToolStripMenuItem.Text = "Año";
+            // 
+            // erToolStripMenuItem
+            // 
+            this.erToolStripMenuItem.Name = "erToolStripMenuItem";
+            this.erToolStripMenuItem.Size = new System.Drawing.Size(103, 28);
+            this.erToolStripMenuItem.Text = "1er";
+            this.erToolStripMenuItem.Click += new System.EventHandler(this.erToolStripMenuItem_Click);
+            // 
+            // doToolStripMenuItem
+            // 
+            this.doToolStripMenuItem.Name = "doToolStripMenuItem";
+            this.doToolStripMenuItem.Size = new System.Drawing.Size(103, 28);
+            this.doToolStripMenuItem.Text = "2do";
+            this.doToolStripMenuItem.Click += new System.EventHandler(this.doToolStripMenuItem_Click);
+            // 
+            // erToolStripMenuItem1
+            // 
+            this.erToolStripMenuItem1.Name = "erToolStripMenuItem1";
+            this.erToolStripMenuItem1.Size = new System.Drawing.Size(103, 28);
+            this.erToolStripMenuItem1.Text = "3er";
+            this.erToolStripMenuItem1.Click += new System.EventHandler(this.erToolStripMenuItem1_Click);
+            // 
+            // inscrpciónToolStripMenuItem
+            // 
+            this.inscrpciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inscriptoToolStripMenuItem,
+            this.disponiblesToolStripMenuItem});
+            this.inscrpciónToolStripMenuItem.Name = "inscrpciónToolStripMenuItem";
+            this.inscrpciónToolStripMenuItem.Size = new System.Drawing.Size(139, 28);
+            this.inscrpciónToolStripMenuItem.Text = "Inscrpción";
+            // 
+            // inscriptoToolStripMenuItem
+            // 
+            this.inscriptoToolStripMenuItem.Name = "inscriptoToolStripMenuItem";
+            this.inscriptoToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
+            this.inscriptoToolStripMenuItem.Text = "Inscripto";
+            this.inscriptoToolStripMenuItem.Click += new System.EventHandler(this.inscriptoToolStripMenuItem_Click);
+            // 
+            // disponiblesToolStripMenuItem
+            // 
+            this.disponiblesToolStripMenuItem.Name = "disponiblesToolStripMenuItem";
+            this.disponiblesToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
+            this.disponiblesToolStripMenuItem.Text = "Disponibles";
+            this.disponiblesToolStripMenuItem.Click += new System.EventHandler(this.disponiblesToolStripMenuItem_Click);
+            // 
+            // tsCertificado
+            // 
+            this.tsCertificado.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsCertificado.Image = global::Edulink.Windows.Properties.Resources.certificado;
+            this.tsCertificado.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsCertificado.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCertificado.Name = "tsCertificado";
+            this.tsCertificado.Size = new System.Drawing.Size(77, 63);
+            this.tsCertificado.Text = "Certificado";
+            this.tsCertificado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsCertificado.Click += new System.EventHandler(this.tsCertificado_Click);
             // 
             // tsActualizar
             // 
@@ -166,6 +300,7 @@
             this.tsActualizar.Size = new System.Drawing.Size(70, 63);
             this.tsActualizar.Text = "Actualizar";
             this.tsActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsActualizar.Click += new System.EventHandler(this.tsActualizar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -182,6 +317,69 @@
             this.tsVolver.Size = new System.Drawing.Size(51, 63);
             this.tsVolver.Text = "Volver";
             this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsVolver.Click += new System.EventHandler(this.tsVolver_Click);
+            // 
+            // splitter2
+            // 
+            this.splitter2.Location = new System.Drawing.Point(0, 0);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(3, 65);
+            this.splitter2.TabIndex = 1;
+            this.splitter2.TabStop = false;
+            // 
+            // dgvInscripcionExamenes
+            // 
+            this.dgvInscripcionExamenes.AllowUserToAddRows = false;
+            this.dgvInscripcionExamenes.AllowUserToDeleteRows = false;
+            this.dgvInscripcionExamenes.AllowUserToResizeColumns = false;
+            this.dgvInscripcionExamenes.AllowUserToResizeRows = false;
+            this.dgvInscripcionExamenes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
+            this.dgvInscripcionExamenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvInscripcionExamenes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvInscripcionExamenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInscripcionExamenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.ColHorario,
+            this.ColCondicionLibre});
+            this.dgvInscripcionExamenes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvInscripcionExamenes.Location = new System.Drawing.Point(0, 0);
+            this.dgvInscripcionExamenes.MultiSelect = false;
+            this.dgvInscripcionExamenes.Name = "dgvInscripcionExamenes";
+            this.dgvInscripcionExamenes.ReadOnly = true;
+            this.dgvInscripcionExamenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInscripcionExamenes.Size = new System.Drawing.Size(655, 246);
+            this.dgvInscripcionExamenes.TabIndex = 12;
+            this.dgvInscripcionExamenes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInscripcionMaterias_CellClick);
+            this.dgvInscripcionExamenes.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInscripcionMaterias_CellValueChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Año";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // ColHorario
+            // 
+            this.ColHorario.HeaderText = "Horario";
+            this.ColHorario.Name = "ColHorario";
+            this.ColHorario.ReadOnly = true;
+            // 
+            // ColCondicionLibre
+            // 
+            this.ColCondicionLibre.HeaderText = "Libre";
+            this.ColCondicionLibre.Name = "ColCondicionLibre";
+            this.ColCondicionLibre.ReadOnly = true;
+            this.ColCondicionLibre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ColCondicionLibre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // lblPaginaActual
             // 
@@ -287,9 +485,9 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 255);
+            this.splitter1.Location = new System.Drawing.Point(0, 246);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(530, 50);
+            this.splitter1.Size = new System.Drawing.Size(655, 60);
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
@@ -312,7 +510,7 @@
             this.dgvDatosEstudiantes.Name = "dgvDatosEstudiantes";
             this.dgvDatosEstudiantes.ReadOnly = true;
             this.dgvDatosEstudiantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatosEstudiantes.Size = new System.Drawing.Size(530, 305);
+            this.dgvDatosEstudiantes.Size = new System.Drawing.Size(655, 306);
             this.dgvDatosEstudiantes.TabIndex = 0;
             // 
             // ColNombre
@@ -336,25 +534,31 @@
             this.ColEstado.Name = "ColEstado";
             this.ColEstado.ReadOnly = true;
             // 
-            // FrmEstudiantesEnExamen
+            // FrmInscripcionExamenes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
-            this.ClientSize = new System.Drawing.Size(530, 375);
+            this.ClientSize = new System.Drawing.Size(655, 375);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmEstudiantesEnExamen";
+            this.Name = "FrmInscripcionExamenes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEstudiantes";
+            this.Load += new System.EventHandler(this.FrmEstudianteMaterias_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
+            this.toolStripContainer1.TopToolStripPanel.PerformLayout();
+            this.toolStripContainer1.ResumeLayout(false);
+            this.toolStripContainer1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInscripcionExamenes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantes)).EndInit();
             this.ResumeLayout(false);
 
@@ -363,16 +567,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.DataGridView dgvDatosEstudiantes;
-        private System.Windows.Forms.ToolStripButton tsNuevo;
-        private System.Windows.Forms.ToolStripButton tsBorrar;
-        private System.Windows.Forms.ToolStripButton tsVolver;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsFiltrar;
-        private System.Windows.Forms.ToolStripButton tsActualizar;
-        private System.Windows.Forms.ToolStripButton tsBuscar;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColApellido;
@@ -387,5 +582,31 @@
         private System.Windows.Forms.Label lblPaginasTotales;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dgvInscripcionExamenes;
+        private System.Windows.Forms.Splitter splitter2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsInscribir;
+        private System.Windows.Forms.ToolStripButton tsBorrar;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tsCertificado;
+        private System.Windows.Forms.ToolStripButton tsActualizar;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsVolver;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolStripButton tsEditar;
+        private System.Windows.Forms.ToolStripDropDownButton tsFiltrar;
+        private System.Windows.Forms.ToolStripMenuItem añoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inscrpciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inscriptoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disponiblesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem erToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem doToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem erToolStripMenuItem1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColHorario;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColCondicionLibre;
     }
 }

@@ -1,7 +1,5 @@
 ﻿using Edulink.Windows.Helpers;
-using EduLink.Entidades.Dtos;
 using EduLink.Entidades.Entidades;
-using EduLink.Entidades.Enums;
 using EduLink.Servicios.Interfaces;
 using EduLink.Servicios.Servicios;
 using System;
@@ -16,8 +14,8 @@ namespace Edulink.Windows
         private int _estudianteId;
         private List<MateriaDto> _lista;
         private IServiciosEstudiantesMaterias _servicioEstudianteMaterias;
-        private int _anioMateria;
-        private bool _inscripto;
+        private int? _anioMateria;
+
         //  private int _carreraId;
         private int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
         private int _registrosTotales;
@@ -45,7 +43,7 @@ namespace Edulink.Windows
         {
             try
             {
-                _registrosTotales = _servicioEstudianteMaterias.GetCantidad(_estudianteId, _anioMateria,_inscripto);// obtiene la cantidad total de registros.
+                _registrosTotales = _servicioEstudianteMaterias.GetCantidad(_estudianteId, _anioMateria);// obtiene la cantidad total de registros.
                 _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);// calcula el total de páginas.
                 MostrarPaginado();
             }
@@ -56,7 +54,8 @@ namespace Edulink.Windows
         /// </summary>
         private void MostrarPaginado()
         {
-            _lista = _servicioEstudianteMaterias.GetMateriasPorEstudiantePorPagina(_estudianteId, _anioMateria, _inscripto, _registrosPorPagina, _paginaActual);
+            _lista = _servicioEstudianteMaterias.GetMateriasPorEstudiantePorPagina(_estudianteId, _anioMateria, _registrosPorPagina, _paginaActual);
+            
             MostrarDatosEnGrilla();
         }
         /// <summary>
@@ -70,17 +69,8 @@ namespace Edulink.Windows
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvInscripcionMaterias);
                 GridHelper.SetearFila(r, materiaDto);
 
-                // Cambia color si la materia ya está inscripta
-                if (_inscripto) // o la condición que uses para saber si está inscripta
-                {
-                    r.DefaultCellStyle.BackColor = Color.FromArgb(230, 230, 250);
-                }
-                else
-                {
-                    r.DefaultCellStyle.BackColor = Color.FromArgb(249, 245, 253);
-                }
 
-                    GridHelper.AgregarFila(dgvInscripcionMaterias, r);
+                GridHelper.AgregarFila(dgvInscripcionMaterias, r);
             }
 
             lblPaginaActual.Text = _paginaActual.ToString();
@@ -134,15 +124,14 @@ namespace Edulink.Windows
         }
         private void LimpiarBotonesYActualizarLista()
         {
-            _inscripto = false;
-            _anioMateria = 0;
+
+            _anioMateria =null;
 
 
             erToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
             doToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
             erToolStripMenuItem1.BackColor = Color.FromArgb(249, 245, 253); // color base
-            inscriptoToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
-            disponiblesToolStripMenuItem.BackColor = Color.FromArgb(249, 245, 253); // color base
+
 
 
             RecargarGrilla();
@@ -155,8 +144,8 @@ namespace Edulink.Windows
 
         private void tsInscribir_Click(object sender, EventArgs e)
         {
-            if (dgvDatosEstudiantes.SelectedRows.Count == 0) { return; }
-            DataGridViewRow r = dgvDatosEstudiantes.SelectedRows[0];
+            if (dgvInscripcionMaterias.SelectedRows.Count == 0) { return; }
+            DataGridViewRow r = dgvInscripcionMaterias.SelectedRows[0];
             MateriaDto materiaDto = (MateriaDto)r.Tag;
 
             try
@@ -183,14 +172,25 @@ namespace Edulink.Windows
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
+
         }
 
+        //todo: editar inscripcion materia , hay que ver como funciona el checkbox de 'EsLibre':
+        private void dgvInscripcionMaterias_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
+
+        private void dgvInscripcionMaterias_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        // Usar el editar, y que checke que existe la inscrpcion con el Existe(), sino existe cartel
+        //de error que diga que no se puede editar una inscripcion que no existe. Que primero lo inscriba y luego se podra editar.
         private void tsEditar_Click(object sender, EventArgs e)
         {
-            if (dgvInscripcionMaterias.SelectedRows.Count == 0) { return; }
-            //var r = dgvDatosEstudiantes.SelectedRows[0];
+            //if (dgvInscripcionMaterias.SelectedRows.Count == 0) { return; }
+            //var r = dgvInscripcionMaterias.SelectedRows[0];
             //EstudianteDto estudianteDto = (EstudianteDto)r.Tag;
             //EstudianteDto estudianteDtoCopia = (EstudianteDto)estudianteDto.Clone();
             //Estudiante estudiante = _servicioEstudiante.GetEstudiantePorId(estudianteDto.EstudianteId);
@@ -231,19 +231,26 @@ namespace Edulink.Windows
             MateriaDto materiaDto = (MateriaDto)r.Tag;
             try
             {
-                DialogResult dr = MessageBox.Show("¿Desea dar de baja el registro seleccionado?", // Se le pone como alumno libre
+                DialogResult dr = MessageBox.Show("¿Desea dar de baja el registro seleccionado?",
                     "Confirmar",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (dr == DialogResult.No) { return; }
 
-               // if (!_servicioEstudianteMaterias.EstaRelacionado(materiaDto.MateriaId, _estudianteId)) return; // es necesario? deberia de salir un cartel? deberia invertir el if?
+                if (!_servicioEstudianteMaterias.Existe(_estudianteId, materiaDto.MateriaId))
+                {
+                    _servicioEstudianteMaterias.Borrar(_estudianteId, materiaDto.MateriaId);
 
-               // _servicioEstudianteMaterias.Borrar(materiaDto.MateriaId, _estudianteId);
-              
-                MessageBox.Show($"Se eliminó la inscripcion a la materia {materiaDto.NombreMateria}", "Confirmación", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MostrarDatosEnGrilla();
+                    MessageBox.Show($"Se eliminó la inscripcion a la materia {materiaDto.NombreMateria}", "Confirmación",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MostrarDatosEnGrilla();
+                }
+                else
+                {
+                    MessageBox.Show($"No se encontró registro del estudiante en la materia: {materiaDto.NombreMateria}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MostrarDatosEnGrilla();
+                }
             }
             catch (Exception ex)
             {
@@ -253,24 +260,14 @@ namespace Edulink.Windows
             }
         }
 
-        private void inscriptoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _inscripto = true;
-            erToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
-            RecargarGrilla();
-        }
-
-        private void disponiblesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _inscripto = false;
-            erToolStripMenuItem.BackColor = Color.FromArgb(230, 230, 250);
-            RecargarGrilla();
-        }
+        
 
         //todo  : imprimir certificado de inscripcion de materias
         private void tsCertificado_Click(object sender, EventArgs e)
         {
-            //ImprimirHelper.CertificadoIncripcionMaterias(_estudianteId);
+            // me tengo que traer la lista de las materias inscriptas del estudiante
+            //Estudiante estudiante= _servicioEstudianteMaterias.GetEstudianteCompleto(_estudianteId);
+            //ImprimirHelper.CertificadoIncripcionMaterias(estudiante);
         }
 
         private void tsActualizar_Click(object sender, EventArgs e)
@@ -300,14 +297,44 @@ namespace Edulink.Windows
             RecargarGrilla();
         }
 
-        private void dgvInscripcionMaterias_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void btnPrimero_Click(object sender, EventArgs e)
         {
-
+            _paginaActual = 1;
+            lblPaginaActual.Text = (_paginaActual).ToString();
+            MostrarPaginado();
         }
 
-        private void dgvInscripcionMaterias_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btnAnterior_Click(object sender, EventArgs e)
         {
-
+            _paginaActual--;
+            if (_paginaActual == 1)
+            {
+                btnAnterior.Enabled = false;
+                btnPrimero.Enabled = false;
+            }
+            lblPaginaActual.Text = (_paginaActual).ToString();
+            MostrarPaginado();
         }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            _paginaActual++;
+            if (_paginaActual == _paginasTotales)
+            {
+                btnSiguiente.Enabled = false;
+                btnUltimo.Enabled = false;
+
+            }
+            lblPaginaActual.Text = (_paginaActual).ToString();
+            MostrarPaginado();
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            _paginaActual = _paginasTotales;
+            lblPaginaActual.Text = (_paginaActual).ToString();
+            MostrarPaginado();
+        }
+
     }
 }
