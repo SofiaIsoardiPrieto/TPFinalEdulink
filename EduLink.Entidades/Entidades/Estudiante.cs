@@ -34,6 +34,8 @@ namespace EduLink.Entidades.Entidades
         public object Clone()
         {
             return this.MemberwiseClone();
+            
         }
+
     }
 }

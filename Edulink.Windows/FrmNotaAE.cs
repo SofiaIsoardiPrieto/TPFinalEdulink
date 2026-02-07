@@ -4,46 +4,48 @@ using System.Windows.Forms;
 
 namespace Edulink.Windows
 {
-    public partial class FrmBuscarLegajo : Form
+    public partial class FrmNotaAE : Form
     {
-        private int _legajo;
+        private int _nota;
         private readonly ServiciosEstudianesExamen _servicio;
-        public FrmBuscarLegajo()
+        public FrmNotaAE()
         {
             InitializeComponent();
         }
 
-        public int GetLegajo()
+        public int Getnota()
         {
-            return _legajo;
+            return _nota;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (ValidarDatos())
             {
-                _legajo = int.Parse(txtLegajo.Text);
+                _nota = int.Parse(txtNota.Text);
                 DialogResult = DialogResult.OK;
             }
             else
             {
-                txtLegajo.SelectAll();
-                txtLegajo.Focus();
+                txtNota.SelectAll();
+                txtNota.Focus();
             }
         }
         private bool ValidarDatos()
         {
+            bool validez = true;
             errorProvider1.Clear();
 
-            if (string.IsNullOrEmpty(txtLegajo.Text))
+            int nota;
+            if (!int.TryParse(txtNota.Text, out nota))
             {
-                errorProvider1.SetError(txtLegajo, "Debe ingresar un Legajo válido");
-                return false;
-
+                errorProvider1.SetError(txtNota, "Debe ingresar una nota válida, solo se admite enteros");
+                validez = false;
             }
-           
-            return true;
+
+            return validez;
         }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {

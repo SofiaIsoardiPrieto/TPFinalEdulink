@@ -2,8 +2,6 @@
 using EduLink.Datos.Helper;
 using EduLink.Datos.Interfaces;
 using EduLink.Entidades.Combos;
-using EduLink.Entidades.Dtos;
-using EduLink.Entidades.Entidades;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -36,7 +34,7 @@ namespace EduLink.Datos.Repositorios
             }
         }
 
- 
+
     }
 }
 

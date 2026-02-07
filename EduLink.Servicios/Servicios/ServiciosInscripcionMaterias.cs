@@ -1,7 +1,6 @@
 ﻿using EduLink.Datos.Interfaces;
 using EduLink.Datos.Repositorios;
 using EduLink.Entidades.Combos;
-using EduLink.Entidades.Dtos;
 using EduLink.Entidades.Entidades;
 using EduLink.Servicios.Interfaces;
 using System;
@@ -9,12 +8,12 @@ using System.Collections.Generic;
 
 namespace EduLink.Servicios.Servicios
 {
-    public class ServiciosEstudiantesMaterias : IServiciosEstudiantesMaterias
+    public class ServiciosInscripcionMaterias : IServiciosInscripcionMaterias
     {
-        private readonly IRepositorioEstudiantesMaterias _repositorio;
-        public ServiciosEstudiantesMaterias()
+        private readonly IRepositorioInscripcionMaterias _repositorio;
+        public ServiciosInscripcionMaterias()
         {
-            _repositorio = new RepositorioEstudiantesMaterias();
+            _repositorio = new RepositorioInscripcionMaterias();
         }
 
         public bool Existe(int estudianteId, int materiaId)
@@ -33,13 +32,13 @@ namespace EduLink.Servicios.Servicios
         {
             try
             {
-                if (estudianteId == 0 || materiaId==0)
+                if (estudianteId == 0 || materiaId == 0)
                 {
-                    _repositorio.Agregar(estudianteId,materiaId);
+                    _repositorio.Agregar(estudianteId, materiaId);
                 }
                 else
                 {
-                    _repositorio.Editar(estudianteId,materiaId);
+                    _repositorio.Editar(estudianteId, materiaId);
                 }
             }
             catch (Exception)
@@ -52,7 +51,7 @@ namespace EduLink.Servicios.Servicios
         {
             try
             {
-                 _repositorio.Borrar(estudianteId, materiaId);
+                _repositorio.Borrar(estudianteId, materiaId);
             }
             catch (Exception)
             {
@@ -89,7 +88,7 @@ namespace EduLink.Servicios.Servicios
         {
             try
             {
-                return _repositorio.GetEstudiantesPorPagina(estudianteId,  anioMateria, registrosPorPagina, paginaActual);
+                return _repositorio.GetEstudiantesPorPagina(estudianteId, anioMateria, registrosPorPagina, paginaActual);
             }
             catch (Exception)
             {

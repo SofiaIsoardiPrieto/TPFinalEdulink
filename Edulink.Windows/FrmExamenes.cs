@@ -12,7 +12,7 @@ namespace Edulink.Windows
     public partial class FrmExamenes : Form
     {
         private int _carreraId;
-        private readonly IServiciosEstudiantesExamenes _servicioEstudianteExamenes;
+        private readonly IServiciosExamenes _servicioExamenes;
         private readonly IServiciosCarreras _servicioCarreras;
         private List<ExamenDto> _lista;
         private int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
@@ -26,13 +26,13 @@ namespace Edulink.Windows
         {
             InitializeComponent();
             _carreraId = carreraId;
-            _servicioEstudianteExamenes = new ServiciosEstudiantesExamenes();
+            _servicioExamenes = new ServiciosExamenes();
             _servicioCarreras = new ServiciosCarreras();
         }
 
         private void FrmExamenes_Load(object sender, EventArgs e)
         {
-            if (_servicioEstudianteExamenes is null) // comprueba que el servicio se haya inicializado correctamente.
+            if (_servicioExamenes is null) // comprueba que el servicio se haya inicializado correctamente.
             {
                 MessageBox.Show("Habilitar el servicio de SQL", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -44,7 +44,7 @@ namespace Edulink.Windows
         {
             try
             {
-                _registrosTotales = _servicioEstudianteExamenes.GetCantidad(_carreraId);// obtiene la cantidad total de registros.
+                _registrosTotales = _servicioExamenes.GetCantidad(_carreraId);// obtiene la cantidad total de registros.
                 _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);// calcula el total de páginas.
                 MostrarPaginado();
             }
@@ -52,7 +52,8 @@ namespace Edulink.Windows
         }
         private void MostrarPaginado()
         {
-            _lista = _servicioEstudianteExamenes.GetExamenesPorPagina(_carreraId, _registrosPorPagina, _paginaActual);
+            _lista = _servicioExamenes.GetExamenesPorPagina(_carreraId, _registrosPorPagina, _paginaActual);
+            MostrarDatosEnGrilla();
         }
         private void MostrarDatosEnGrilla()
         {
@@ -134,7 +135,7 @@ namespace Edulink.Windows
 
         private void tsNuevo_Click(object sender, EventArgs e)
         {
-            FrmExamenAE frm = new FrmExamenAE();
+            FrmExamenAE frm = new FrmExamenAE(_carreraId);
             DialogResult dr = frm.ShowDialog(this);
             RecargarGrilla();
             MostrarDatosEnGrilla();
@@ -146,10 +147,10 @@ namespace Edulink.Windows
             var r = dgvDatosExamenes.SelectedRows[0];
             ExamenDto examenDto = (ExamenDto)r.Tag;
             ExamenDto examenDtoCopia = (ExamenDto)examenDto.Clone();
-            Examen examen = _servicioEstudianteExamenes.GetExamenPorId(examenDto.ExamenId);
+            Examen examen = _servicioExamenes.GetExamenPorId(examenDto.ExamenId);
             try
             {
-                FrmExamenAE frm = new FrmExamenAE() { Text = "Editar Exámen" };
+                FrmExamenAE frm = new FrmExamenAE(_carreraId) { Text = "Editar Exámen" };
                 frm.SetExamen(examen);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.Cancel)
@@ -189,15 +190,15 @@ namespace Edulink.Windows
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (dr == DialogResult.No) { return; }
-                if (!_servicioEstudianteExamenes.EstaRelacionado(examenDto.ExamenId))// Veo si el estudiante esta en otras tablas, problema de FK
+                if (!_servicioExamenes.EstaRelacionado(examenDto.ExamenId))// Veo si el estudiante esta en otras tablas, problema de FK
                 {
-                    _servicioEstudianteExamenes.Borrar(examenDto.ExamenId);
+                    _servicioExamenes.Borrar(examenDto.ExamenId);
                     GridHelper.QuitarFila(dgvDatosExamenes, r);
-                    _registrosTotales = _servicioEstudianteExamenes.GetCantidad(_carreraId);
+                    _registrosTotales = _servicioExamenes.GetCantidad(_carreraId);
                     _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);
                     lblRegistros.Text = _registrosTotales.ToString();
                     lblPaginasTotales.Text = _paginasTotales.ToString();
-                    MessageBox.Show("Estudiante en condición de libre", "Mensaje", // Esto como afecta finales o cursadas?
+                    MessageBox.Show("Ezmane eliminado exitosamente", "Mensaje", // Esto como afecta finales o cursadas?
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RecargarGrilla();
                     MostrarDatosEnGrilla();
@@ -212,7 +213,11 @@ namespace Edulink.Windows
         }
         private void tsAlumnos_Click(object sender, EventArgs e)
         {
-
+            if (dgvDatosExamenes.SelectedRows.Count == 0) return;
+            var r = dgvDatosExamenes.SelectedRows[0];
+            ExamenDto examenDto = (ExamenDto)r.Tag;
+            FrmEstudiantesExamen frm= new FrmEstudiantesExamen(examenDto.ExamenId);
+            frm.ShowDialog(this);
         }
         
         private void tsActualizar_Click(object sender, EventArgs e)

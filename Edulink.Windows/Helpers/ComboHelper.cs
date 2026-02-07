@@ -1,4 +1,5 @@
-﻿using EduLink.Entidades.Entidades;
+﻿using EduLink.Entidades.Combos;
+using EduLink.Entidades.Entidades;
 using EduLink.Servicios.Interfaces;
 using EduLink.Servicios.Servicios;
 using System;
@@ -12,7 +13,7 @@ namespace Edulink.Windows.Helpers
         {
             IServiciosCarreras serviciosCarreras = new ServiciosCarreras();
             var lista = serviciosCarreras.GetCarreraCombo(adminId);
-            var defaultCarrera = new Carrera()
+            var defaultCarrera = new CarreraCombo()
             {
                 CarreraId = 0,
                 NombreCarrera = "Seleccione Carrera"
@@ -29,7 +30,7 @@ namespace Edulink.Windows.Helpers
         {
             IServiciosCiudades serviciosCuidades = new ServiciosCiudades();
             var lista = serviciosCuidades.GetCiudadesCombo();
-            var defaultCiudad = new Ciudad()
+            var defaultCiudad = new CiudadCombo()
             {
                 CiudadId = 0,
                 NombreCiudad = "Seleccione Ciudad"
@@ -44,9 +45,9 @@ namespace Edulink.Windows.Helpers
 
         internal static void CargarComboMaterias(ref ComboBox combo,int carreraId)
         {
-            IServiciosEstudiantesMaterias serviciosMaterias = new ServiciosEstudiantesMaterias();
+            IServiciosInscripcionMaterias serviciosMaterias = new ServiciosInscripcionMaterias();
             var lista = serviciosMaterias.GetMateriasCombo(carreraId);
-            var defaultMateria = new Materia()
+            var defaultMateria = new MateriaCombo()
             {
                 MateriaId = 0,
                 NombreMateria = "Seleccione Materia"

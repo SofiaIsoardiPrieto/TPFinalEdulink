@@ -45,6 +45,7 @@
     <Compile Include="Combos\CarreraCombo.cs" />
     <Compile Include="Combos\CiudadCombo.cs" />
     <Compile Include="Combos\EstudianteCombo.cs" />
+    <Compile Include="Dtos\EstudianteExamenDto.cs" />
     <Compile Include="Dtos\EstudianteDto.cs" />
     <Compile Include="Dtos\ExamenDto.cs" />
     <Compile Include="Dtos\ModuloDto.cs" />

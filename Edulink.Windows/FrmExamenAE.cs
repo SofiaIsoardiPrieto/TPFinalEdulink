@@ -1,5 +1,6 @@
 ﻿using Edulink.Windows.Helpers;
 using EduLink.Entidades.Entidades;
+using EduLink.Servicios.Interfaces;
 using EduLink.Servicios.Servicios;
 using System;
 using System.Windows.Forms;
@@ -12,25 +13,37 @@ namespace Edulink.Windows
         // cambiar todo
         private int _carreraId;
         private Examen _examen;
-        private readonly ServiciosEstudiantesExamenes _servicio;
+        private readonly IServiciosInscripcionExamenes _servicio;
         private bool _esEdicion = false;
         public FrmExamenAE(int carreraId)
         {
             InitializeComponent();
-            _servicio = new ServiciosEstudiantesExamenes();
+            _servicio = new ServiciosInscripcionExamenes();
 
             _carreraId = carreraId;
             ComboHelper.CargarComboMaterias(ref cbMateria, _carreraId);
+
         }
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
+            dtpHoraExamen.Format = DateTimePickerFormat.Time;   // para que muestre solo hora
+            dtpHoraExamen.ShowUpDown = true;                    // para que sea tipo reloj (sin calendario)
+            dtpHoraExamen.Value = DateTime.Today.AddHours(18);  // arranca en las 18:00 del día actual
             if (_examen != null)
             {
                 // ExamentextBox.Text = examen.Nombreexamen;
                 _esEdicion = true;
+                cbMateria.SelectedValue = _examen.MateriaId;
+                cbMateria.Enabled = false; // no se puede cambiar la materia de un examen ya creado
+                dtpFechaExamen.Value = _examen.FechaExamen;
+                dtpHoraExamen.Value = DateTime.Today.Add(_examen.HoraComienzo);
+
             }
+
+           
+
+
         }
         internal Examen GetExamen()
         {

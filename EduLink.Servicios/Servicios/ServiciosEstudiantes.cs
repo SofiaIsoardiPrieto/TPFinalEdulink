@@ -9,10 +9,10 @@ using System.Collections.Generic;
 
 namespace EduLink.Servicios.Servicios
 {
-    public class ServiciosEstudiantes : IServiciosEstudiantes
+    public class ServiciosEstudianesExamen : IServiciosEstudiantes
     {
         private readonly IRepositorioEstudiantes _repositorio;
-        public ServiciosEstudiantes()
+        public ServiciosEstudianesExamen()
         {
             _repositorio = new RepositorioEstudiantes();
         }
@@ -91,7 +91,7 @@ namespace EduLink.Servicios.Servicios
         {
             try
             {
-                return _repositorio.GetCantidad(carreraId,edadMin,edadMax,anioAlta,ciudadId,estado);
+                return _repositorio.GetCantidad(carreraId, edadMin, edadMax, anioAlta, ciudadId, estado);
             }
             catch (Exception)
             {
@@ -110,7 +110,7 @@ namespace EduLink.Servicios.Servicios
         {
             try
             {
-                return _repositorio.GetEstudiantesPorPagina(carreraId,cantidadPorPagina, paginaActual,edadMin, edadMax, anioAlta, ciudadId, estado);
+                return _repositorio.GetEstudiantesPorPagina(carreraId, cantidadPorPagina, paginaActual, edadMin, edadMax, anioAlta, ciudadId, estado);
             }
             catch (Exception)
             {

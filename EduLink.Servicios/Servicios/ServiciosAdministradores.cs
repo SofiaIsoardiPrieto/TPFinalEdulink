@@ -1,11 +1,7 @@
 ﻿using EduLink.Datos.Interfaces;
 using EduLink.Datos.Repositorios;
-using EduLink.Entidades.Combos;
-using EduLink.Entidades.Dtos;
-using EduLink.Entidades.Entidades;
 using EduLink.Servicios.Interfaces;
 using System;
-using System.Collections.Generic;
 
 namespace EduLink.Servicios.Servicios
 {

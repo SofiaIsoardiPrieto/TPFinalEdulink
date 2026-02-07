@@ -9,10 +9,10 @@ using System.Linq;
 
 namespace EduLink.Datos.Repositorios
 {
-    public class RepositorioEstudiantesExamenes : IRepositorioEstudiantesExamenes
+    public class RepositorioExamenes : IRepositorioExamenes
     {
 
-        public RepositorioEstudiantesExamenes()
+        public RepositorioExamenes()
         {
 
         }
@@ -22,7 +22,7 @@ namespace EduLink.Datos.Repositorios
             {
                 int cantidad = conn.ExecuteScalar<int>(
                     "sp_ExisteExamen",
-                    new { ExamenId = examen.ExamenId, FechaExamen=examen.FechaExamen },
+                    new { ExamenId = examen.ExamenId, FechaExamen = examen.FechaExamen },
                     commandType: CommandType.StoredProcedure
                 );
 
@@ -34,7 +34,7 @@ namespace EduLink.Datos.Repositorios
             using (var conn = ConexionBD.GetConexion())
             {
                 int cantidad = conn.ExecuteScalar<int>(
-                    "sp_EstaRelacionadoExmane",
+                    "sp_EstaRelacionadoExamen",
                     new { ExamenId = examenId },
                     commandType: CommandType.StoredProcedure
                 );
@@ -48,9 +48,12 @@ namespace EduLink.Datos.Repositorios
             {
                 conn.Execute(
                     "sp_InsertExamen",
-                    new { MateriaId = examen.MateriaId, 
-                        FechaExamen=examen.FechaExamen,
-                        HoraComienzo=examen.HoraComienzo },
+                    new
+                    {
+                        MateriaId = examen.MateriaId,
+                        FechaExamen = examen.FechaExamen,
+                        HoraComienzo = examen.HoraComienzo
+                    },
                     commandType: CommandType.StoredProcedure
                 );
             }
@@ -82,7 +85,7 @@ namespace EduLink.Datos.Repositorios
                      new
                      {
                          ExamenId = examenId
-          
+
                      },
                     commandType: CommandType.StoredProcedure
                 );
@@ -103,6 +106,8 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
+
+
         public Examen GetExamenPorId(int examenId)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -116,12 +121,12 @@ namespace EduLink.Datos.Repositorios
         }
 
 
-        public List<MateriaDto> GetExamenesPorPagina(int carreraId, int cantidadPorPagina, int paginaActual)
+        public List<ExamenDto> GetExamenesPorPagina(int carreraId, int cantidadPorPagina, int paginaActual)
         {
             using (var conn = ConexionBD.GetConexion())
             {
-                return conn.Query<MateriaDto>(
-                    "sp_GetExamanesPorPagina",
+                return conn.Query<ExamenDto>(
+                    "sp_GetExamenesPorPagina",
                     new { CarreraId = carreraId, CantidadPorPagina = cantidadPorPagina, PaginaActual = paginaActual },
                     commandType: CommandType.StoredProcedure
                 ).ToList();
@@ -156,6 +161,10 @@ namespace EduLink.Datos.Repositorios
                );
             }
         }
+
+
+
+
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿namespace Edulink.Windows
 {
-    partial class FrmExamenes
+    partial class FrmEstudiantesExamen
     {
         /// <summary>
         /// Required designer variable.
@@ -30,37 +30,32 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsBorrar = new System.Windows.Forms.ToolStripButton();
-            this.tsAlumnos = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsFiltrar = new System.Windows.Forms.ToolStripButton();
-            this.tsBuscar = new System.Windows.Forms.ToolStripButton();
-            this.tsActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsVolver = new System.Windows.Forms.ToolStripButton();
             this.lblPaginaActual = new System.Windows.Forms.Label();
             this.lblPaginasTotales = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.dgvDatosEstudiantesExamen = new System.Windows.Forms.DataGridView();
+            this.ColLegajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColApellidoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsVolver = new System.Windows.Forms.ToolStripButton();
             this.btnUltimo = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnPrimero = new System.Windows.Forms.Button();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.dgvDatosExamenes = new System.Windows.Forms.DataGridView();
-            this.ColMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosExamenes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantesExamen)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -87,7 +82,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnAnterior);
             this.splitContainer1.Panel2.Controls.Add(this.btnPrimero);
             this.splitContainer1.Panel2.Controls.Add(this.splitter1);
-            this.splitContainer1.Panel2.Controls.Add(this.dgvDatosExamenes);
+            this.splitContainer1.Panel2.Controls.Add(this.dgvDatosEstudiantesExamen);
             this.splitContainer1.Size = new System.Drawing.Size(523, 376);
             this.splitContainer1.SplitterDistance = 67;
             this.splitContainer1.TabIndex = 0;
@@ -95,14 +90,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsNuevo,
             this.tsEditar,
-            this.tsBorrar,
-            this.tsAlumnos,
             this.toolStripSeparator1,
-            this.tsFiltrar,
-            this.tsBuscar,
-            this.tsActualizar,
             this.toolStripSeparator2,
             this.tsVolver});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -111,109 +100,15 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // tsNuevo
-            // 
-            this.tsNuevo.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsNuevo.Image = global::Edulink.Windows.Properties.Resources.nuevo1;
-            this.tsNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsNuevo.Name = "tsNuevo";
-            this.tsNuevo.Size = new System.Drawing.Size(52, 63);
-            this.tsNuevo.Text = "Nuevo";
-            this.tsNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsNuevo.Click += new System.EventHandler(this.tsNuevo_Click);
-            // 
-            // tsEditar
-            // 
-            this.tsEditar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsEditar.Image = global::Edulink.Windows.Properties.Resources.editar1;
-            this.tsEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsEditar.Name = "tsEditar";
-            this.tsEditar.Size = new System.Drawing.Size(48, 63);
-            this.tsEditar.Text = "Editar";
-            this.tsEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
-            // 
-            // tsBorrar
-            // 
-            this.tsBorrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsBorrar.Image = global::Edulink.Windows.Properties.Resources.borrar1;
-            this.tsBorrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsBorrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBorrar.Name = "tsBorrar";
-            this.tsBorrar.Size = new System.Drawing.Size(51, 63);
-            this.tsBorrar.Text = "Borrar";
-            this.tsBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsBorrar.Click += new System.EventHandler(this.tsBorrar_Click);
-            // 
-            // tsAlumnos
-            // 
-            this.tsAlumnos.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsAlumnos.Image = global::Edulink.Windows.Properties.Resources.materias1;
-            this.tsAlumnos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsAlumnos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsAlumnos.Name = "tsAlumnos";
-            this.tsAlumnos.Size = new System.Drawing.Size(64, 63);
-            this.tsAlumnos.Text = "Alumnos";
-            this.tsAlumnos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsAlumnos.Click += new System.EventHandler(this.tsAlumnos_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 66);
             // 
-            // tsFiltrar
-            // 
-            this.tsFiltrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsFiltrar.Image = global::Edulink.Windows.Properties.Resources.filtrar1;
-            this.tsFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsFiltrar.Name = "tsFiltrar";
-            this.tsFiltrar.Size = new System.Drawing.Size(47, 63);
-            this.tsFiltrar.Text = "Filtrar";
-            this.tsFiltrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsBuscar
-            // 
-            this.tsBuscar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsBuscar.Image = global::Edulink.Windows.Properties.Resources.buscar1;
-            this.tsBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBuscar.Name = "tsBuscar";
-            this.tsBuscar.Size = new System.Drawing.Size(52, 63);
-            this.tsBuscar.Text = "Buscar";
-            this.tsBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsActualizar
-            // 
-            this.tsActualizar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsActualizar.Image = global::Edulink.Windows.Properties.Resources.actualizar1;
-            this.tsActualizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsActualizar.Name = "tsActualizar";
-            this.tsActualizar.Size = new System.Drawing.Size(70, 63);
-            this.tsActualizar.Text = "Actualizar";
-            this.tsActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsActualizar.Click += new System.EventHandler(this.tsActualizar_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 66);
-            // 
-            // tsVolver
-            // 
-            this.tsVolver.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsVolver.Image = global::Edulink.Windows.Properties.Resources.volver;
-            this.tsVolver.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsVolver.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsVolver.Name = "tsVolver";
-            this.tsVolver.Size = new System.Drawing.Size(51, 63);
-            this.tsVolver.Text = "Volver";
-            this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsVolver.Click += new System.EventHandler(this.tsVolver_Click);
             // 
             // lblPaginaActual
             // 
@@ -272,6 +167,86 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Cantidad de registros:";
             // 
+            // splitter1
+            // 
+            this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitter1.Location = new System.Drawing.Point(0, 255);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(523, 50);
+            this.splitter1.TabIndex = 1;
+            this.splitter1.TabStop = false;
+            // 
+            // dgvDatosEstudiantesExamen
+            // 
+            this.dgvDatosEstudiantesExamen.AllowUserToAddRows = false;
+            this.dgvDatosEstudiantesExamen.AllowUserToDeleteRows = false;
+            this.dgvDatosEstudiantesExamen.AllowUserToResizeColumns = false;
+            this.dgvDatosEstudiantesExamen.AllowUserToResizeRows = false;
+            this.dgvDatosEstudiantesExamen.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
+            this.dgvDatosEstudiantesExamen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDatosEstudiantesExamen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvDatosEstudiantesExamen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosEstudiantesExamen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColLegajo,
+            this.ColApellidoNombre,
+            this.ColNota,
+            this.ColEstado});
+            this.dgvDatosEstudiantesExamen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDatosEstudiantesExamen.Location = new System.Drawing.Point(0, 0);
+            this.dgvDatosEstudiantesExamen.Name = "dgvDatosEstudiantesExamen";
+            this.dgvDatosEstudiantesExamen.ReadOnly = true;
+            this.dgvDatosEstudiantesExamen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDatosEstudiantesExamen.Size = new System.Drawing.Size(523, 305);
+            this.dgvDatosEstudiantesExamen.TabIndex = 0;
+            // 
+            // ColLegajo
+            // 
+            this.ColLegajo.HeaderText = "Legajo";
+            this.ColLegajo.Name = "ColLegajo";
+            this.ColLegajo.ReadOnly = true;
+            // 
+            // ColApellidoNombre
+            // 
+            this.ColApellidoNombre.HeaderText = "Apellido y Nombre";
+            this.ColApellidoNombre.Name = "ColApellidoNombre";
+            this.ColApellidoNombre.ReadOnly = true;
+            // 
+            // ColNota
+            // 
+            this.ColNota.HeaderText = "Nota";
+            this.ColNota.Name = "ColNota";
+            this.ColNota.ReadOnly = true;
+            // 
+            // ColEstado
+            // 
+            this.ColEstado.HeaderText = "Estado";
+            this.ColEstado.Name = "ColEstado";
+            this.ColEstado.ReadOnly = true;
+            // 
+            // tsEditar
+            // 
+            this.tsEditar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsEditar.Image = global::Edulink.Windows.Properties.Resources.editar1;
+            this.tsEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsEditar.Name = "tsEditar";
+            this.tsEditar.Size = new System.Drawing.Size(48, 63);
+            this.tsEditar.Text = "Editar";
+            this.tsEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
+            // 
+            // tsVolver
+            // 
+            this.tsVolver.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
+            this.tsVolver.Image = global::Edulink.Windows.Properties.Resources.volver;
+            this.tsVolver.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsVolver.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsVolver.Name = "tsVolver";
+            this.tsVolver.Size = new System.Drawing.Size(51, 63);
+            this.tsVolver.Text = "Volver";
+            this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsVolver.Click += new System.EventHandler(this.tsVolver_Click);
+            // 
             // btnUltimo
             // 
             this.btnUltimo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -316,59 +291,7 @@
             this.btnPrimero.TabIndex = 2;
             this.btnPrimero.UseVisualStyleBackColor = true;
             // 
-            // splitter1
-            // 
-            this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 255);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(523, 50);
-            this.splitter1.TabIndex = 1;
-            this.splitter1.TabStop = false;
-            // 
-            // dgvDatosExamenes
-            // 
-            this.dgvDatosExamenes.AllowUserToAddRows = false;
-            this.dgvDatosExamenes.AllowUserToDeleteRows = false;
-            this.dgvDatosExamenes.AllowUserToResizeColumns = false;
-            this.dgvDatosExamenes.AllowUserToResizeRows = false;
-            this.dgvDatosExamenes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
-            this.dgvDatosExamenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvDatosExamenes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvDatosExamenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatosExamenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColMateria,
-            this.ColFecha,
-            this.ColHorario});
-            this.dgvDatosExamenes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatosExamenes.Location = new System.Drawing.Point(0, 0);
-            this.dgvDatosExamenes.Name = "dgvDatosExamenes";
-            this.dgvDatosExamenes.ReadOnly = true;
-            this.dgvDatosExamenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatosExamenes.Size = new System.Drawing.Size(523, 305);
-            this.dgvDatosExamenes.TabIndex = 0;
-            // 
-            // ColMateria
-            // 
-            this.ColMateria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColMateria.HeaderText = "Materia";
-            this.ColMateria.Name = "ColMateria";
-            this.ColMateria.ReadOnly = true;
-            // 
-            // ColFecha
-            // 
-            this.ColFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColFecha.HeaderText = "Fecha";
-            this.ColFecha.Name = "ColFecha";
-            this.ColFecha.ReadOnly = true;
-            // 
-            // ColHorario
-            // 
-            this.ColHorario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColHorario.HeaderText = "Horario";
-            this.ColHorario.Name = "ColHorario";
-            this.ColHorario.ReadOnly = true;
-            // 
-            // FrmExamenes
+            // FrmEstudiantesExamen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -376,7 +299,7 @@
             this.ClientSize = new System.Drawing.Size(523, 376);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmExamenes";
+            this.Name = "FrmEstudiantesExamen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEstudiantes";
             this.Load += new System.EventHandler(this.FrmExamenes_Load);
@@ -388,7 +311,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosExamenes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantesExamen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -397,17 +320,11 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.DataGridView dgvDatosExamenes;
-        private System.Windows.Forms.ToolStripButton tsNuevo;
+        private System.Windows.Forms.DataGridView dgvDatosEstudiantesExamen;
         private System.Windows.Forms.ToolStripButton tsEditar;
-        private System.Windows.Forms.ToolStripButton tsBorrar;
         private System.Windows.Forms.ToolStripButton tsVolver;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsFiltrar;
-        private System.Windows.Forms.ToolStripButton tsActualizar;
-        private System.Windows.Forms.ToolStripButton tsBuscar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsAlumnos;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Button btnPrimero;
         private System.Windows.Forms.Button btnUltimo;
@@ -419,8 +336,9 @@
         private System.Windows.Forms.Label lblPaginasTotales;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColMateria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColFecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColHorario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLegajo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColApellidoNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNota;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColEstado;
     }
 }

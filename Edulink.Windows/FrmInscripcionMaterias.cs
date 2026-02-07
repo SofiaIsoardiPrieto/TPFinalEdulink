@@ -13,7 +13,7 @@ namespace Edulink.Windows
     {
         private int _estudianteId;
         private List<MateriaDto> _lista;
-        private IServiciosEstudiantesMaterias _servicioEstudianteMaterias;
+        private IServiciosInscripcionMaterias _servicioEstudianteMaterias;
         private int? _anioMateria;
 
         //  private int _carreraId;
@@ -24,7 +24,7 @@ namespace Edulink.Windows
         public FrmInscripcionMaterias(int estudianteId)
         {
             InitializeComponent();
-            _servicioEstudianteMaterias = new ServiciosEstudiantesMaterias();
+            _servicioEstudianteMaterias = new ServiciosInscripcionMaterias();
             _estudianteId = estudianteId;
 
         }

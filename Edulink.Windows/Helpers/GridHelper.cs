@@ -43,11 +43,8 @@ namespace Edulink.Windows.Helpers
                     break;
                 case ExamenDto examenDto:
                     r.Cells[0].Value = examenDto.NombreMateria;
-                    r.Cells[1].Value = examenDto.AnioCarrera;
-                    r.Cells[2].Value = examenDto.FechaExamen.ToString("dd/MM/yyyy");
-                    cell = (DataGridViewCheckBoxCell)r.Cells[3];
-                    cell.Value = examenDto.EsLibre; // valor por defecto, viene de la materia
-                    cell.ReadOnly = true; // no se puede editar, depende de la materia
+                    r.Cells[1].Value = examenDto.FechaExamen.ToString("dd/MM/yyyy");
+                    r.Cells[2].Value = examenDto.HoraComienzo.ToString();
                     break;
                     //case Protocolo protocolo:
                     //    r.Cells[0].Value = protocolo.NombrePaciente;

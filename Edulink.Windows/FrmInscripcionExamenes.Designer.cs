@@ -179,7 +179,6 @@
             this.tsInscribir.Size = new System.Drawing.Size(60, 63);
             this.tsInscribir.Text = "Inscribir";
             this.tsInscribir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsInscribir.Click += new System.EventHandler(this.tsInscribir_Click);
             // 
             // tsEditar
             // 
@@ -191,7 +190,6 @@
             this.tsEditar.Size = new System.Drawing.Size(48, 63);
             this.tsEditar.Text = "Editar";
             this.tsEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
             // 
             // tsBorrar
             // 
@@ -203,7 +201,6 @@
             this.tsBorrar.Size = new System.Drawing.Size(51, 63);
             this.tsBorrar.Text = "Borrar";
             this.tsBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsBorrar.Click += new System.EventHandler(this.tsBorrar_Click);
             // 
             // toolStripSeparator1
             // 
@@ -239,21 +236,18 @@
             this.erToolStripMenuItem.Name = "erToolStripMenuItem";
             this.erToolStripMenuItem.Size = new System.Drawing.Size(103, 28);
             this.erToolStripMenuItem.Text = "1er";
-            this.erToolStripMenuItem.Click += new System.EventHandler(this.erToolStripMenuItem_Click);
             // 
             // doToolStripMenuItem
             // 
             this.doToolStripMenuItem.Name = "doToolStripMenuItem";
             this.doToolStripMenuItem.Size = new System.Drawing.Size(103, 28);
             this.doToolStripMenuItem.Text = "2do";
-            this.doToolStripMenuItem.Click += new System.EventHandler(this.doToolStripMenuItem_Click);
             // 
             // erToolStripMenuItem1
             // 
             this.erToolStripMenuItem1.Name = "erToolStripMenuItem1";
             this.erToolStripMenuItem1.Size = new System.Drawing.Size(103, 28);
             this.erToolStripMenuItem1.Text = "3er";
-            this.erToolStripMenuItem1.Click += new System.EventHandler(this.erToolStripMenuItem1_Click);
             // 
             // inscrpciónToolStripMenuItem
             // 
@@ -269,14 +263,12 @@
             this.inscriptoToolStripMenuItem.Name = "inscriptoToolStripMenuItem";
             this.inscriptoToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
             this.inscriptoToolStripMenuItem.Text = "Inscripto";
-            this.inscriptoToolStripMenuItem.Click += new System.EventHandler(this.inscriptoToolStripMenuItem_Click);
             // 
             // disponiblesToolStripMenuItem
             // 
             this.disponiblesToolStripMenuItem.Name = "disponiblesToolStripMenuItem";
             this.disponiblesToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
             this.disponiblesToolStripMenuItem.Text = "Disponibles";
-            this.disponiblesToolStripMenuItem.Click += new System.EventHandler(this.disponiblesToolStripMenuItem_Click);
             // 
             // tsCertificado
             // 
@@ -288,7 +280,6 @@
             this.tsCertificado.Size = new System.Drawing.Size(77, 63);
             this.tsCertificado.Text = "Certificado";
             this.tsCertificado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsCertificado.Click += new System.EventHandler(this.tsCertificado_Click);
             // 
             // tsActualizar
             // 
@@ -300,7 +291,6 @@
             this.tsActualizar.Size = new System.Drawing.Size(70, 63);
             this.tsActualizar.Text = "Actualizar";
             this.tsActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsActualizar.Click += new System.EventHandler(this.tsActualizar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -317,7 +307,6 @@
             this.tsVolver.Size = new System.Drawing.Size(51, 63);
             this.tsVolver.Text = "Volver";
             this.tsVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsVolver.Click += new System.EventHandler(this.tsVolver_Click);
             // 
             // splitter2
             // 
@@ -350,8 +339,6 @@
             this.dgvInscripcionExamenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInscripcionExamenes.Size = new System.Drawing.Size(655, 246);
             this.dgvInscripcionExamenes.TabIndex = 12;
-            this.dgvInscripcionExamenes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInscripcionMaterias_CellClick);
-            this.dgvInscripcionExamenes.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInscripcionMaterias_CellValueChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -545,7 +532,6 @@
             this.Name = "FrmInscripcionExamenes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEstudiantes";
-            this.Load += new System.EventHandler(this.FrmEstudianteMaterias_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

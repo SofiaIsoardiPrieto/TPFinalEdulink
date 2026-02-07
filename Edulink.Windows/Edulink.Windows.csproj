@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmNotaAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNotaAE.Designer.cs">
+      <DependentUpon>FrmNotaAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBuscarEdad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,12 @@
     </Compile>
     <Compile Include="FrmExamenAE.Designer.cs">
       <DependentUpon>FrmExamenAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEstudiantesExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEstudiantesExamen.Designer.cs">
+      <DependentUpon>FrmEstudiantesExamen.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmInscripcionExamenes.cs">
       <SubType>Form</SubType>
@@ -157,6 +169,9 @@
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmNotaAE.resx">
+      <DependentUpon>FrmNotaAE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBuscarEdad.resx">
       <DependentUpon>FrmBuscarEdad.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmExamenAE.resx">
       <DependentUpon>FrmExamenAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEstudiantesExamen.resx">
+      <DependentUpon>FrmEstudiantesExamen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInscripcionExamenes.resx">
       <DependentUpon>FrmInscripcionExamenes.cs</DependentUpon>

@@ -11,14 +11,14 @@ namespace Edulink.Windows
     public partial class FrmEstudianteAE : Form
     {
         private Estudiante _estudiante;
-        private readonly ServiciosEstudiantes _servicio;
+        private readonly ServiciosEstudianesExamen _servicio;
         private bool _esEdicion = false; // que útil que ha sido!!!!
         private int _carreraId;
         public FrmEstudianteAE(int carreraId)// Necesito el id de la carrera para setearlo en el estudiante nuevo
         {
             InitializeComponent();
             dtpFechaNacimiento.MinDate = new DateTime(1753, 1, 1);
-            _servicio = new ServiciosEstudiantes();
+            _servicio = new ServiciosEstudianesExamen();
             txtLegajo.Text = "El legajo se generará automáticamente";
             txtLegajo.Enabled = false;
             rbRegular.Checked = true;

@@ -42,8 +42,8 @@ namespace EduLink.Datos.Repositorios
                         EstadoEstudiante = estudiante.EstadoEstudiante.ToString(),
                         estudiante.CarreraId,
                         estudiante.FechaAlta
-                        
-                    } ,
+
+                    },
                     commandType: CommandType.StoredProcedure
                 );
 

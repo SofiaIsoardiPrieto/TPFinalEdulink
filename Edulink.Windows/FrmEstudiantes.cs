@@ -32,7 +32,7 @@ namespace Edulink.Windows
         public FrmEstudiantes(int carreraId)
         {
             InitializeComponent(); // Inicializa los controles del formulario.
-            _servicioEstudiante = new ServiciosEstudiantes(); // Se instancia el servicio concreto.
+            _servicioEstudiante = new ServiciosEstudianesExamen(); // Se instancia el servicio concreto.
             // ¿Sería útil usar inyección de dependencias para mayor flexibilidad?
             _carreraId = carreraId;
             _servicioCarreras = new ServiciosCarreras();
