@@ -38,13 +38,6 @@
             this.tsBorrar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsFiltrar = new System.Windows.Forms.ToolStripDropDownButton();
-            this.añoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.erToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.doToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.erToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.inscrpciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inscriptoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disponiblesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsCertificado = new System.Windows.Forms.ToolStripButton();
             this.tsActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -209,9 +202,6 @@
             // 
             // tsFiltrar
             // 
-            this.tsFiltrar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.añoToolStripMenuItem,
-            this.inscrpciónToolStripMenuItem});
             this.tsFiltrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
             this.tsFiltrar.Image = global::Edulink.Windows.Properties.Resources.filtrar1;
             this.tsFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -220,55 +210,6 @@
             this.tsFiltrar.Size = new System.Drawing.Size(56, 63);
             this.tsFiltrar.Text = "Filtrar";
             this.tsFiltrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // añoToolStripMenuItem
-            // 
-            this.añoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.erToolStripMenuItem,
-            this.doToolStripMenuItem,
-            this.erToolStripMenuItem1});
-            this.añoToolStripMenuItem.Name = "añoToolStripMenuItem";
-            this.añoToolStripMenuItem.Size = new System.Drawing.Size(139, 28);
-            this.añoToolStripMenuItem.Text = "Año";
-            // 
-            // erToolStripMenuItem
-            // 
-            this.erToolStripMenuItem.Name = "erToolStripMenuItem";
-            this.erToolStripMenuItem.Size = new System.Drawing.Size(103, 28);
-            this.erToolStripMenuItem.Text = "1er";
-            // 
-            // doToolStripMenuItem
-            // 
-            this.doToolStripMenuItem.Name = "doToolStripMenuItem";
-            this.doToolStripMenuItem.Size = new System.Drawing.Size(103, 28);
-            this.doToolStripMenuItem.Text = "2do";
-            // 
-            // erToolStripMenuItem1
-            // 
-            this.erToolStripMenuItem1.Name = "erToolStripMenuItem1";
-            this.erToolStripMenuItem1.Size = new System.Drawing.Size(103, 28);
-            this.erToolStripMenuItem1.Text = "3er";
-            // 
-            // inscrpciónToolStripMenuItem
-            // 
-            this.inscrpciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inscriptoToolStripMenuItem,
-            this.disponiblesToolStripMenuItem});
-            this.inscrpciónToolStripMenuItem.Name = "inscrpciónToolStripMenuItem";
-            this.inscrpciónToolStripMenuItem.Size = new System.Drawing.Size(139, 28);
-            this.inscrpciónToolStripMenuItem.Text = "Inscrpción";
-            // 
-            // inscriptoToolStripMenuItem
-            // 
-            this.inscriptoToolStripMenuItem.Name = "inscriptoToolStripMenuItem";
-            this.inscriptoToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
-            this.inscriptoToolStripMenuItem.Text = "Inscripto";
-            // 
-            // disponiblesToolStripMenuItem
-            // 
-            this.disponiblesToolStripMenuItem.Name = "disponiblesToolStripMenuItem";
-            this.disponiblesToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
-            this.disponiblesToolStripMenuItem.Text = "Disponibles";
             // 
             // tsCertificado
             // 
@@ -532,6 +473,7 @@
             this.Name = "FrmInscripcionExamenes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEstudiantes";
+            this.Load += new System.EventHandler(this.FrmInscripcionExamenes_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -583,13 +525,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripButton tsEditar;
         private System.Windows.Forms.ToolStripDropDownButton tsFiltrar;
-        private System.Windows.Forms.ToolStripMenuItem añoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inscrpciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inscriptoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem disponiblesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem erToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem doToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem erToolStripMenuItem1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColHorario;

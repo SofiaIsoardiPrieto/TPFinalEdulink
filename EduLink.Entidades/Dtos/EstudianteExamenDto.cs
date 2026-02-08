@@ -13,7 +13,7 @@ namespace EduLink.Entidades.Dtos
         public string Apellidos { get; set; }
         // <-- Agregado
         public int ExamenId { get; set; }
-        public int Nota { get; set; }
+        public int? Nota { get; set; }
         public Estado EstadoExamen { get; set; }
       
         public object Clone()

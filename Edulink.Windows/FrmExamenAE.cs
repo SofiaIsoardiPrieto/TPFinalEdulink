@@ -13,12 +13,12 @@ namespace Edulink.Windows
         // cambiar todo
         private int _carreraId;
         private Examen _examen;
-        private readonly IServiciosInscripcionExamenes _servicio;
+        private readonly IServiciosExamenes _servicio;
         private bool _esEdicion = false;
         public FrmExamenAE(int carreraId)
         {
             InitializeComponent();
-            _servicio = new ServiciosInscripcionExamenes();
+            _servicio = new ServiciosExamenes();
 
             _carreraId = carreraId;
             ComboHelper.CargarComboMaterias(ref cbMateria, _carreraId);
@@ -136,8 +136,6 @@ namespace Edulink.Windows
 
             return validez;
         }
-
-
 
 
 

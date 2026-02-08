@@ -60,10 +60,10 @@ namespace Edulink.Windows
         private void MostrarDatosEnGrilla()
         {
             GridHelper.LimpiarGrilla(dgvDatosEstudiantesExamen);
-            foreach (var examenDto in _lista)
+            foreach (var estudianreExamenDto in _lista)
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvDatosEstudiantesExamen);
-                GridHelper.SetearFila(r, examenDto);
+                GridHelper.SetearFila(r, estudianreExamenDto);
                 GridHelper.AgregarFila(dgvDatosEstudiantesExamen, r);
             }
 

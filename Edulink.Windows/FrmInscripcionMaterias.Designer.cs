@@ -166,7 +166,7 @@
             this.tsVolver});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(437, 66);
+            this.toolStrip1.Size = new System.Drawing.Size(456, 66);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -231,7 +231,7 @@
             this.doToolStripMenuItem,
             this.erToolStripMenuItem1});
             this.añoToolStripMenuItem.Name = "añoToolStripMenuItem";
-            this.añoToolStripMenuItem.Size = new System.Drawing.Size(103, 28);
+            this.añoToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
             this.añoToolStripMenuItem.Text = "Año";
             // 
             // erToolStripMenuItem

@@ -1,5 +1,6 @@
 ﻿using EduLink.Entidades.Dtos;
 using EduLink.Entidades.Entidades;
+using EduLink.Entidades.Enums;
 using System.Windows.Forms;
 
 namespace Edulink.Windows.Helpers
@@ -46,11 +47,12 @@ namespace Edulink.Windows.Helpers
                     r.Cells[1].Value = examenDto.FechaExamen.ToString("dd/MM/yyyy");
                     r.Cells[2].Value = examenDto.HoraComienzo.ToString();
                     break;
-                    //case Protocolo protocolo:
-                    //    r.Cells[0].Value = protocolo.NombrePaciente;
-                    //    r.Cells[1].Value = $"{protocolo.FechaRealizacion.Day}/{protocolo.FechaRealizacion.Month}/{protocolo.FechaRealizacion.Year}";
-                    //    r.Cells[2].Value = protocolo.NombreMedico;
-                    //    break;
+                case EstudianteExamenDto estudianteExamenDto:
+                    r.Cells[0].Value = estudianteExamenDto.Legajo;
+                    r.Cells[1].Value = $"{estudianteExamenDto.Apellidos}, {estudianteExamenDto.Nombres}";
+                    r.Cells[2].Value = estudianteExamenDto.EstadoExamen==Estado.Pendiente? "-": estudianteExamenDto.Nota.ToString();
+                    r.Cells[3].Value = estudianteExamenDto.EstadoExamen.ToString();
+                    break;
                     //case PruebaCombo prueba:
                     //    r.Cells[0].Value = prueba.NombrePrueba;
                     //    break;

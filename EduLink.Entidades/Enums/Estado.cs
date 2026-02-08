@@ -8,6 +8,7 @@ namespace EduLink.Entidades.Enums
 {
     public enum Estado
     {
+        Pendiente,
         Aprobado,
         Desaprobado,
         Ausente

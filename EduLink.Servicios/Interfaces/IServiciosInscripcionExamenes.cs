@@ -5,14 +5,19 @@ namespace EduLink.Servicios.Interfaces
 {
     public interface IServiciosInscripcionExamenes
     {
-       // void Borrar(int examenId);
-       // bool EstaRelacionado(int examenId);
-       // bool Existe(Examen examen);
-       //// int GetCantidad(int carreraId, int anioMateria);
-       // int GetCantidad(int carreraId);
-       // List<ExamenDto> GetExamenesPorPagina(int carreraId, int registrosPorPagina, int paginaActual);
+        bool Existe(int estudianteId, int examenId);
 
-       // Examen GetExamenPorId(int examenId);
-       // void Guardar(Examen examen);
+        // void Borrar(int examenId);
+        // bool EstaRelacionado(int examenId);
+        // bool Existe(Examen examen);
+        //// int GetCantidad(int carreraId, int anioMateria);
+        // int GetCantidad(int carreraId);
+        // List<ExamenDto> GetExamenesPorPagina(int carreraId, int registrosPorPagina, int paginaActual);
+
+        // Examen GetExamenPorId(int examenId);
+        // void Guardar(Examen examen);
+        int GetCantidad(int estudianteId);
+        List<ExamenDto> GetExamenesInscripcionEstudiantePorPagina(int estudianteId, int registrosPorPagina, int paginaActual);
+        void Guardar(int estudianteId, int examenId);
     }
 }

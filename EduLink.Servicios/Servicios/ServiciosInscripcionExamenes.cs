@@ -15,6 +15,58 @@ namespace EduLink.Servicios.Servicios
             _repositorio = new RepositorioInscripcionExamenes();
         }
 
+        public bool Existe(int estudianteId, int examenId)
+        {
+            try
+            {
+                return _repositorio.Existe( estudianteId, examenId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public int GetCantidad(int estudianteId)
+        {
+            try
+            {
+                return _repositorio.GetCantidad(estudianteId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<ExamenDto> GetExamenesInscripcionEstudiantePorPagina(int estudianteId,  int registrosPorPagina, int paginaActual)
+        {
+            try
+            {
+                return _repositorio.GetExamenesInscripcionEstudiantePorPagina(estudianteId,  registrosPorPagina, paginaActual);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void Guardar(int estudianteId, int examenId)
+        {
+            try
+            {
+                _repositorio.Guardar(estudianteId, examenId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         //public void Borrar(int examenId)
         //{
         //    try
@@ -41,58 +93,11 @@ namespace EduLink.Servicios.Servicios
         //    }
         //}
 
-        //public bool Existe(Examen examen)
-        //{
-        //    try
-        //    {
-        //        return _repositorio.Existe(examen);
-        //    }
-        //    catch (Exception)
-        //    {
+       
 
-        //        throw;
-        //    }
-            
-        //}
+        
 
-        //public int GetCantidad(int carreraId)
-        //{
-        //    try
-        //    {
-        //        return _repositorio.GetCantidad(carreraId);
-        //    }
-        //    catch (Exception)
-        //    {
 
-        //        throw;
-        //    }
-        //}
-
-        //public int GetCantidad(int carreraId, int anioMateria)
-        //{
-        //    try
-        //    {
-        //        return GetCantidad( carreraId,  anioMateria);
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
-
-        //public List<ExamenDto> GetExamenesPorPagina(int carreraId, int registrosPorPagina, int paginaActual)
-        //{
-        //    try
-        //    {
-        //        return _repositorio.GetExamenesPorPagina(carreraId, registrosPorPagina, paginaActual);
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
 
         //public Examen GetExamenPorId(int examenId)
         //{
