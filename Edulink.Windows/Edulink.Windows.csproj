@@ -55,6 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmHistorialEstudiantesMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHistorialEstudiantesMateria.Designer.cs">
+      <DependentUpon>FrmHistorialEstudiantesMateria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEstudiantesMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEstudiantesMateria.Designer.cs">
+      <DependentUpon>FrmEstudiantesMateria.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNotaAE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +181,12 @@
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmHistorialEstudiantesMateria.resx">
+      <DependentUpon>FrmHistorialEstudiantesMateria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEstudiantesMateria.resx">
+      <DependentUpon>FrmEstudiantesMateria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmNotaAE.resx">
       <DependentUpon>FrmNotaAE.cs</DependentUpon>
     </EmbeddedResource>

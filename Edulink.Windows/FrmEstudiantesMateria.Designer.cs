@@ -1,6 +1,6 @@
 ﻿namespace Edulink.Windows
 {
-    partial class FrmMaterias
+    partial class FrmEstudiantesMateria
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,8 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsBorrar = new System.Windows.Forms.ToolStripButton();
-            this.tsAlumnos = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsFiltrar = new System.Windows.Forms.ToolStripButton();
-            this.tsBuscar = new System.Windows.Forms.ToolStripButton();
-            this.tsActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsVolver = new System.Windows.Forms.ToolStripButton();
             this.lblPaginaActual = new System.Windows.Forms.Label();
@@ -51,14 +45,17 @@
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnPrimero = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.dgvDatosMaterias = new System.Windows.Forms.DataGridView();
-            this.ColMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDatosEstudiantesMateria = new System.Windows.Forms.DataGridView();
+            this.ColLegajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColApellidoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosMaterias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantesMateria)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -85,7 +82,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnAnterior);
             this.splitContainer1.Panel2.Controls.Add(this.btnPrimero);
             this.splitContainer1.Panel2.Controls.Add(this.splitter1);
-            this.splitContainer1.Panel2.Controls.Add(this.dgvDatosMaterias);
+            this.splitContainer1.Panel2.Controls.Add(this.dgvDatosEstudiantesMateria);
             this.splitContainer1.Size = new System.Drawing.Size(523, 376);
             this.splitContainer1.SplitterDistance = 67;
             this.splitContainer1.TabIndex = 0;
@@ -93,14 +90,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsNuevo,
             this.tsEditar,
-            this.tsBorrar,
-            this.tsAlumnos,
             this.toolStripSeparator1,
-            this.tsFiltrar,
-            this.tsBuscar,
-            this.tsActualizar,
             this.toolStripSeparator2,
             this.tsVolver});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -108,17 +99,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(523, 66);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tsNuevo
-            // 
-            this.tsNuevo.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsNuevo.Image = global::Edulink.Windows.Properties.Resources.nuevo1;
-            this.tsNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsNuevo.Name = "tsNuevo";
-            this.tsNuevo.Size = new System.Drawing.Size(52, 63);
-            this.tsNuevo.Text = "Nuevo";
-            this.tsNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // tsEditar
             // 
@@ -130,67 +110,12 @@
             this.tsEditar.Size = new System.Drawing.Size(48, 63);
             this.tsEditar.Text = "Editar";
             this.tsEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsBorrar
-            // 
-            this.tsBorrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsBorrar.Image = global::Edulink.Windows.Properties.Resources.borrar1;
-            this.tsBorrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsBorrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBorrar.Name = "tsBorrar";
-            this.tsBorrar.Size = new System.Drawing.Size(51, 63);
-            this.tsBorrar.Text = "Borrar";
-            this.tsBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsAlumnos
-            // 
-            this.tsAlumnos.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsAlumnos.Image = global::Edulink.Windows.Properties.Resources.materias1;
-            this.tsAlumnos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsAlumnos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsAlumnos.Name = "tsAlumnos";
-            this.tsAlumnos.Size = new System.Drawing.Size(64, 63);
-            this.tsAlumnos.Text = "Alumnos";
-            this.tsAlumnos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsAlumnos.Click += new System.EventHandler(this.tsAlumnos_Click);
+            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 66);
-            // 
-            // tsFiltrar
-            // 
-            this.tsFiltrar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsFiltrar.Image = global::Edulink.Windows.Properties.Resources.filtrar1;
-            this.tsFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsFiltrar.Name = "tsFiltrar";
-            this.tsFiltrar.Size = new System.Drawing.Size(47, 63);
-            this.tsFiltrar.Text = "Filtrar";
-            this.tsFiltrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsBuscar
-            // 
-            this.tsBuscar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsBuscar.Image = global::Edulink.Windows.Properties.Resources.buscar1;
-            this.tsBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBuscar.Name = "tsBuscar";
-            this.tsBuscar.Size = new System.Drawing.Size(52, 63);
-            this.tsBuscar.Text = "Buscar";
-            this.tsBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsActualizar
-            // 
-            this.tsActualizar.Font = new System.Drawing.Font("Myanmar Text", 9.75F);
-            this.tsActualizar.Image = global::Edulink.Windows.Properties.Resources.actualizar1;
-            this.tsActualizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsActualizar.Name = "tsActualizar";
-            this.tsActualizar.Size = new System.Drawing.Size(70, 63);
-            this.tsActualizar.Text = "Actualizar";
-            this.tsActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator2
             // 
@@ -232,7 +157,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(109, 282);
+            this.label3.Location = new System.Drawing.Point(108, 282);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 13);
             this.label3.TabIndex = 9;
@@ -276,7 +201,6 @@
             this.btnUltimo.Size = new System.Drawing.Size(51, 35);
             this.btnUltimo.TabIndex = 5;
             this.btnUltimo.UseVisualStyleBackColor = true;
-            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
             // btnSiguiente
             // 
@@ -288,7 +212,6 @@
             this.btnSiguiente.Size = new System.Drawing.Size(51, 35);
             this.btnSiguiente.TabIndex = 4;
             this.btnSiguiente.UseVisualStyleBackColor = true;
-            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // btnAnterior
             // 
@@ -300,7 +223,6 @@
             this.btnAnterior.Size = new System.Drawing.Size(51, 35);
             this.btnAnterior.TabIndex = 3;
             this.btnAnterior.UseVisualStyleBackColor = true;
-            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
             // btnPrimero
             // 
@@ -312,7 +234,6 @@
             this.btnPrimero.Size = new System.Drawing.Size(51, 35);
             this.btnPrimero.TabIndex = 2;
             this.btnPrimero.UseVisualStyleBackColor = true;
-            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
             // 
             // splitter1
             // 
@@ -323,34 +244,54 @@
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
-            // dgvDatosMaterias
+            // dgvDatosEstudiantesMateria
             // 
-            this.dgvDatosMaterias.AllowUserToAddRows = false;
-            this.dgvDatosMaterias.AllowUserToDeleteRows = false;
-            this.dgvDatosMaterias.AllowUserToResizeColumns = false;
-            this.dgvDatosMaterias.AllowUserToResizeRows = false;
-            this.dgvDatosMaterias.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
-            this.dgvDatosMaterias.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvDatosMaterias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvDatosMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatosMaterias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColMateria});
-            this.dgvDatosMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatosMaterias.Location = new System.Drawing.Point(0, 0);
-            this.dgvDatosMaterias.Name = "dgvDatosMaterias";
-            this.dgvDatosMaterias.ReadOnly = true;
-            this.dgvDatosMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatosMaterias.Size = new System.Drawing.Size(523, 305);
-            this.dgvDatosMaterias.TabIndex = 0;
+            this.dgvDatosEstudiantesMateria.AllowUserToAddRows = false;
+            this.dgvDatosEstudiantesMateria.AllowUserToDeleteRows = false;
+            this.dgvDatosEstudiantesMateria.AllowUserToResizeColumns = false;
+            this.dgvDatosEstudiantesMateria.AllowUserToResizeRows = false;
+            this.dgvDatosEstudiantesMateria.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
+            this.dgvDatosEstudiantesMateria.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDatosEstudiantesMateria.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvDatosEstudiantesMateria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosEstudiantesMateria.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColLegajo,
+            this.ColApellidoNombre,
+            this.ColNota,
+            this.ColEstado});
+            this.dgvDatosEstudiantesMateria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDatosEstudiantesMateria.Location = new System.Drawing.Point(0, 0);
+            this.dgvDatosEstudiantesMateria.Name = "dgvDatosEstudiantesMateria";
+            this.dgvDatosEstudiantesMateria.ReadOnly = true;
+            this.dgvDatosEstudiantesMateria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDatosEstudiantesMateria.Size = new System.Drawing.Size(523, 305);
+            this.dgvDatosEstudiantesMateria.TabIndex = 0;
             // 
-            // ColMateria
+            // ColLegajo
             // 
-            this.ColMateria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColMateria.HeaderText = "Materia";
-            this.ColMateria.Name = "ColMateria";
-            this.ColMateria.ReadOnly = true;
+            this.ColLegajo.HeaderText = "Legajo";
+            this.ColLegajo.Name = "ColLegajo";
+            this.ColLegajo.ReadOnly = true;
             // 
-            // FrmMaterias
+            // ColApellidoNombre
+            // 
+            this.ColApellidoNombre.HeaderText = "Apellido y Nombre";
+            this.ColApellidoNombre.Name = "ColApellidoNombre";
+            this.ColApellidoNombre.ReadOnly = true;
+            // 
+            // ColNota
+            // 
+            this.ColNota.HeaderText = "Nota";
+            this.ColNota.Name = "ColNota";
+            this.ColNota.ReadOnly = true;
+            // 
+            // ColEstado
+            // 
+            this.ColEstado.HeaderText = "Estado";
+            this.ColEstado.Name = "ColEstado";
+            this.ColEstado.ReadOnly = true;
+            // 
+            // FrmEstudiantesMateria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -358,7 +299,7 @@
             this.ClientSize = new System.Drawing.Size(523, 376);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmMaterias";
+            this.Name = "FrmEstudiantesMateria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEstudiantes";
             this.Load += new System.EventHandler(this.FrmMaterias_Load);
@@ -370,7 +311,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosMaterias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosEstudiantesMateria)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -379,17 +320,11 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.DataGridView dgvDatosMaterias;
-        private System.Windows.Forms.ToolStripButton tsNuevo;
+        private System.Windows.Forms.DataGridView dgvDatosEstudiantesMateria;
         private System.Windows.Forms.ToolStripButton tsEditar;
-        private System.Windows.Forms.ToolStripButton tsBorrar;
         private System.Windows.Forms.ToolStripButton tsVolver;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsFiltrar;
-        private System.Windows.Forms.ToolStripButton tsActualizar;
-        private System.Windows.Forms.ToolStripButton tsBuscar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsAlumnos;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Button btnPrimero;
         private System.Windows.Forms.Button btnUltimo;
@@ -401,6 +336,9 @@
         private System.Windows.Forms.Label lblPaginasTotales;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColMateria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLegajo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColApellidoNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNota;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColEstado;
     }
 }

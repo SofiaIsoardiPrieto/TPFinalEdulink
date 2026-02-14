@@ -71,7 +71,9 @@
     <Compile Include="Interfaces\IRepositorioAdministradores.cs" />
     <Compile Include="Interfaces\IRepositorioCarreras.cs" />
     <Compile Include="Interfaces\IRepositorioCiudades.cs" />
+    <Compile Include="Interfaces\IRepositorioEstudiantesMateria.cs" />
     <Compile Include="Interfaces\IRepositorioEstudiantesExamen.cs" />
+    <Compile Include="Interfaces\IRepositorioMaterias.cs" />
     <Compile Include="Interfaces\IRepositorioExamenes.cs" />
     <Compile Include="Interfaces\IRepositorioInscripcionExamenes.cs" />
     <Compile Include="Interfaces\IRepositorioInscripcionMaterias.cs" />
@@ -80,7 +82,9 @@
     <Compile Include="Repositorios\RepositorioAdministradores.cs" />
     <Compile Include="Repositorios\RepositorioCiudades.cs" />
     <Compile Include="Repositorios\RepositorioCarreras.cs" />
+    <Compile Include="Repositorios\RepositorioEstudiantesMateria.cs" />
     <Compile Include="Repositorios\RepositorioEstudiantesExamen.cs" />
+    <Compile Include="Repositorios\RepositorioMaterias.cs" />
     <Compile Include="Repositorios\RepositorioExamenes.cs" />
     <Compile Include="Repositorios\RepositorioInscripcionExamenes.cs" />
     <Compile Include="Repositorios\RepositorioInscripcionMaterias.cs" />

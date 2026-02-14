@@ -7,6 +7,7 @@ using EduLink.Servicios.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net;
 using System.Windows.Forms;
 
 namespace Edulink.Windows
@@ -391,23 +392,29 @@ namespace Edulink.Windows
 
         private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
 
-            var r = dgvDatosEstudiantes.SelectedRows[0];
-            var estudianteDto = (EstudianteDto)r.Tag;
+            MessageBox.Show("Servicio no disponible en este momento", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            FrmInscripcionMaterias frm = new FrmInscripcionMaterias(estudianteDto.EstudianteId);
-            frm.ShowDialog();
+            //if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
+
+            //var r = dgvDatosEstudiantes.SelectedRows[0];
+            //var estudianteDto = (EstudianteDto)r.Tag;
+
+            //FrmInscripcionMaterias frm = new FrmInscripcionMaterias(estudianteDto.EstudianteId);
+            //frm.ShowDialog();
         }
 
         private void examenesFinalesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
+            MessageBox.Show("Servicio no disponible en este momento", "Aviso",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
 
-            var r = dgvDatosEstudiantes.SelectedRows[0];
-            var estudianteDto = (EstudianteDto)r.Tag;
-            FrmInscripcionExamenes frm = new FrmInscripcionExamenes(estudianteDto.EstudianteId);
-            frm.ShowDialog();
+            //var r = dgvDatosEstudiantes.SelectedRows[0];
+            //var estudianteDto = (EstudianteDto)r.Tag;
+            //FrmInscripcionExamenes frm = new FrmInscripcionExamenes(estudianteDto.EstudianteId);
+            //frm.ShowDialog();
         }
 
         private void materiasToolStripMenuItem1_Click(object sender, EventArgs e)

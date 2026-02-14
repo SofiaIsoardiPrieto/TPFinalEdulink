@@ -53,9 +53,15 @@ namespace Edulink.Windows.Helpers
                     r.Cells[2].Value = estudianteExamenDto.EstadoExamen==Estado.Pendiente? "-": estudianteExamenDto.Nota.ToString();
                     r.Cells[3].Value = estudianteExamenDto.EstadoExamen.ToString();
                     break;
-                    //case PruebaCombo prueba:
-                    //    r.Cells[0].Value = prueba.NombrePrueba;
-                    //    break;
+                case EstudianteMateriaDto estudianteMateriaDto:
+                    r.Cells[0].Value = estudianteMateriaDto.Legajo;
+                    r.Cells[1].Value = $"{estudianteMateriaDto.Apellidos}, {estudianteMateriaDto.Nombres}";
+                    r.Cells[2].Value = estudianteMateriaDto.EstadoMateria == Estado.Pendiente ? "-" : estudianteMateriaDto.Nota.ToString();
+                    r.Cells[3].Value = estudianteMateriaDto.EstadoMateria.ToString();
+                    break;
+                case Materia materia:
+                    r.Cells[0].Value = materia.NombreMateria;
+                    break;
                     //case PruebaDto pruebaDto:
                     //    r.Cells[0].Value = pruebaDto.NombrePrueba;
                     //    r.Cells[1].Value = pruebaDto.Rango;

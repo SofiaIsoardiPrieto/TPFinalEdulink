@@ -39,12 +39,18 @@ namespace Edulink.Windows
             int nota;
             if (!int.TryParse(txtNota.Text, out nota))
             {
-                errorProvider1.SetError(txtNota, "Debe ingresar una nota válida, solo se admite enteros");
+                errorProvider1.SetError(txtNota, "Debe ingresar un número entero");
+                validez = false;
+            }
+            else if (nota < 0 || nota > 10)
+            {
+                errorProvider1.SetError(txtNota, "La nota debe estar entre 0 y 10");
                 validez = false;
             }
 
             return validez;
         }
+
 
 
         private void btnCancelar_Click(object sender, EventArgs e)
