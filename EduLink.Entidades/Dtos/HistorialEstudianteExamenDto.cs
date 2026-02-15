@@ -7,20 +7,24 @@ namespace EduLink.Entidades.Dtos
 {
     public class HistorialEstudianteExamenDto
     {
-        public int EstudianteId { get; set; }
-        public int Legajo { get; set; }
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
-        // <-- Agregado
-        public DateTime FechaExamen { get; set; }
-        public string NombreMateria { get; set; }
-
-        public int? Nota { get; set; }
-        public Estado EstadoExamen { get; set; }
       
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
+            // Datos del estudiante
+            public int EstudianteId { get; set; }
+            public int Legajo { get; set; }
+            public string Nombres { get; set; }
+            public string Apellidos { get; set; }
+            public string DNI { get; set; }
+
+            // Carrera
+            public int CarreraId { get; set; }
+            public string NombreCarrera { get; set; }
+
+            // Ciclo lectivo
+            public int AnioCicloLectivo { get; set; }
+
+            // Lista de materias aprobadas
+            public List<EstudianteExamenDto> MateriasAprobadas { get; set; } = new List<EstudianteExamenDto>();
+       
+
     }
 }

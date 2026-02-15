@@ -7,7 +7,7 @@ namespace Edulink.Windows
     public partial class FrmNotaAE : Form
     {
         private int _nota;
-        private readonly ServiciosEstudianesExamen _servicio;
+       // private readonly ServiciosEstudiantes _servicioEstudiantes;
         public FrmNotaAE()
         {
             InitializeComponent();

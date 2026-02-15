@@ -372,6 +372,9 @@
     <Content Include="Resources\CertificadoInscripcionExamenes.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\CertificadoMateriasAprobadas.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\CertificadoInscripcionMaterias.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

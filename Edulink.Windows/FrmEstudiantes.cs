@@ -33,7 +33,7 @@ namespace Edulink.Windows
         public FrmEstudiantes(int carreraId)
         {
             InitializeComponent(); // Inicializa los controles del formulario.
-            _servicioEstudiante = new ServiciosEstudianesExamen(); // Se instancia el servicio concreto.
+            _servicioEstudiante = new ServiciosEstudiantes(); // Se instancia el servicio concreto.
             // ¿Sería útil usar inyección de dependencias para mayor flexibilidad?
             _carreraId = carreraId;
             _servicioCarreras = new ServiciosCarreras();
@@ -419,8 +419,15 @@ namespace Edulink.Windows
 
         private void materiasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            // Falta formulario para historial de materias
+            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
+
+            var r = dgvDatosEstudiantes.SelectedRows[0];
+            var estudianteDto = (EstudianteDto)r.Tag;
+
+            FrmHistorialEstudiantesMateria frm = new FrmHistorialEstudiantesMateria(estudianteDto.EstudianteId);
+            frm.ShowDialog();
         }
+        
 
         private void examenesFinalesToolStripMenuItem1_Click(object sender, EventArgs e)
         {

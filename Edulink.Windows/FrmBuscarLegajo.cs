@@ -7,7 +7,7 @@ namespace Edulink.Windows
     public partial class FrmBuscarLegajo : Form
     {
         private int _legajo;
-        private readonly ServiciosEstudianesExamen _servicio;
+       // private readonly ServiciosEstudiantes _servicioEstudiantes;
         public FrmBuscarLegajo()
         {
             InitializeComponent();

@@ -111,7 +111,7 @@
             this.tsImprimir.Size = new System.Drawing.Size(63, 63);
             this.tsImprimir.Text = "Imprimir";
             this.tsImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsImprimir.Click += new System.EventHandler(this.tsEditar_Click);
+            this.tsImprimir.Click += new System.EventHandler(this.tsImprimir_Click);
             // 
             // toolStripSeparator1
             // 

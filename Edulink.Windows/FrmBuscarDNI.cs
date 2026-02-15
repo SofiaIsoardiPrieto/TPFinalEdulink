@@ -7,7 +7,7 @@ namespace Edulink.Windows
     public partial class FrmBuscarDNI : Form
     {
         private int _DNI;
-        private readonly ServiciosEstudianesExamen _servicio;
+       // private readonly ServiciosEstudiantes _servicioEstudiantes;
         public FrmBuscarDNI()
         {
             InitializeComponent();

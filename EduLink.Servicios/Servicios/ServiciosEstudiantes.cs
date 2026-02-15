@@ -9,10 +9,10 @@ using System.Collections.Generic;
 
 namespace EduLink.Servicios.Servicios
 {
-    public class ServiciosEstudianesExamen : IServiciosEstudiantes
+    public class ServiciosEstudiantes : IServiciosEstudiantes
     {
         private readonly IRepositorioEstudiantes _repositorio;
-        public ServiciosEstudianesExamen()
+        public ServiciosEstudiantes()
         {
             _repositorio = new RepositorioEstudiantes();
         }
@@ -175,6 +175,19 @@ namespace EduLink.Servicios.Servicios
             try
             {
                 return _repositorio.GetEstudiantePorLegajo(legajo);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public HistorialEstudianteMateriaDto GetEstudianteCompletoPorId(int estudianteId)
+        {
+            try
+            {
+                return _repositorio.GetEstudianteCompletoPorId(estudianteId);
             }
             catch (Exception)
             {

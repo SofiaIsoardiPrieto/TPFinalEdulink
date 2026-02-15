@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Certificado de Materias Aprobadas</title>
+</head>
+<body>
+    <table border="1" width="100%">
+        <tr>
+            <td><strong>CERTIFICADO DE MATERIAS APROBADAS</strong></td>
+            <td>Fecha de emisión: @fecha</td>
+        </tr>
+    </table>
+    <br />
+    <table border="1" width="100%">
+        <tr>
+            <td>Estudiante: @nombre @apellido</td>
+            <td>Legajo/DNI: @legajo</td>
+        </tr>
+        <tr>
+            <td colspan="2">Carrera: @carrera</td>
+        </tr>
+    </table>
+    <br />
+    <table border="1" width="100%">
+        <thead>
+            <tr>
+                <th style="background-color: grey;">Materia</th>
+                <th style="background-color: grey;">Año</th>
+                <th style="background-color: grey;">Nota</th>
+                <th style="background-color: grey;">Año</th>
+            </tr>
+        </thead>
+        <tbody>
+            @filas
+            <tr>
+                <td colspan="4">Cantidad total: @cantidad</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

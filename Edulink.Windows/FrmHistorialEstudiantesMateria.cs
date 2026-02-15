@@ -12,9 +12,9 @@ namespace Edulink.Windows
 {
     public partial class FrmHistorialEstudiantesMateria : Form
     {
-        private int _materiaId;
+        private int _estudianteId;
         private readonly IServiciosEstudiantesMateria _servicioEstudiantesMateria;
-        //  private readonly IServiciosCarreras _servicioCarreras;
+        private readonly IServiciosEstudiantes _servicioEstudiantes;
         private List<EstudianteMateriaDto> _lista;
         private int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
         private int _registrosTotales;
@@ -23,13 +23,13 @@ namespace Edulink.Windows
         //private bool _filterOn = false; // por lo pronto no lo necesito
         //private Estado? _estadoExamen;
 
-        public FrmEstudiantesMateria(int materiaId)
+        public FrmHistorialEstudiantesMateria(int estudianteId)
         {
             InitializeComponent();
-            _materiaId = materiaId;
+            _estudianteId = estudianteId;
             _servicioEstudiantesMateria = new ServiciosEstudiantesMateria();      
 
-            //_servicioCarreras = new ServiciosCarreras();
+            _servicioEstudiantes = new ServiciosEstudiantes();
         }
 
         private void FrmMaterias_Load(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace Edulink.Windows
         {
             try
             {
-                _registrosTotales = _servicioEstudiantesMateria.GetCantidad(_materiaId);// obtiene la cantidad total de registros.
+                _registrosTotales = _servicioEstudiantesMateria.GetCantidad(_estudianteId);// obtiene la cantidad total de registros.
                 _paginasTotales = FormHelper.CalcularPaginas(_registrosTotales, _registrosPorPagina);// calcula el total de páginas.
                 MostrarPaginado();
             }
@@ -54,7 +54,7 @@ namespace Edulink.Windows
         }
         private void MostrarPaginado()
         {
-            _lista = _servicioEstudiantesMateria.GetEstudiantesMateriaPorPagina(_materiaId, _registrosPorPagina, _paginaActual);
+            _lista = _servicioEstudiantesMateria.GetEstudiantesMateriaPorPagina(_estudianteId, _registrosPorPagina, _paginaActual);
             MostrarDatosEnGrilla();
         }
         private void MostrarDatosEnGrilla()
@@ -114,64 +114,6 @@ namespace Edulink.Windows
 
         }
        
-
-
-  
-
-        private void tsEditar_Click(object sender, EventArgs e)
-        {
-
-            // Podria simplificarse
-            if (dgvDatosHistorialEstudiantesMateria.SelectedRows.Count == 0) { return; }
-            var r = dgvDatosHistorialEstudiantesMateria.SelectedRows[0];
-            EstudianteMateriaDto estudianteMateriaDto = (EstudianteMateriaDto)r.Tag;
-            EstudianteMateriaDto estudianteMateriaDtoCopia = (EstudianteMateriaDto)estudianteMateriaDto.Clone();
-           
-            try
-            {
-                FrmNotaAE frm = new FrmNotaAE() { Text = "Editar Nota" };
-                DialogResult dr = frm.ShowDialog(this);
-                if (dr == DialogResult.Cancel)
-                {
-                    GridHelper.SetearFila(r, estudianteMateriaDtoCopia);
-                    return;
-                }
-                int? nota = frm.Getnota();
-
-                if (nota != null)
-                {
-                    estudianteMateriaDto.Nota = (int)nota;
-                    if (nota==0)
-                    {
-                        estudianteMateriaDto.EstadoMateria = Estado.Ausente;
-                        
-                    }else if (nota < 4)
-                    {
-                        estudianteMateriaDto.EstadoMateria = Estado.Desaprobado;
-                    }
-                    else
-                    {
-                        estudianteMateriaDto.EstadoMateria = Estado.Aprobado;
-                    }
-                    _servicioEstudiantesMateria.Guardar(estudianteMateriaDto);
-                    GridHelper.SetearFila(r, estudianteMateriaDto);
-                }
-                else
-                {
-                    GridHelper.SetearFila(r, estudianteMateriaDtoCopia);
-                }
-                RecargarGrilla();
-                MostrarDatosEnGrilla();
-            }
-            catch (Exception ex)
-            {
-                GridHelper.SetearFila(r, estudianteMateriaDtoCopia);
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-       
        
         private void btnPrimero_Click(object sender, EventArgs e)
         {
@@ -216,6 +158,13 @@ namespace Edulink.Windows
             Close();
         }
 
-      
+        private void tsImprimir_Click(object sender, EventArgs e)
+        {
+
+            var historialEstudianteMateriaDto = _servicioEstudiantes.GetEstudianteCompletoPorId(_estudianteId);
+            
+            ImprimirHelper.CrearCertificadoMateriasAprobadas(historialEstudianteMateriaDto);
+            
+        }
     }
 }

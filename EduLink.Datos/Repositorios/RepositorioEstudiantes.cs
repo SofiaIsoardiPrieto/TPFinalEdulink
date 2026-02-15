@@ -210,13 +210,13 @@ namespace EduLink.Datos.Repositorios
             }
         }
 
-        public Estudiante GetEstudiantePorId(int id)
+        public Estudiante GetEstudiantePorId(int estudianteId)
         {
             using (var conn = ConexionBD.GetConexion())
             {
                 return conn.QuerySingleOrDefault<Estudiante>(
                     "sp_GetEstudiantePorId",
-                    new { EstudianteId = id },
+                    new { EstudianteId = estudianteId },
                     commandType: CommandType.StoredProcedure
                 );
             }
@@ -251,7 +251,17 @@ namespace EduLink.Datos.Repositorios
             }
         }
 
-
+        public HistorialEstudianteMateriaDto GetEstudianteCompletoPorId(int estudianteId)
+        {
+            using (var conn = ConexionBD.GetConexion())
+            {
+                return conn.QuerySingleOrDefault<HistorialEstudianteMateriaDto>(
+                    "sp_GetEstudianteCompletoPorId",
+                    new { EstudianteId = estudianteId },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+        }
     }
 }
 

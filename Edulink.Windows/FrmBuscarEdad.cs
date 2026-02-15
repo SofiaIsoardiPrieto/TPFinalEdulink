@@ -8,7 +8,7 @@ namespace Edulink.Windows
     {
         private int _edadMin;
         private int _edadMax;
-        private readonly ServiciosEstudianesExamen _servicio;
+      //  private readonly ServiciosEstudiantes _servicioEstudiantes;
         public FrmBuscarEdad()
         {
             InitializeComponent();
