@@ -18,7 +18,7 @@ namespace EduLink.Datos.Interfaces
         Estudiante GetEstudiantePorId(int estudianteId);
         EstudianteDto GetEstudiantePorDNI(int dni);
         EstudianteDto GetEstudiantePorLegajo(int legajo);
-        HistorialEstudianteMateriaDto GetEstudianteCompletoPorId(int estudianteId);
+       
     }
 }
 

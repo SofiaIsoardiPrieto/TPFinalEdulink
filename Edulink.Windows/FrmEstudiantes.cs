@@ -431,7 +431,13 @@ namespace Edulink.Windows
 
         private void examenesFinalesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            // Falta formulario para historial de examenes finales
+            if (dgvDatosEstudiantes.SelectedRows.Count == 0) return;
+
+            var r = dgvDatosEstudiantes.SelectedRows[0];
+            var estudianteDto = (EstudianteDto)r.Tag;
+
+            FrmHistorialEstudiantesExamenes frm = new FrmHistorialEstudiantesExamenes(estudianteDto.EstudianteId);
+            frm.ShowDialog();
         }
     }
 }

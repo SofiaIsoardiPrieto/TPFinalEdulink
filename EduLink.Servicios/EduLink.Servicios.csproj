@@ -44,6 +44,8 @@
     <Compile Include="Interfaces\IServiciosAdministradores.cs" />
     <Compile Include="Interfaces\IServiciosCiudades.cs" />
     <Compile Include="Interfaces\IServiciosCarreras.cs" />
+    <Compile Include="Interfaces\IServiciosHistorialExamenes.cs" />
+    <Compile Include="Interfaces\IServiciosHistorialMaterias.cs" />
     <Compile Include="Interfaces\IServiciosEstudiantesMateria.cs" />
     <Compile Include="Interfaces\IServiciosEstudiantesExamen.cs" />
     <Compile Include="Interfaces\IServiciosMaterias.cs" />
@@ -55,6 +57,8 @@
     <Compile Include="Servicios\ServiciosAdministradores.cs" />
     <Compile Include="Servicios\ServiciosCiudades.cs" />
     <Compile Include="Servicios\ServiciosCarreras.cs" />
+    <Compile Include="Servicios\ServiciosHistorialExamenes.cs" />
+    <Compile Include="Servicios\ServiciosHistorialMaterias.cs" />
     <Compile Include="Servicios\ServiciosEstudiantesMateria.cs" />
     <Compile Include="Servicios\ServiciosEstudiantesExamen.cs" />
     <Compile Include="Servicios\ServiciosMaterias.cs" />

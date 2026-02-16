@@ -4,8 +4,10 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace Edulink.Windows.Helpers
 {
@@ -96,8 +98,11 @@ namespace Edulink.Windows.Helpers
             //    GuardarPdfImagen(completo, htmlFinal);
         }
 
-        internal static void CrearCertificadoMateriasAprobadas(HistorialEstudianteMateriaDto historial)
+        internal static void CrearCertificadoMateriasAprobadas(List<EstudianteHistorialMateriaDto> lista)
         {
+            if (lista == null || lista.Count == 0)
+                throw new ArgumentException("No hay materias aprobadas para generar el certificado.");
+
             CrearCarpetaCertificados();
             var path = Environment.CurrentDirectory + @"\Certificados";
             var archivo = "CertificadoMateriasAprobadas.pdf";
@@ -107,8 +112,80 @@ namespace Edulink.Windows.Helpers
             string rutaHtml = "C:\\_PROGRAMACION_\\2º Año\\Seminario de Programación\\TP FINAL EduLink\\TPFinalEdulink\\Edulink.Windows\\Resources\\CertificadoMateriasAprobadas.html";
             string htmlTemplate = File.ReadAllText(rutaHtml);
 
+            // Tomar datos del estudiante del primer item
+            var estudiante = lista[0];
+
             // Construir las filas de materias
+            var filasBuilder = new StringBuilder();
+            foreach (var materia in lista)
+            {
+                filasBuilder.AppendLine("<tr>");
+                filasBuilder.AppendLine($"<td>{materia.NombreMateria}</td>");
+                filasBuilder.AppendLine($"<td>{materia.AnioCicloLectivo}</td>");
+                filasBuilder.AppendLine($"<td>{materia.Nota}</td>");
+                filasBuilder.AppendLine($"<td>{materia.EstadoMateria}</td>");
+                filasBuilder.AppendLine("</tr>");
+            }
+
+            // Reemplazar placeholders en el HTML
+            string htmlFinal = htmlTemplate
+                .Replace("@nombre", estudiante.Nombres)
+                .Replace("@apellido", estudiante.Apellidos)
+                .Replace("@dni", estudiante.DNI ?? "")
+                .Replace("@legajo", estudiante.Legajo.ToString())
+                .Replace("@carrera", estudiante.NombreCarrera ?? "")
+                .Replace("@fecha", DateTime.Today.ToShortDateString())
+                .Replace("@filas", filasBuilder.ToString())
+                .Replace("@cantidad", lista.Count.ToString());
+
+            // Guardar como PDF
+            GuardarPdfImagen(completo, htmlFinal);
         }
+
+        internal static void CrearCertificadoExamenesAprobadas(List<EstudianteHistorialExamenDto> listaCompleta)
+        {
+            if (listaCompleta == null || listaCompleta.Count == 0)
+                throw new ArgumentException("No hay exámenes aprobados para generar el certificado.");
+
+            CrearCarpetaCertificados();
+            var path = Environment.CurrentDirectory + @"\Certificados";
+            var archivo = "CertificadoExamenesAprobados.pdf";
+            var completo = Path.Combine(path, archivo);
+
+            // Ruta de tu plantilla HTML
+            string rutaHtml = "C:\\_PROGRAMACION_\\2º Año\\Seminario de Programación\\TP FINAL EduLink\\TPFinalEdulink\\Edulink.Windows\\Resources\\CertificadoExamenesAprobados.html";
+            string htmlTemplate = File.ReadAllText(rutaHtml);
+
+            // Tomar datos del estudiante del primer item
+            var estudiante = listaCompleta[0];
+
+            // Construir las filas de exámenes
+            var filasBuilder = new StringBuilder();
+            foreach (var examen in listaCompleta)
+            {
+                filasBuilder.AppendLine("<tr>");
+                filasBuilder.AppendLine($"<td>{examen.NombreMateria}</td>");
+                filasBuilder.AppendLine($"<td>{examen.FechaExamen.ToShortDateString()}</td>");
+                filasBuilder.AppendLine($"<td>{examen.Nota}</td>");
+                filasBuilder.AppendLine($"<td>{examen.EstadoExamen}</td>");
+                filasBuilder.AppendLine("</tr>");
+            }
+
+            // Reemplazar placeholders en el HTML
+            string htmlFinal = htmlTemplate
+                .Replace("@nombre", estudiante.Nombres)
+                .Replace("@apellido", estudiante.Apellidos)
+                .Replace("@dni", estudiante.DNI ?? "")
+                .Replace("@legajo", estudiante.Legajo.ToString())
+                .Replace("@carrera", estudiante.NombreCarrera ?? "")
+                .Replace("@fecha", DateTime.Today.ToShortDateString())
+                .Replace("@filas", filasBuilder.ToString())
+                .Replace("@cantidad", listaCompleta.Count.ToString());
+
+            // Guardar como PDF
+            GuardarPdfImagen(completo, htmlFinal);
+        }
+
     }
 }
 

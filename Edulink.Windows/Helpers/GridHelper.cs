@@ -58,6 +58,13 @@ namespace Edulink.Windows.Helpers
                     r.Cells[1].Value = $"{estudianteMateriaDto.Apellidos}, {estudianteMateriaDto.Nombres}";
                     r.Cells[2].Value = estudianteMateriaDto.EstadoMateria == Estado.Pendiente ? "-" : estudianteMateriaDto.Nota.ToString();
                     r.Cells[3].Value = estudianteMateriaDto.EstadoMateria.ToString();
+                   
+                    break;
+                case EstudianteHistorialMateriaDto estudianteHistorialMateriaDto:
+                    r.Cells[0].Value = estudianteHistorialMateriaDto.NombreMateria;
+                    r.Cells[1].Value = estudianteHistorialMateriaDto.EstadoMateria == Estado.Pendiente ? "-" : estudianteHistorialMateriaDto.Nota.ToString();
+                    r.Cells[2].Value = estudianteHistorialMateriaDto.EstadoMateria.ToString();
+                  
                     break;
                 case Materia materia:
                     r.Cells[0].Value = materia.NombreMateria;

@@ -251,17 +251,7 @@ namespace EduLink.Datos.Repositorios
             }
         }
 
-        public HistorialEstudianteMateriaDto GetEstudianteCompletoPorId(int estudianteId)
-        {
-            using (var conn = ConexionBD.GetConexion())
-            {
-                return conn.QuerySingleOrDefault<HistorialEstudianteMateriaDto>(
-                    "sp_GetEstudianteCompletoPorId",
-                    new { EstudianteId = estudianteId },
-                    commandType: CommandType.StoredProcedure
-                );
-            }
-        }
+  
     }
 }
 

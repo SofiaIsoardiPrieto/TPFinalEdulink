@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Edulink.Windows
 {
-    public partial class FrmHistorialEstudiantesMateria : Form
+    public partial class FrmHistorialEstudiantesExamenes : Form
     {
         private int _estudianteId;
-        private readonly IServiciosHistorialMaterias _servicioHistorialMaterias;
+        private readonly IServiciosHistorialExamenes _servicioHistorialExamenes;
         private readonly IServiciosEstudiantes _servicioEstudiantes;
-        private List<EstudianteHistorialMateriaDto> _lista;
+        private List<EstudianteHistorialExamenDto> _lista;
         private int _paginaActual = 1; // Número de página actual en la paginación. Se inicia en la primera página.
         private int _registrosTotales;
         private int _paginasTotales; // Cantidad total de páginas calculadas en base a los registros disponibles.
@@ -23,17 +23,17 @@ namespace Edulink.Windows
         //private bool _filterOn = false; // por lo pronto no lo necesito
         //private Estado? _estadoExamen;
 
-        public FrmHistorialEstudiantesMateria(int estudianteId)
+        public FrmHistorialEstudiantesExamenes(int estudianteId)
         {
             InitializeComponent();
             _estudianteId = estudianteId;
-            _servicioHistorialMaterias = new ServiciosHistorialMaterias();      
+            _servicioHistorialExamenes = new ServiciosHistorialExamenes();      
             _servicioEstudiantes = new ServiciosEstudiantes();
         }
 
         private void FrmMaterias_Load(object sender, EventArgs e)
         {
-            if (_servicioHistorialMaterias is null) // comprueba que el servicio se haya inicializado correctamente.
+            if (_servicioHistorialExamenes is null) // comprueba que el servicio se haya inicializado correctamente.
             {
                 MessageBox.Show("Habilitar el servicio de SQL", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -45,10 +45,10 @@ namespace Edulink.Windows
         {
             try
             {
-                _registrosTotales = _servicioHistorialMaterias.GetCantidad(_estudianteId);// obtiene la cantidad total de registros.
-                if (_registrosTotales==0)
+                _registrosTotales = _servicioHistorialExamenes.GetCantidad(_estudianteId);// obtiene la cantidad total de registros.
+                if (_registrosTotales == 0)
                 {
-                    MessageBox.Show("El estudiante aun no aprobó materias", "Mensaje",
+                    MessageBox.Show("El estudiante aun no aprobó examnes", "Mensaje",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Close();
                     return;
@@ -60,7 +60,7 @@ namespace Edulink.Windows
         }
         private void MostrarPaginado()
         {
-            _lista = _servicioHistorialMaterias.GetHistorialMateriaPorPagina(_estudianteId, _registrosPorPagina, _paginaActual);
+            _lista = _servicioHistorialExamenes.GetHistorialExamenesPorPagina(_estudianteId, _registrosPorPagina, _paginaActual);
             lblLegajo.Text = _lista[0].Legajo.ToString();
             lblNombreEstudiante.Text = _lista[0].Apellidos + ", " + _lista[0].Nombres;
             MostrarDatosEnGrilla();
@@ -169,10 +169,10 @@ namespace Edulink.Windows
 
         private void tsImprimir_Click(object sender, EventArgs e)
         {
-            List<EstudianteHistorialMateriaDto> listaCompleta = _servicioHistorialMaterias.GetHistorialMateriasCompleto(_estudianteId);
+            var listaCompleta = _servicioHistorialExamenes.GetHistorialExamenesCompleto(_estudianteId);
 
-            ImprimirHelper.CrearCertificadoMateriasAprobadas(listaCompleta);
+            ImprimirHelper.CrearCertificadoExamenesAprobadas(listaCompleta);
             
         }
     }
-}
+} 

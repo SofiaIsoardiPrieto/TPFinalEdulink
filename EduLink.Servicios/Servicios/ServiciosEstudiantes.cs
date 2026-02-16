@@ -183,17 +183,6 @@ namespace EduLink.Servicios.Servicios
             }
         }
 
-        public HistorialEstudianteMateriaDto GetEstudianteCompletoPorId(int estudianteId)
-        {
-            try
-            {
-                return _repositorio.GetEstudianteCompletoPorId(estudianteId);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
+    
     }
 }

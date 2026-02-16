@@ -1,6 +1,6 @@
 ﻿namespace Edulink.Windows
 {
-    partial class FrmHistorialEstudiantesMateria
+    partial class FrmHistorialEstudiantesExamenes
     {
         /// <summary>
         /// Required designer variable.
