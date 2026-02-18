@@ -53,7 +53,11 @@ namespace EduLink.Datos.Repositorios
 
             }
         }
-
+        /// <summary>
+        /// Inscribe a un estudiante nuevo a las materias del primer año por defecto
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="carreraId"></param>
         private void InscribirEstudianteNuevoMaterias(int id, int carreraId)
         {
             //Inscribir automáticamente en materias de primer año
@@ -209,7 +213,11 @@ namespace EduLink.Datos.Repositorios
                 return lista;
             }
         }
-
+        /// <summary>
+        /// obtiene un estudiante segun du Id
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
         public Estudiante GetEstudiantePorId(int estudianteId)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -238,7 +246,11 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
-
+        /// <summary>
+        /// Busca el estudiante por su legajo
+        /// </summary>
+        /// <param name="legajo"></param>
+        /// <returns></returns>
         public EstudianteDto GetEstudiantePorLegajo(int legajo)
         {
             using (var conn = ConexionBD.GetConexion())

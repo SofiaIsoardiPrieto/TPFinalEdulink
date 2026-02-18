@@ -15,6 +15,11 @@ namespace EduLink.Servicios.Servicios
         {
             _repositorio = new RepositorioEstudiantesMateria();
         }
+        /// <summary>
+        /// Obtiene la cantidad de estudiantes anotados en una materia especifica.
+        /// </summary>
+        /// <param name="materiaId"></param>
+        /// <returns></returns>
 
         public int GetCantidad(int materiaId)
         {
@@ -29,7 +34,13 @@ namespace EduLink.Servicios.Servicios
             }
         }
 
-        
+        /// <summary>
+        /// Pagina los estudiante anotados en una materia especifica.
+        /// </summary>
+        /// <param name="materiaId"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
 
         public List<EstudianteMateriaDto> GetEstudiantesMateriaPorPagina(int materiaId, int registrosPorPagina, int paginaActual)
         {
@@ -43,7 +54,10 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
-
+        /// <summary>
+        /// Edita la nota del estudiante inscrpto en una materia y su estado (Aprobado, Reprobado, Ausente)
+        /// </summary>
+        /// <param name="estudianteMateriaDto"></param>
         public void Guardar(EstudianteMateriaDto estudianteMateriaDto)
         {
             try

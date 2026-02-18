@@ -16,7 +16,11 @@ namespace EduLink.Servicios.Servicios
             _repositorio = new RepositorioHistorialMaterias();
         }
 
-    
+        /// <summary>
+        /// Obtiene la cantidad de materias aprobadas por un estudiante.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
 
         public int GetCantidad(int estudianteId)
         {
@@ -30,8 +34,14 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
+        /// <summary>
+        /// Pagina las materia aprobadas por un estudiante.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
 
-      
 
         public List<EstudianteHistorialMateriaDto> GetHistorialMateriaPorPagina(int estudianteId, int registrosPorPagina, int paginaActual)
         {
@@ -45,7 +55,11 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
-
+        /// <summary>
+        /// Trea la lista completa de materias aprobadas por un estudiante, sin paginar. Se utiliza para exportar a pdf.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
         public List<EstudianteHistorialMateriaDto> GetHistorialMateriasCompleto(int estudianteId)
         {
             try

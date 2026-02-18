@@ -15,12 +15,10 @@ namespace EduLink.Datos.Repositorios
         {
 
         }
-        /// <summary>
-        /// Trae la lista de carreras para el combo segun el administrador logueado
-        /// </summary>
-        /// <param name="adminId"></param>
-        /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
+       /// <summary>
+       /// Trae la lista de ciudad para el bombobox
+       /// </summary>
+       /// <returns></returns>
         public List<CiudadCombo> GetCiudadesCombo()
         {
             using (var conn = ConexionBD.GetConexion())

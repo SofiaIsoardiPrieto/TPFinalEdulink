@@ -15,7 +15,12 @@ namespace EduLink.Servicios.Servicios
         {
             _repositorio = new RepositorioInscripcionMaterias();
         }
-
+        /// <summary>
+        /// Verifica si el estudiante ya está inscrito en la materia. 
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="materiaId"></param>
+        /// <returns></returns>
         public bool Existe(int estudianteId, int materiaId)
         {
             try
@@ -28,6 +33,11 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
+        /// <summary>
+        /// Agrega o edita una materia
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="materiaId"></param>
         public void Guardar(int estudianteId, int materiaId)
         {
             try
@@ -47,6 +57,11 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
+        /// <summary>
+        /// Borra la inscrpcion de un estudiante en una materia.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="materiaId"></param>
         public void Borrar(int estudianteId, int materiaId)
         {
             try
@@ -96,7 +111,11 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
-
+        /// <summary>
+        /// Trae las materias para el combobox.
+        /// </summary>
+        /// <param name="carreraId"></param>
+        /// <returns></returns>
         public List<MateriaCombo> GetMateriasCombo(int carreraId)
         {
             try

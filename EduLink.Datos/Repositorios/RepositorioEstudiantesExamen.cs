@@ -16,7 +16,10 @@ namespace EduLink.Datos.Repositorios
         {
 
         }
-
+        /// <summary>
+        /// Permite editarla note del estudiante en un examen y su estado (Aprobado, Desaprobado, Ausente)
+        /// </summary>
+        /// <param name="estudianteExamenDto"></param>
         public void Editar(EstudianteExamenDto estudianteExamenDto)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -34,7 +37,11 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
-
+        /// <summary>
+        /// Obtiene la cantidad de estudiantes anotados en un examen específico.
+        /// </summary>
+        /// <param name="examenId"></param>
+        /// <returns></returns>
         public int GetCantidad(int examenId)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -47,7 +54,13 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
-
+        /// <summary>
+        /// Pagina los estudiante de un examen especifico.
+        /// </summary>
+        /// <param name="examenId"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
         public List<EstudianteExamenDto> GetEstudiantesExamenPorPagina(int examenId, int registrosPorPagina, int paginaActual)
         {
             //sp_GetEstudiantesExamenPorPagina

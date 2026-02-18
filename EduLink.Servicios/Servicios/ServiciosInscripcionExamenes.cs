@@ -14,7 +14,12 @@ namespace EduLink.Servicios.Servicios
         {
             _repositorio = new RepositorioInscripcionExamenes();
         }
-
+        /// <summary>
+        /// Verifica que no este ya inscrpto el estudiante a un examen
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="examenId"></param>
+        /// <returns></returns>
         public bool Existe(int estudianteId, int examenId)
         {
             try
@@ -27,7 +32,11 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
-
+        /// <summary>
+        /// Obtiene la cantidad de examenes a los que se puede inscrbir el estudiante
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
         public int GetCantidad(int estudianteId)
         {
             try
@@ -40,6 +49,13 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
+        /// <summary>
+        /// Pagina los examenes a los que se puede inscribir el estudiante, segun la cantidad de registros por pagina y la pagina actual
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
 
         public List<ExamenDto> GetExamenesInscripcionEstudiantePorPagina(int estudianteId,  int registrosPorPagina, int paginaActual)
         {
@@ -53,6 +69,11 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
+        /// <summary>
+        /// Guarda la inscrpcion de una estudiante a un examen.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="examenId"></param>
 
         public void Guardar(int estudianteId, int examenId)
         {

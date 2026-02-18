@@ -16,6 +16,12 @@ namespace EduLink.Datos.Repositorios
         {
 
         }
+        /// <summary>
+        /// Verifica si el estudiante ya está inscrito en la materia. 
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="materiaId"></param>
+        /// <returns></returns>
         public bool Existe(int estudianteId, int materiaId)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -29,6 +35,11 @@ namespace EduLink.Datos.Repositorios
                 return cantidad > 0;
             }
         }
+        /// <summary>
+        /// Borra la inscrpcion de un estudiante en una materia.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="materiaId"></param>
         public void Borrar(int estudianteId, int materiaId)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -40,6 +51,11 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
+        /// <summary>
+        /// Incribe un estudiante a una materia.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="materiaId"></param>
         public void Agregar(int estudianteId, int materiaId)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -57,7 +73,12 @@ namespace EduLink.Datos.Repositorios
             throw new System.NotImplementedException();
         }
 
-
+        /// <summary>
+        /// Obtiene la cantidad de materias a las que un estudiante se puede inscribir.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="anioMateria"></param>
+        /// <returns></returns>
 
         public int GetCantidad(int estudianteId, int? anioMateria)
         {
@@ -72,7 +93,14 @@ namespace EduLink.Datos.Repositorios
                 return cantidad;
             }
         }
-
+        /// <summary>
+        /// Pagina las materias a las que un estudiante se puede inscribir.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="anioMateria"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
         public List<MateriaDto> GetEstudiantesPorPagina(int estudianteId, int? anioMateria, int registrosPorPagina, int paginaActual)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -84,7 +112,11 @@ namespace EduLink.Datos.Repositorios
                 ).ToList();
             }
         }
-
+        /// <summary>
+        /// Trae las materias para el combobox.
+        /// </summary>
+        /// <param name="carreraId"></param>
+        /// <returns></returns>
         public List<MateriaCombo> GetMateriasCombo(int carreraId)
         {
             using (var conn = ConexionBD.GetConexion())

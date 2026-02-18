@@ -15,9 +15,8 @@ namespace EduLink.Servicios.Servicios
             _repositorio = new RepositorioCiudades();
         }
         /// <summary>
-        /// Trae las carreras para el combo segun el administrador logueado
+        /// Trae las ciudades para el combo
         /// </summary>
-        /// <param name="adminId"></param>
         /// <returns></returns>
         public List<CiudadCombo> GetCiudadesCombo()
         {

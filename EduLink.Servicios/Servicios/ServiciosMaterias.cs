@@ -14,6 +14,44 @@ namespace EduLink.Servicios.Servicios
         {
             _repositorio = new RepositorioMaterias();
         }
+        /// <summary>
+        /// Obtiene la cantidad total de materias asociadas a una carrera específica.
+        /// </summary>
+        /// <param name="carreraId"></param>
+        /// <returns></returns>
+
+        public int GetCantidad(int carreraId)
+        {
+            try
+            {
+                return _repositorio.GetCantidad(carreraId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// Pagina las materias de una carrera específica.
+        /// </summary>
+        /// <param name="carreraId"></param>
+        /// <param name="cantidadPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
+
+        public List<Materia> GetMateriasPorPagina(int carreraId, int registrosPorPagina, int paginaActual)
+        {
+            try
+            {
+                return _repositorio.GetMateriasPorPagina(carreraId, registrosPorPagina, paginaActual);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         //public void Borrar(int examenId)
         //{
@@ -55,19 +93,7 @@ namespace EduLink.Servicios.Servicios
 
         //}
 
-        public int GetCantidad(int carreraId)
-        {
-            try
-            {
-                return _repositorio.GetCantidad(carreraId);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
+     
         //public int GetCantidad(int carreraId, int anioMateria)
         //{
         //    try
@@ -81,19 +107,7 @@ namespace EduLink.Servicios.Servicios
         //    }
         //}
 
-        public List<Materia> GetMateriasPorPagina(int carreraId, int registrosPorPagina, int paginaActual)
-        {
-            try
-            {
-                return _repositorio.GetMateriasPorPagina(carreraId, registrosPorPagina, paginaActual);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
+    
         //public Examen GetExamenPorId(int examenId)
         //{
         //    try

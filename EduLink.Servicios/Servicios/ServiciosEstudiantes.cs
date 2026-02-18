@@ -83,7 +83,7 @@ namespace EduLink.Servicios.Servicios
             }
         }
         /// <summary>
-        /// obtiene la cantidad de estudiantes
+        /// Obtiene la cantidad de estudiantes
         /// </summary>
         /// <param name="textoFiltro"></param>
         /// <returns></returns>
@@ -152,7 +152,7 @@ namespace EduLink.Servicios.Servicios
             }
         }
         /// <summary>
-        /// Busca un estudiante por su DNI
+        /// Trae un estudiante por su DNI.
         /// </summary>
         /// <param name="dni"></param>
         /// <returns></returns>
@@ -169,7 +169,11 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
-
+        /// <summary>
+        /// Trae un estudiante por su legajo.
+        /// </summary>
+        /// <param name="legajo"></param>
+        /// <returns></returns>
         public EstudianteDto GetEstudiantePorLegajo(int legajo)
         {
             try

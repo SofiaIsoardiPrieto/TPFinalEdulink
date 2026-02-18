@@ -16,7 +16,12 @@ namespace EduLink.Datos.Repositorios
         {
 
         }
-
+        /// <summary>
+        /// Verifica que no este ya inscrpto el estudiante a un examen
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="examenId"></param>
+        /// <returns></returns>
         public bool Existe(int estudianteId, int examenId)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -30,6 +35,11 @@ namespace EduLink.Datos.Repositorios
                 return cantidad > 0;
             }
         }
+        /// <summary>
+        /// Obtiene la cantidad de examenes a los que se puede inscrbir el estudiante
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
         public int GetCantidad(int estudianteId)
         {
 
@@ -43,7 +53,13 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
-
+        /// <summary>
+        /// Pagina los examenes a los que se puede inscribir el estudiante, segun la cantidad de registros por pagina y la pagina actual
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
         public List<ExamenDto> GetExamenesInscripcionEstudiantePorPagina(int estudianteId,  int registrosPorPagina, int paginaActual)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -55,7 +71,11 @@ namespace EduLink.Datos.Repositorios
                 ).ToList();
             }
         }
-
+        /// <summary>
+        /// Guarda la inscrpcion de una estudiante a un examen.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="examenId"></param>
         public void Guardar(int estudianteId, int examenId)
         {
             using (var conn = ConexionBD.GetConexion())

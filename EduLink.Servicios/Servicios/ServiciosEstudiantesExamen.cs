@@ -15,7 +15,11 @@ namespace EduLink.Servicios.Servicios
         {
             _repositorio = new RepositorioEstudiantesExamen();
         }
-
+        /// <summary>
+        /// Obtiene la cantidad de estudiantes anotados en un examen específico.
+        /// </summary>
+        /// <param name="examenId"></param>
+        /// <returns></returns>
         public int GetCantidad(int examenId)
         {
             try
@@ -28,12 +32,35 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
+        /// <summary>
+        /// Pagina los estudiante de un examen especifico.
+        /// </summary>
+        /// <param name="examenId"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
 
         public List<EstudianteExamenDto> GetEstudiantesExamenPorPagina(int examenId, int registrosPorPagina, int paginaActual)
         {
             try
             {
                 return _repositorio.GetEstudiantesExamenPorPagina(examenId, registrosPorPagina, paginaActual);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// Permite editarla note del estudiante en un examen y su estado (Aprobado, Desaprobado, Ausente)
+        /// </summary>
+        /// <param name="estudianteExamenDto"></param>
+        public void Guardar(EstudianteExamenDto estudianteExamenDto)
+        {
+            try
+            {
+                _repositorio.Editar(estudianteExamenDto);
             }
             catch (Exception)
             {
@@ -134,19 +161,8 @@ namespace EduLink.Servicios.Servicios
         //    }
         //}
 
-       
 
-        public void Guardar(EstudianteExamenDto estudianteExamenDto)
-        {
-            try
-            {
-                _repositorio.Editar(estudianteExamenDto);
-            }
-            catch (Exception)
-            {
 
-                throw;
-            }
-        }
+
     }
 }

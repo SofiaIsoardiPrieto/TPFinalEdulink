@@ -16,7 +16,12 @@ namespace EduLink.Servicios.Servicios
             _repositorio = new RepositorioHistorialExamenes();
         }
 
-    
+
+        /// <summary>
+        /// Obtener la cantidad de examenes aprobados por un estudiante
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
 
         public int GetCantidad(int estudianteId)
         {
@@ -31,7 +36,14 @@ namespace EduLink.Servicios.Servicios
             }
         }
 
-      
+         }
+        /// <summary>
+        /// Paginas los examenes aprobados por un estudiante.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
 
         public List<EstudianteHistorialExamenDto> GetHistorialExamenesPorPagina(int estudianteId, int registrosPorPagina, int paginaActual)
         {
@@ -45,7 +57,11 @@ namespace EduLink.Servicios.Servicios
                 throw;
             }
         }
-
+        /// <summary>
+        /// Obtener la lista completa (sin paginar) de examenes aprobados por un estudiante, para exportar a pdf.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
         public List<EstudianteHistorialExamenDto> GetHistorialExamenesCompleto(int estudianteId)
         {
             try

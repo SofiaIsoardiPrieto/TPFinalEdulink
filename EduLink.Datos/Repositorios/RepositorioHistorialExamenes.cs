@@ -16,7 +16,11 @@ namespace EduLink.Datos.Repositorios
 
         }
 
-
+        /// <summary>
+        /// Obtener la cantidad de examenes aprobados por un estudiante
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
         public int GetCantidad(int estudianteId)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -28,7 +32,13 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
-
+        /// <summary>
+        /// Paginas los examenes aprobados por un estudiante.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
         public List<EstudianteHistorialExamenDto> GetHistorialExamenesPorPagina(int estudianteId, int registrosPorPagina, int paginaActual)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -40,7 +50,11 @@ namespace EduLink.Datos.Repositorios
                 ).ToList();
             }
         }
-
+        /// <summary>
+        /// Obtener la lista completa (sin paginar) de examenes aprobados por un estudiante, para exportar a pdf.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
         public List<EstudianteHistorialExamenDto> GetHistorialExamenesCompleto(int estudianteId)
         {
             using (var conn = ConexionBD.GetConexion())

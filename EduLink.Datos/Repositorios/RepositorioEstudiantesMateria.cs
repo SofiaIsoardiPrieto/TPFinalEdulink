@@ -16,7 +16,10 @@ namespace EduLink.Datos.Repositorios
         {
 
         }
-
+        /// <summary>
+        /// Edita la nota del estudiante inscrpto en una materia y su estado (Aprobado, Reprobado, Ausente)
+        /// </summary>
+        /// <param name="estudianteMateriaDto"></param>
         public void Editar(EstudianteMateriaDto estudianteMateriaDto)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -34,7 +37,11 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
-
+        /// <summary>
+        /// Obtiene la cantidad de estudiantes anotados en una materia especifica.
+        /// </summary>
+        /// <param name="materiaId"></param>
+        /// <returns></returns>
         public int GetCantidad(int materiaId)
         {
 
@@ -48,7 +55,13 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
-
+        /// <summary>
+        /// Pagina los estudiante anotados en una materia especifica.
+        /// </summary>
+        /// <param name="materiaId"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
         public List<EstudianteMateriaDto> GetEstudiantesMateriaPorPagina(int materiaId, int registrosPorPagina, int paginaActual)
         {
             using (var conn = ConexionBD.GetConexion())

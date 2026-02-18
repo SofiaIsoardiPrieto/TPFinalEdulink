@@ -17,8 +17,11 @@ namespace EduLink.Datos.Repositorios
 
         }
 
-
-
+        /// <summary>
+        /// Obtiene la cantidad total de materias asociadas a una carrera específica.
+        /// </summary>
+        /// <param name="carreraId"></param>
+        /// <returns></returns>
         public int GetCantidad(int carreraId)
         {
 
@@ -34,8 +37,13 @@ namespace EduLink.Datos.Repositorios
         }
 
 
-
-
+        /// <summary>
+        /// Pagina las materias de una carrera específica.
+        /// </summary>
+        /// <param name="carreraId"></param>
+        /// <param name="cantidadPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
         public List<Materia> GetMateriasPorPagina(int carreraId, int cantidadPorPagina, int paginaActual)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -47,12 +55,6 @@ namespace EduLink.Datos.Repositorios
                 ).ToList();
             }
         }
-
-       
-        
-
-
-
 
     }
 }

@@ -16,7 +16,11 @@ namespace EduLink.Datos.Repositorios
 
         }
 
-
+        /// <summary>
+        /// Obtiene la cantidad de materias aprobadas por un estudiante.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
         public int GetCantidad(int estudianteId)
         {
             using (var conn = ConexionBD.GetConexion())
@@ -28,6 +32,13 @@ namespace EduLink.Datos.Repositorios
                 );
             }
         }
+        /// <summary>
+        /// Pagina las materia aprobadas por un estudiante.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <param name="registrosPorPagina"></param>
+        /// <param name="paginaActual"></param>
+        /// <returns></returns>
 
         public List<EstudianteHistorialMateriaDto> GetHistorialMateriaPorPagina(int estudianteId, int registrosPorPagina, int paginaActual)
         {
@@ -40,7 +51,11 @@ namespace EduLink.Datos.Repositorios
                 ).ToList();
             }
         }
-
+        /// <summary>
+        /// Trea la lista completa de materias aprobadas por un estudiante, sin paginar. Se utiliza para exportar a pdf.
+        /// </summary>
+        /// <param name="estudianteId"></param>
+        /// <returns></returns>
         public List<EstudianteHistorialMateriaDto> GetHistorialMateriasCompleto(int estudianteId)
         {
             using (var conn = ConexionBD.GetConexion())

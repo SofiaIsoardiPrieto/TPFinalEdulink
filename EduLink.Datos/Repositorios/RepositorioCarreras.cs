@@ -35,7 +35,11 @@ namespace EduLink.Datos.Repositorios
                 return lista;
             }
         }
-
+        /// <summary>
+        /// Trae la carrera por su id
+        /// </summary>
+        /// <param name="carreraId"></param>
+        /// <returns></returns>
         public Carrera GetCarreraPorId(int carreraId)
         {
             using (var conn = ConexionBD.GetConexion())
