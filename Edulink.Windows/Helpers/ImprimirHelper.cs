@@ -116,15 +116,15 @@ namespace Edulink.Windows.Helpers
             var estudiante = lista[0];
 
             // Construir las filas de materias
-            var filasBuilder = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (var materia in lista)
             {
-                filasBuilder.AppendLine("<tr>");
-                filasBuilder.AppendLine($"<td>{materia.NombreMateria}</td>");
-                filasBuilder.AppendLine($"<td>{materia.AnioCicloLectivo}</td>");
-                filasBuilder.AppendLine($"<td>{materia.Nota}</td>");
-                filasBuilder.AppendLine($"<td>{materia.EstadoMateria}</td>");
-                filasBuilder.AppendLine("</tr>");
+                sb.AppendLine("<tr>");
+                sb.AppendLine($"<td>{materia.NombreMateria}</td>");
+                sb.AppendLine($"<td>{materia.AnioCicloLectivo}</td>");
+                sb.AppendLine($"<td>{materia.Nota}</td>");
+                sb.AppendLine($"<td>{materia.EstadoMateria}</td>");
+                sb.AppendLine("</tr>");
             }
 
             // Reemplazar placeholders en el HTML
@@ -135,7 +135,7 @@ namespace Edulink.Windows.Helpers
                 .Replace("@legajo", estudiante.Legajo.ToString())
                 .Replace("@carrera", estudiante.NombreCarrera ?? "")
                 .Replace("@fecha", DateTime.Today.ToShortDateString())
-                .Replace("@filas", filasBuilder.ToString())
+                .Replace("@filas", sb.ToString())
                 .Replace("@cantidad", lista.Count.ToString());
 
             // Guardar como PDF
@@ -160,15 +160,15 @@ namespace Edulink.Windows.Helpers
             var estudiante = listaCompleta[0];
 
             // Construir las filas de exámenes
-            var filasBuilder = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (var examen in listaCompleta)
             {
-                filasBuilder.AppendLine("<tr>");
-                filasBuilder.AppendLine($"<td>{examen.NombreMateria}</td>");
-                filasBuilder.AppendLine($"<td>{examen.FechaExamen.ToShortDateString()}</td>");
-                filasBuilder.AppendLine($"<td>{examen.Nota}</td>");
-                filasBuilder.AppendLine($"<td>{examen.EstadoExamen}</td>");
-                filasBuilder.AppendLine("</tr>");
+                sb.AppendLine("<tr>");
+                sb.AppendLine($"<td>{examen.NombreMateria}</td>");
+                sb.AppendLine($"<td>{examen.FechaExamen.ToShortDateString()}</td>");
+                sb.AppendLine($"<td>{examen.Nota}</td>");
+                sb.AppendLine($"<td>{examen.EstadoExamen}</td>");
+                sb.AppendLine("</tr>");
             }
 
             // Reemplazar placeholders en el HTML
@@ -179,7 +179,7 @@ namespace Edulink.Windows.Helpers
                 .Replace("@legajo", estudiante.Legajo.ToString())
                 .Replace("@carrera", estudiante.NombreCarrera ?? "")
                 .Replace("@fecha", DateTime.Today.ToShortDateString())
-                .Replace("@filas", filasBuilder.ToString())
+                .Replace("@filas", sb.ToString())
                 .Replace("@cantidad", listaCompleta.Count.ToString());
 
             // Guardar como PDF

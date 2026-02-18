@@ -36,7 +36,7 @@ namespace EduLink.Servicios.Servicios
             }
         }
 
-         }
+         
         /// <summary>
         /// Paginas los examenes aprobados por un estudiante.
         /// </summary>

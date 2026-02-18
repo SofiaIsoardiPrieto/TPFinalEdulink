@@ -69,12 +69,11 @@ namespace Edulink.Windows.Helpers
                 case Materia materia:
                     r.Cells[0].Value = materia.NombreMateria;
                     break;
-                    //case PruebaDto pruebaDto:
-                    //    r.Cells[0].Value = pruebaDto.NombrePrueba;
-                    //    r.Cells[1].Value = pruebaDto.Rango;
-                    //    r.Cells[2].Value = pruebaDto.NombreMedicion;
-                    //    r.Cells[3].Value = pruebaDto.NombreTipoRango;
-                    //    break;
+                case EstudianteHistorialExamenDto estudianteHistorialExamenDto:
+                    r.Cells[0].Value = estudianteHistorialExamenDto.NombreMateria;
+                    r.Cells[1].Value = estudianteHistorialExamenDto.Nota;
+                    r.Cells[2].Value = estudianteHistorialExamenDto.EstadoExamen;
+                    break;
                     //case TipoRango tipoRango:
                     //    r.Cells[0].Value = tipoRango.NombreTipoRango;
                     //    break;
